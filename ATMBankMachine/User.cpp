@@ -13,6 +13,7 @@ User::User(string userInformation)
 	userStream >> accountNumber;
 	userStream >> initialBalance;
 	userStream >> overdraftLimit;
+	userStream >> pinCode;
 }
 
 string User::getFirstName()
@@ -45,3 +46,25 @@ double User::getOverdraftLimit()
 	return overdraftLimit;
 }
 
+/*double User::getPinCode()
+{
+	return overdraftLimit;
+}*/
+
+void User::printBalance() //Make print user balance
+{
+
+	cout << endl;
+	cout << firstName << ", ";
+	//cout << "Name: " << user.getName() << endl;
+	//cout << "Account Number: " << user.getAccountNumber() << endl;
+	cout << "Your current balance is: " << char(156) << initialBalance << endl;
+	cout << endl;
+}
+
+void User::printOverdraft()
+{
+	
+	cout << firstName << ", ";
+	cout << "Your current maximum overdraft limit is: " << char(156) << overdraftLimit << endl;
+}

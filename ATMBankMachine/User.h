@@ -14,6 +14,7 @@
 */
 
 #include <string>
+#include <iostream>
 #include <sstream> //string stream function
 
 //using namespace std;
@@ -32,6 +33,10 @@ public:
 		int getAccountNumber();
 		double getInitialBalance();
 		double getOverdraftLimit();
+		double getPinCode();
+
+		void printBalance();
+		void printOverdraft();
 
 	
 	//int getAccountNumber();
@@ -43,6 +48,7 @@ private:
 	int accountNumber;
 	double initialBalance;
 	double overdraftLimit;
+	double pinCode;
 	
 };
 

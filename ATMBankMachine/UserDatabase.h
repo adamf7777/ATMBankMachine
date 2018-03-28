@@ -26,7 +26,7 @@ class UserDatabase
 public:
 	UserDatabase(std::string filePath);
 
-	User getUserBalance();
+	//User getUserBalance();
 	std::vector<User> getHonorRollUsers();
 	std::vector<User> getFailingUsers();
 

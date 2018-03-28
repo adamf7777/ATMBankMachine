@@ -4,18 +4,19 @@
 #include "UserDatabase.h"
 
 #include <conio.h>
-//#include <string>
+#include <string>
 
 
 using namespace std;
 
-void printUser(User user) //Make print user balance
+void printBalance(User user) //Make print user balance
 {
 
 	cout << endl;
-	cout << "Name: " << user.getName() << endl;
-	cout << "Account Number: " << user.getAccountNumber() << endl;
-	cout << "Balance " << char(156) << user.getInitialBalance() << endl;
+	cout << "Hello " << user.getFirstName() << "! " << endl << endl;
+	//cout << "Name: " << user.getName() << endl;
+	//cout << "Account Number: " << user.getAccountNumber() << endl;
+	cout << "Your current balance is: " << char(156) << user.getInitialBalance() << endl;
 	cout << endl;
 }
 
@@ -23,14 +24,19 @@ int main(int argc, const char * argv[])
 {
 
 	int userInputIDNumber;
+	int userInputPINCode;
+
+	int userInputOption;
+
 
 	cout << "Welcome to Bank of Ulster" << endl << endl ;
-
 	cout << "Please enter your user ID Number " << endl;
 	
 	cin >> userInputIDNumber;
-	
 	cout << endl;
+
+	cout << "Please enter your 4-digit Pin Code " << endl;
+	cin >> userInputPINCode;
 
 	//Find line for the user
 	userInputIDNumber = (userInputIDNumber - 1000);
@@ -42,14 +48,65 @@ int main(int argc, const char * argv[])
 	cout << "Balance " << char(156) << user.getInitialBalance() << endl;
 	cout << "Overdraft Limit " << char(156) << user.getOverdraftLimit() << endl;
 	*/
-	UserDatabase list("User_database.txt");
-	
-	for (int i = 0; i < list.users.size(); i++)
-	{
-		User s = list.users.at(i);
-		printUser(s);
 
-	}
+	//Find the correct user from the database
+	UserDatabase list("User_database.txt");
+		
+	User currentUser = list.users.at(userInputIDNumber);
+
+	
+	cout << "Please select one of the options below:\n";
+
+	cout << "[1] Cash Withdrawal " << endl;
+	cout << "[2] On-screen balance enquiry "<< endl;
+	cout << "[3] Cash - lodgement " << endl;
+	cout << "[4] Check your overdraft limit " << endl;
+	cout << "[5] Admin Access" << endl;
+	
+	cin >> userInputOption;
+	
+
+	switch (userInputOption) {
+	case 1:
+		cout << "Cash Withdrawl Menu\n\n";
+		cout << "Please enter the amount of money you would like to withdraw: \n";
+		cout << char(156);
+     	break;
+
+	case 2: // Display onscreen balance
+		
+		currentUser.printBalance();
+
+		break;
+
+	case 3: // Allow for cash logdement 
+		cout << "Do nothing 3";
+
+		break;
+
+	case 4: // Overdraft Limit
+		
+		break;
+
+	case 5: // Admin access
+
+		currentUser.printOverdraft();
+
+		break; 
+
+	/* Any further services around 
+	cout << "Would you like any further services? Y/N:\n";
+	cin >> anotherService;
+	cout << "\n\n";
+	*/
+
+}
+
+//system("cls");
+
+// If 'N' return card 
+//cout << "Your card is now being returned\n";
+	//}
 
 	return 0;
 

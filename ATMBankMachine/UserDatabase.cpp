@@ -4,7 +4,7 @@
 
 using namespace std;
 
-UserDatabase::UserDatabase(string filePath)
+/*UserDatabase::UserDatabase(string filePath)
 {
 	ifstream userFile(filePath);
 
@@ -22,11 +22,20 @@ UserDatabase::UserDatabase(string filePath)
 
 	sort(users.begin(), users.end(), [](User &s1, User &s2) { return s1.getInitialBalance() > s2.getInitialBalance(); });
 
-}
-
-/*User UserDatabase::getUserBalance()
-{
-	if (users.size() == 0)
-		throw noUserFound();
-	return users.at(0);
 }*/
+
+UserDatabase::UserDatabase(string filePath)
+{
+	ifstream userFile(filePath);
+	string lineContents;
+	while (!userFile.eof())
+	{
+		getline(userFile, lineContents);
+
+		User x(lineContents);
+		users.push_back(x);
+
+	}
+
+	userFile.close();
+}
