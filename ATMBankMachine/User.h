@@ -37,7 +37,7 @@ public:
 
 		void printBalance();
 		void printOverdraft();
-
+		void checkPinCode();
 	
 	//int getAccountNumber();
 
