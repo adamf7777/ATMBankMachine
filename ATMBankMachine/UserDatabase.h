@@ -7,7 +7,7 @@
 * optional, long description, spanning
 * several lines.
 *
-* @author Adam Fawectt <fawcett-a@ulster.ac.uk>
+* @author Nathan Fawectt <fawcett-a@ulster.ac.uk>
 * @license (url of your license)
 * @copyright Adam Fawcett 2018
 *
@@ -26,12 +26,17 @@ class UserDatabase
 public:
 	UserDatabase(std::string filePath);
 
-	//User getUserBalance();
-	std::vector<User> getHonorRollUsers();
-	std::vector<User> getFailingUsers();
-
-//private: 
+	void rewriteUserDatabase(std::string filePath);
+	
+	std::vector<User> getPinCode;
 	std::vector<User> users;
+
+
+	std::vector<User> getAllUsers();
+	void addUser(User user);
+private: 
+	//create & initialise dynamic array to hold users 
+	std::vector<User>* allUsers = new std::vector<User>();
 
 };
 

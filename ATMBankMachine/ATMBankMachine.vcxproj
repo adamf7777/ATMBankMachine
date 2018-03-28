@@ -119,6 +119,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Account.cpp" />
     <ClCompile Include="Admin.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Security.cpp" />
@@ -127,6 +128,7 @@
     <ClCompile Include="UserDatabase.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Account.h" />
     <ClInclude Include="Admin.h" />
     <ClInclude Include="Security.h" />
     <ClInclude Include="Transaction.h" />

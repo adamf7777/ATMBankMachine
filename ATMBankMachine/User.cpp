@@ -66,7 +66,7 @@ void User::printOverdraft()
 {
 	
 	cout << firstName << ", ";
-	cout << "your current maximum overdraft limit is: " << char(156) << overdraftLimit << endl;
+	cout << "your current maximum overdraft limit is: " << char(156) << overdraftLimit << endl << endl;
 }
 
 /*
