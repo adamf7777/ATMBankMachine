@@ -1,31 +1,49 @@
-#ifndef User_H
-#define User_H
-#include <string>
-#include <iostream>
+#ifndef User_H_
+#define User_H_
 
-using namespace std;
+/**
+* one line description of class or file
+*
+* optional, long description, spanning
+* several lines.
+*
+* @author Adam Fawectt <fawcett-a@ulster.ac.uk>
+* @license (url of your license)
+* @copyright Adam Fawcett 2018
+*
+*/
+
+#include <string>
+#include <sstream> //string stream function
+
+//using namespace std;
 
 class User
 {
-	
 
 public: 
-	//User(string firstname, string surname, int accountNumber, double initialBalance);
-	User(int accountNumber);
-	User();
-	~User();
+	//constructors 
 
-	int getAccountNumber();
+	User(std::string userInformation);
+		
+		std::string getFirstName();
+		std::string getLastName();
+		std::string getName();
+		int getAccountNumber();
+		double getInitialBalance();
+		double getOverdraftLimit();
+
+	
+	//int getAccountNumber();
 
 private:
 	
-	//std::string firstname;
-	//std::string surname;
+	std::string firstName;
+	std::string lastName;
 	int accountNumber;
 	double initialBalance;
-	
+	double overdraftLimit;
 	
 };
 
-
-#endif
+#endif 

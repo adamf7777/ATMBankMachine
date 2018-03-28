@@ -1,4 +1,5 @@
-Adam
-Micheal
-Chris
-Matthew
+Adam	Fawcett	1000	404.23
+Micheal	Glass	1001	623.56
+Chris	Faulkner	1002	948.54	
+Matthew	Cordner	1003	843.75
+Colin Turner 1004 32442.43
