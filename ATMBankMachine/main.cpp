@@ -9,16 +9,6 @@
 
 using namespace std;
 
-void printBalance(User user) //Make print user balance
-{
-
-	cout << endl;
-	cout << "Hello " << user.getFirstName() << "! " << endl << endl;
-	//cout << "Name: " << user.getName() << endl;
-	//cout << "Account Number: " << user.getAccountNumber() << endl;
-	cout << "Your current balance is: " << char(156) << user.getInitialBalance() << endl;
-	cout << endl;
-}
 
 int main(int argc, const char * argv[])
 {
@@ -28,93 +18,99 @@ int main(int argc, const char * argv[])
 
 	int userInputOption;
 	char anotherService = 'Y';
-
-	cout << "Welcome to Bank of Ulster" << endl << endl ;
-	cout << "Please enter your user ID Number " << endl;
 	
-	cin >> userInputIDNumber;
-	cout << endl;
 
-	cout << "Please enter your 4-digit Pin Code " << endl;
-	cin >> userInputPINCode;
-	cout << endl;
+		cout << "Welcome to Bank of Ulster" << endl << endl;
+		cout << "Please enter your user ID Number " << endl;
 
-	//Find line for the user
-	userInputIDNumber = (userInputIDNumber - 1000);
+		cin >> userInputIDNumber;
+		cout << endl;
+
+		cout << "Please enter your 4-digit Pin Code " << endl;
+		cin >> userInputPINCode;
+		cout << endl;
+
+		//Find line for the user
+		userInputIDNumber = (userInputIDNumber - 1000);
 
 
-	//Find the correct user from the database
-	UserDatabase list("User_database.txt");
+		//Find the correct user from the database
+		UserDatabase list("User_database.txt");
+
+		User currentUser = list.users.at(userInputIDNumber);
+		// Stops the program if the user doesn't require any further services 
+
+		while (anotherService == 'Y' || 'y')
+		{
+
+			cout << "Please select one of the options below:" << endl << endl;
+
+			cout << "[1] Cash Withdrawal " << endl;
+			cout << "[2] On-screen balance enquiry " << endl;
+			cout << "[3] Cash - lodgement " << endl;
+			cout << "[4] Check your overdraft limit " << endl;
+			//cout << "[5] Admin Access" << endl;
+
+			cin >> userInputOption;
+
+			system("cls");
+
+			switch (userInputOption) {
+			case 1:
+				cout << "Cash Withdrawl Menu\n\n";
+				cout << "Please enter the amount of money you would like to withdraw: \n";
+				cout << char(156);
+				break;
+
+			case 2: // Display onscreen balance
+
+				currentUser.printBalance();
+
+				break;
+
+			case 3: // Allow for cash logdement 
+
+				cout << "Do nothing 3";
+
+				break;
+
+			case 4: // Overdraft Limit
+
+				currentUser.printOverdraft();
+
+				break;
+
+			case 0: // Admin access
+				cout << "Admin menu";
+
+				break;
+
+			default:
+				cout << "Error";
+
+
+			}//END OF SWITCH CASE
+
+
+			//Any further services required
+			cout << "Would you like any further services? Y/N:\n";
+			cin >> anotherService;
+			cout << "\n\n";
+			system("cls");
+
+		}//END OF ANOTHER SERVICE
+
+		system("cls");
+
+		//if 'N' return card 
 		
-	User currentUser = list.users.at(userInputIDNumber);
+		cout << "Your card is now being returned\n";
 
-	
-	cout << "Please select one of the options below:\n";
-
-	cout << "[1] Cash Withdrawal " << endl;
-	cout << "[2] On-screen balance enquiry "<< endl;
-	cout << "[3] Cash - lodgement " << endl;
-	cout << "[4] Check your overdraft limit " << endl;
-	//cout << "[5] Admin Access" << endl;
-	
-	cout << "Please select one of the options below:\n";
-	cin >> userInputOption;
-
-	// Stops the program if the user doesn't require any further services 
-	while (anotherService == 'Y' || 'y') {
-
-
-		switch (userInputOption) {
-		case 1:
-			cout << "Cash Withdrawl Menu\n\n";
-			cout << "Please enter the amount of money you would like to withdraw: \n";
-			cout << char(156);
-			break;
-
-		case 2: // Display onscreen balance
-
-			currentUser.printBalance();
-
-			break;
-
-		case 3: // Allow for cash logdement 
-
-			cout << "Do nothing 3";
-
-			break;
-
-		case 4: // Overdraft Limit
-
-			currentUser.printOverdraft();
-
-			break;
-
-		case 0: // Admin access
-			cout << "Admin menu";
-
-			break;
-
-		default:
-			cout << "Error";
-
-
-		}
-
-		//Any further services required
-		cout << "Would you like any further services? Y/N:\n";
-		cin >> anotherService;
-		cout << "\n\n";
-
-	}
-//if 'N' return card 
-//	system("cls");
-cout << "Your card is now being returned\n";
-	
 	
 
 	return 0;
 
-}
+}//END OF MAIN
 
 /*
 int main(void)
