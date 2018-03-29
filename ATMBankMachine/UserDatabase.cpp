@@ -43,9 +43,16 @@ UserDatabase::UserDatabase(string filePath)
 void UserDatabase::rewriteUserDatabase(std::string filePath)
 {
 	ofstream fout(filePath);
-	string lineContents;
+	std::string lineContents;
 
-	
+	for (int i = 0; i < getAllUsers().size(); i++) {
+		fout << getAllUsers().at(i).getFirstName()<< " "
+			<< getAllUsers().at(i).getLastName()<< " "
+			<< getAllUsers().at(i).getAccountNumber()<< " "
+			<< getAllUsers().at(i).getInitialBalance()<< " "
+			<< getAllUsers().at(i).getOverdraftLimit()<< " "
+			<< getAllUsers().at(i).getPinCode() << endl;
+	}
 
 	fout.close();
 }

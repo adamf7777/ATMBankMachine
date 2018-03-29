@@ -51,6 +51,11 @@ double User::getPinCode()
 	return pinCode;
 }
 
+void User::setPinCode(double newPinCode)
+{
+	pinCode = newPinCode;
+}
+
 void User::printBalance() //Make print user balance
 {
 

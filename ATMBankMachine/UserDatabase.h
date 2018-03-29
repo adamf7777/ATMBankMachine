@@ -34,6 +34,7 @@ public:
 
 	std::vector<User> getAllUsers();
 	void addUser(User user);
+	void updateUser(User user);
 private: 
 	//create & initialise dynamic array to hold users 
 	std::vector<User>* allUsers = new std::vector<User>();

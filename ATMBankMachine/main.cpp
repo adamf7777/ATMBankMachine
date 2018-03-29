@@ -74,6 +74,10 @@ int main(int argc, const char * argv[])
 
 			system("cls");
 
+
+			User newUser = User("Cecil Jones 1100 100.0 200.00 1234");
+
+
 			switch (userInputOption) {
 			case 1:
 				cout << "Cash Withdrawl Menu\n\n";
@@ -101,6 +105,20 @@ int main(int argc, const char * argv[])
 				break;
 
 			case 5: //Change Pin Code
+				cout << "Enter new pincode: ";
+				int newPin;
+				cin >> newPin;
+				
+				currentUser.setPinCode(newPin);
+
+				list.addUser(currentUser);
+				for (int i = 0; i < list.getAllUsers().size(); i++) {
+					if (list.getAllUsers().at(i).getAccountNumber() == currentUser.getAccountNumber()) {
+						list.getAllUsers().at(i).setPinCode(newPin);
+					}
+				}
+
+				list.rewriteUserDatabase("User_database.txt");
 				//Enter old pin again
 
 				//Enter new code twice
