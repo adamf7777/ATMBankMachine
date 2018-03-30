@@ -1,7 +1,9 @@
 #include "User.h"
+#include "UserDatabase.h"
 //#include <string>
 //#include <ostream>
 //#include <s>
+
 
 using namespace std;
 
@@ -51,14 +53,24 @@ int User::getPinCode()
 	return pinCode;
 }
 
-void User::setPinCode(int newPinCode)
-{
+void User::setPinCode(int newPinCode) {
 	pinCode = newPinCode;
 }
 
+void User::setPinCode(int newPinCode, std::vector<User> *allUsers)
+{
+	allUsers->at(accountNumber - 1000).setPinCode(newPinCode);
+
+	cout << "in class " << allUsers->at(accountNumber - 1000).getPinCode();
+
+	//update the database 
+	//allUsers.at(accountNumber - 1000).setPinCode(newPinCode);
+	
+}
+
+
 void User::printBalance() //Make print user balance
 {
-
 	cout << endl;
 	cout << firstName << ", ";
 	//cout << "Name: " << user.getName() << endl;
@@ -75,10 +87,12 @@ void User::printOverdraft()
 }
 
 /*
-void User::checkPinCode()
+void User::checkPinCode() 
 {
 	cout << "Please enter your - 4 digit Pin Code:" << endl;
 	
 
 }
 */
+
+

@@ -24,7 +24,7 @@ UserDatabase::UserDatabase(string inputFilePath)
 }
 
 
-void UserDatabase::rewriteUserDatabase()
+void UserDatabase::rewriteUserDatabase(std::vector<User> *allUsers)
 {
 	ofstream fout(filePath);
 	std::string lineContents;
@@ -43,7 +43,6 @@ void UserDatabase::rewriteUserDatabase()
 			fout << endl;
 		}
 	}
-
 	fout.close();
 }
 

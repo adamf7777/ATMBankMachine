@@ -108,28 +108,41 @@ int main(int argc, const char * argv[])
 				break;
 
 			case 5: //Change Pin Code
-				cout << "Enter new pincode: ";
-				int newPin;
-				cin >> newPin;
+				// Please re-enter your old pincode
+				system("cls");
+
+				int newPin, newPin1, newPin2;
+
+				cout << "Please enter new pincode: " << endl;
+				cin >> newPin1;
+					
+				cout << "Please enter new pincode again: " << endl;
+				cin >> newPin2;
+
+				if (newPin1 == newPin2)
+				{
+					newPin1 = newPin;
+
+					currentUser.setPinCode(newPin, &userDatabase.getAllUsers());
+
+					cout << "Your pincode has been successfully changed" << endl;
+				}
 				
+				else
+				{
+					cout << "Error: the two pincodes to not match,"
+						<< "please try again" << endl;
+				}
+
 				//change the current users pincode
-				currentUser.setPinCode(newPin);
+				//currentUser.setPinCode(newPin,userDatabase.getAllUsers());
 
-				currentUser.setPinCode(newPin);
-				cout << "Current user " << currentUser.getPinCode() << endl;
-
-			
-				userDatabase.allUsers->at(userInputIDNumber).setPinCode(newPin);
-
-				cout << "array " << userDatabase.getAllUsers().at(userInputIDNumber).getPinCode() << endl; 
-				
-				userDatabase.rewriteUserDatabase();
-				//cout << list.getAllUsers().at(userInputIDNumber).getPinCode();
+				//currentUser.setPinCode(newPin, &userDatabase.getAllUsers());
 
 
 				//list.rewriteUserDatabase("User_database.txt");
 				//Enter old pin again
-				
+
 				//Enter new code twice
 
 				//Confirm change

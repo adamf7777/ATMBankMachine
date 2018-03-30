@@ -2,12 +2,12 @@
 #define UserDatabase_H_
 
 /**
-* one line description of class or file
+* Used to read and write to the user database 
 *
 * optional, long description, spanning
 * several lines.
 *
-* @author Nathan Fawectt <fawcett-a@ulster.ac.uk>
+* @author Adam Fawectt <fawcett-a@ulster.ac.uk>
 * @license (url of your license)
 * @copyright Adam Fawcett 2018
 *
@@ -26,7 +26,7 @@ class UserDatabase
 public:
 	UserDatabase(std::string filePath);
 
-	void rewriteUserDatabase();
+	void rewriteUserDatabase(std::vector<User> *allUsers);
 	
 	std::vector<User> getPinCode;
 	std::vector<User> users;

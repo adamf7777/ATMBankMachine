@@ -16,7 +16,7 @@
 #include <string>
 #include <iostream>
 #include <sstream> //string stream function
-
+#include <vector>
 //using namespace std;
 
 class User
@@ -38,7 +38,10 @@ public:
 		void printBalance();
 		void printOverdraft();
 		void setPinCode(int newPinCode);
-	
+		
+		//overloaded to update the database 
+		void setPinCode(int newPinCode, std::vector<User> *allUsers);
+
 	//int getAccountNumber();
 
 private:
