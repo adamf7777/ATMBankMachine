@@ -6,6 +6,7 @@
 #include <conio.h>
 #include <string>
 #include <ctime>
+#include <algorithm>
 
 //http://www.cplusplus.com/reference/vector/vector/push_back/
 using namespace std;
@@ -44,13 +45,15 @@ int main(int argc, const char * argv[])
 
 
 		//Find the correct user from the database
-		UserDatabase list("User_database.txt");
+		UserDatabase userDatabase("User_database.txt");
 		
-		User currentUser = list.users.at(userInputIDNumber);
+		User currentUser = userDatabase.users.at(userInputIDNumber);
+		
+
 		// Stops the program if the user doesn't require any further services 
 		
 		cout << endl << endl;
-		cout << list.getAllUsers().size() << endl;
+		cout << userDatabase.getAllUsers().size() << endl; //Displays the number of lines in the list
 		//for (int i = 0; list.getAllUsers().size(); i++) {
 		//	cout << list.getAllUsers().at(i).getFirstName() << endl;
 		//}
@@ -75,7 +78,7 @@ int main(int argc, const char * argv[])
 			system("cls");
 
 
-			User newUser = User("Cecil Jones 1100 100.0 200.00 1234");
+			//User newUser = User("Cecil Jones 1100 100.0 200.00 1234");
 
 
 			switch (userInputOption) {
@@ -109,18 +112,24 @@ int main(int argc, const char * argv[])
 				int newPin;
 				cin >> newPin;
 				
+				//change the current users pincode
 				currentUser.setPinCode(newPin);
 
-				list.addUser(currentUser);
-				for (int i = 0; i < list.getAllUsers().size(); i++) {
-					if (list.getAllUsers().at(i).getAccountNumber() == currentUser.getAccountNumber()) {
-						list.getAllUsers().at(i).setPinCode(newPin);
-					}
-				}
+				currentUser.setPinCode(newPin);
+				cout << "Current user " << currentUser.getPinCode() << endl;
 
-				list.rewriteUserDatabase("User_database.txt");
+			
+				userDatabase.allUsers->at(userInputIDNumber).setPinCode(newPin);
+
+				cout << "array " << userDatabase.getAllUsers().at(userInputIDNumber).getPinCode() << endl; 
+				
+				userDatabase.rewriteUserDatabase();
+				//cout << list.getAllUsers().at(userInputIDNumber).getPinCode();
+
+
+				//list.rewriteUserDatabase("User_database.txt");
 				//Enter old pin again
-
+				
 				//Enter new code twice
 
 				//Confirm change
