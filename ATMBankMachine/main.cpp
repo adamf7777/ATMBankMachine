@@ -6,7 +6,6 @@
 #include <conio.h>
 #include <string>
 #include <ctime>
-#include <algorithm>
 
 //comment1
 //http://www.cplusplus.com/reference/vector/vector/push_back/
@@ -46,15 +45,13 @@ int main(int argc, const char * argv[])
 
 
 		//Find the correct user from the database
-		UserDatabase userDatabase("User_database.txt");
+		UserDatabase list("User_database.txt");
 		
-		User currentUser = userDatabase.users.at(userInputIDNumber);
-		
-
+		User currentUser = list.users.at(userInputIDNumber);
 		// Stops the program if the user doesn't require any further services 
 		
 		cout << endl << endl;
-		cout << userDatabase.getAllUsers().size() << endl; //Displays the number of lines in the list
+		cout << list.getAllUsers().size() << endl;
 		//for (int i = 0; list.getAllUsers().size(); i++) {
 		//	cout << list.getAllUsers().at(i).getFirstName() << endl;
 		//}
@@ -79,7 +76,7 @@ int main(int argc, const char * argv[])
 			system("cls");
 
 
-			//User newUser = User("Cecil Jones 1100 100.0 200.00 1234");
+			User newUser = User("Cecil Jones 1100 100.0 200.00 1234");
 
 
 			switch (userInputOption) {
@@ -130,16 +127,21 @@ int main(int argc, const char * argv[])
 				int newPin;
 				cin >> newPin;
 				
-				//change the current users pincode
 				currentUser.setPinCode(newPin);
-
-				currentUser.setPinCode(newPin);
+<<<<<<< HEAD
 				cout << "Current user " << currentUser.getPinCode() << endl;
 >>>>>>> parent of e1a5d14... Trying to implement Classes
+=======
+>>>>>>> parent of 1dd1df5... Rewrite pincode
 
-			
-				userDatabase.allUsers->at(userInputIDNumber).setPinCode(newPin);
+				list.addUser(currentUser);
+				for (int i = 0; i < list.getAllUsers().size(); i++) {
+					if (list.getAllUsers().at(i).getAccountNumber() == currentUser.getAccountNumber()) {
+						list.getAllUsers().at(i).setPinCode(newPin);
+					}
+				}
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 					cout << "Your pincode has been successfully changed" << endl;
 				}
@@ -163,8 +165,11 @@ int main(int argc, const char * argv[])
 
 
 				//list.rewriteUserDatabase("User_database.txt");
+=======
+				list.rewriteUserDatabase("User_database.txt");
+>>>>>>> parent of 1dd1df5... Rewrite pincode
 				//Enter old pin again
-				
+
 				//Enter new code twice
 
 				//Confirm change

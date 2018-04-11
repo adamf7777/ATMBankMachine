@@ -33,11 +33,11 @@ public:
 		int getAccountNumber();
 		double getInitialBalance();
 		double getOverdraftLimit();
-		int getPinCode();
+		double getPinCode();
 
 		void printBalance();
 		void printOverdraft();
-		void setPinCode(int newPinCode);
+		void setPinCode(double newPinCode);
 	
 	//int getAccountNumber();
 
@@ -48,7 +48,7 @@ private:
 	int accountNumber;
 	double initialBalance;
 	double overdraftLimit;
-	int pinCode;
+	double pinCode;
 	
 };
 

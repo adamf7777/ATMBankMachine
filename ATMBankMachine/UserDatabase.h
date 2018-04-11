@@ -26,25 +26,18 @@ class UserDatabase
 public:
 	UserDatabase(std::string filePath);
 
-	void rewriteUserDatabase();
+	void rewriteUserDatabase(std::string filePath);
 	
 	std::vector<User> getPinCode;
 	std::vector<User> users;
 
 
 	std::vector<User> getAllUsers();
-	std::vector<User> getCurrentUser();
-
 	void addUser(User user);
 	void updateUser(User user);
-
-
-	std::vector<User>* allUsers = new std::vector<User>();
-
 private: 
-	std::string filePath;
 	//create & initialise dynamic array to hold users 
-//	std::vector<User>* allUsers = new std::vector<User>();
+	std::vector<User>* allUsers = new std::vector<User>();
 
 };
 

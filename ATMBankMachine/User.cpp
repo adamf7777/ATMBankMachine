@@ -46,12 +46,12 @@ double User::getOverdraftLimit()
 	return overdraftLimit;
 }
 
-int User::getPinCode()
+double User::getPinCode()
 {
 	return pinCode;
 }
 
-void User::setPinCode(int newPinCode)
+void User::setPinCode(double newPinCode)
 {
 	pinCode = newPinCode;
 }
