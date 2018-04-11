@@ -2,8 +2,9 @@
 
 using namespace std;
 
-UserDatabase::UserDatabase(string filePath)
+UserDatabase::UserDatabase(string inputFilePath)
 {
+	filePath = inputFilePath;
 	ifstream userFile(filePath);
 
 	string lineContents;
@@ -22,36 +23,25 @@ UserDatabase::UserDatabase(string filePath)
 
 }
 
-//UserDatabase::UserDatabase(string filePath)
-//{
-//
-//	ifstream userFile(filePath);
-//	string lineContents;
-//
-//	while (!userFile.eof()) //while not at end of file 
-//	{
-//		getline(userFile, lineContents);
-//
-//		User x(lineContents);
-//		//adds the user to the array of users 
-//		//addUser(x);
-//	}
-//
-//	userFile.close();
-//}
-//
-void UserDatabase::rewriteUserDatabase(std::string filePath)
+
+void UserDatabase::rewriteUserDatabase()
 {
 	ofstream fout(filePath);
 	std::string lineContents;
 
 	for (int i = 0; i < getAllUsers().size(); i++) {
-		fout << getAllUsers().at(i).getFirstName()<< " "
-			<< getAllUsers().at(i).getLastName()<< " "
-			<< getAllUsers().at(i).getAccountNumber()<< " "
-			<< getAllUsers().at(i).getInitialBalance()<< " "
-			<< getAllUsers().at(i).getOverdraftLimit()<< " "
-			<< getAllUsers().at(i).getPinCode() << endl;
+		fout << getAllUsers().at(i).getFirstName() << " "
+			<< getAllUsers().at(i).getLastName() << " "
+			<< getAllUsers().at(i).getAccountNumber() << " "
+			<< getAllUsers().at(i).getInitialBalance() << " "
+			<< getAllUsers().at(i).getOverdraftLimit() << " "
+			<< getAllUsers().at(i).getPinCode();
+		//prevents an extra line being printed at end of file 
+		if (i == getAllUsers().size() - 1) {
+		}
+		else {
+			fout << endl;
+		}
 	}
 
 	fout.close();
@@ -60,6 +50,12 @@ void UserDatabase::rewriteUserDatabase(std::string filePath)
 //returns array of all users 
 std::vector<User> UserDatabase::getAllUsers() {
 	return *allUsers;
+}
+
+//Updates the array with the current user - Beta
+std::vector<User> UserDatabase::getCurrentUser() {
+
+
 }
 
 //takes a user, adds the user to the array of all users

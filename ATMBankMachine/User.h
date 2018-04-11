@@ -22,34 +22,34 @@
 class User
 {
 
-public: 
+public:
 	//constructors 
 
 	User(std::string userInformation);
-		
-		std::string getFirstName();
-		std::string getLastName();
-		std::string getName();
-		int getAccountNumber();
-		double getInitialBalance();
-		double getOverdraftLimit();
-		double getPinCode();
 
-		void printBalance();
-		void printOverdraft();
-		void setPinCode(double newPinCode);
-	
+	std::string getFirstName();
+	std::string getLastName();
+	std::string getName();
+	int getAccountNumber();
+	double getInitialBalance();
+	double getOverdraftLimit();
+	int getPinCode();
+
+	void printBalance();
+	void printOverdraft();
+	void setPinCode(int newPinCode);
+
 	//int getAccountNumber();
 
 private:
-	
+
 	std::string firstName;
 	std::string lastName;
 	int accountNumber;
 	double initialBalance;
 	double overdraftLimit;
-	double pinCode;
-	
+	int pinCode;
+
 };
 
 #endif 

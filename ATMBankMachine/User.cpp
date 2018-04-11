@@ -46,12 +46,12 @@ double User::getOverdraftLimit()
 	return overdraftLimit;
 }
 
-double User::getPinCode()
+int User::getPinCode()
 {
 	return pinCode;
 }
 
-void User::setPinCode(double newPinCode)
+void User::setPinCode(int newPinCode)
 {
 	pinCode = newPinCode;
 }
@@ -69,7 +69,7 @@ void User::printBalance() //Make print user balance
 
 void User::printOverdraft()
 {
-	
+
 	cout << firstName << ", ";
 	cout << "your current maximum overdraft limit is: " << char(156) << overdraftLimit << endl << endl;
 }
@@ -77,8 +77,7 @@ void User::printOverdraft()
 /*
 void User::checkPinCode()
 {
-	cout << "Please enter your - 4 digit Pin Code:" << endl;
-	
+cout << "Please enter your - 4 digit Pin Code:" << endl;
 
 }
 */
