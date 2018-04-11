@@ -109,6 +109,7 @@ int main(int argc, const char * argv[])
 				break;
 
 			case 5: //Change Pin Code
+<<<<<<< HEAD
 				// Please re-enter your old pincode
 				system("cls");
 
@@ -124,9 +125,22 @@ int main(int argc, const char * argv[])
 				if (newPin1 == newPin2)
 				{
 					newPin1 = newPin; // test comment
+=======
+				cout << "Enter new pincode: ";
+				int newPin;
+				cin >> newPin;
+				
+				//change the current users pincode
+				currentUser.setPinCode(newPin);
 
-					currentUser.setPinCode(newPin, &userDatabase.getAllUsers());
+				currentUser.setPinCode(newPin);
+				cout << "Current user " << currentUser.getPinCode() << endl;
+>>>>>>> parent of e1a5d14... Trying to implement Classes
 
+			
+				userDatabase.allUsers->at(userInputIDNumber).setPinCode(newPin);
+
+<<<<<<< HEAD
 					cout << "Your pincode has been successfully changed" << endl;
 				}
 				//test comment
@@ -140,11 +154,17 @@ int main(int argc, const char * argv[])
 				//currentUser.setPinCode(newPin,userDatabase.getAllUsers());
 
 				//currentUser.setPinCode(newPin, &userDatabase.getAllUsers());
+=======
+				cout << "array " << userDatabase.getAllUsers().at(userInputIDNumber).getPinCode() << endl; 
+				
+				userDatabase.rewriteUserDatabase();
+				//cout << list.getAllUsers().at(userInputIDNumber).getPinCode();
+>>>>>>> parent of e1a5d14... Trying to implement Classes
 
 
 				//list.rewriteUserDatabase("User_database.txt");
 				//Enter old pin again
-
+				
 				//Enter new code twice
 
 				//Confirm change
