@@ -8,6 +8,7 @@
 #include <ctime>
 #include <algorithm>
 
+//comment1
 //http://www.cplusplus.com/reference/vector/vector/push_back/
 using namespace std;
 
@@ -111,8 +112,9 @@ int main(int argc, const char * argv[])
 				// Please re-enter your old pincode
 				system("cls");
 
-				int newPin, newPin1, newPin2;
-
+				
+				int newPin1, newPin2;
+				int newPin;
 				cout << "Please enter new pincode: " << endl;
 				cin >> newPin1;
 					
@@ -121,13 +123,13 @@ int main(int argc, const char * argv[])
 
 				if (newPin1 == newPin2)
 				{
-					newPin1 = newPin;
+					newPin1 = newPin; // test comment
 
 					currentUser.setPinCode(newPin, &userDatabase.getAllUsers());
 
 					cout << "Your pincode has been successfully changed" << endl;
 				}
-				
+				//test comment
 				else
 				{
 					cout << "Error: the two pincodes to not match,"
