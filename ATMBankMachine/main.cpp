@@ -34,8 +34,10 @@ int main(int argc, const char * argv[])
 
 
 	cin >> userInputIDNumber;
+
 	cout << endl;
 
+	system("cls");
 	cout << "Please enter your 4-digit Pin Code " << endl;
 	cin >> userInputPINCode;
 	cout << endl;
@@ -43,23 +45,23 @@ int main(int argc, const char * argv[])
 	//Find line for the user
 	userInputIDNumber = (userInputIDNumber - 1000);
 
+	
 
 	//Find the correct user from the database
 	UserDatabase userDatabase("User_database.txt");
 
 	User currentUser = userDatabase.users.at(userInputIDNumber);
 
-
-	// Stops the program if the user doesn't require any further services 
-
-	cout << endl << endl;
-	cout << userDatabase.getAllUsers().size() << endl; //Displays the number of lines in the list
+	
+	//****Function to display number of users**********
+	//****Do not delete **********************
+	//cout << endl << endl;
+	//cout << userDatabase.getAllUsers().size() << endl; //Displays the number of lines in the list
 													   //for (int i = 0; list.getAllUsers().size(); i++) {
 													   //	cout << list.getAllUsers().at(i).getFirstName() << endl;
 													   //}
-	cout << endl << endl;
 
-	//system("cls");
+	system("cls");
 
 	while (anotherService == 'Y' || 'y')
 	{
@@ -77,15 +79,17 @@ int main(int argc, const char * argv[])
 
 		system("cls");
 
-
-		//User newUser = User("Cecil Jones 1100 100.0 200.00 1234");
-
-
+		
 		switch (userInputOption) {
 		case 1:
-			cout << "Cash Withdrawl Menu\n\n";
-			cout << "Please enter the amount of money you would like to withdraw: \n";
-			cout << char('£');
+			int withdrawAmount;
+
+			currentUser.printBalance();
+			cout << endl;
+			cout << "Please select the amount of money you would like to withdraw: \n";
+			cout << char(156);
+			cin >> withdrawAmount;
+
 			break;
 
 		case 2: // Display onscreen balance
@@ -108,34 +112,36 @@ int main(int argc, const char * argv[])
 			break;
 
 		case 5: //Change Pin Code
-			cout << "Enter new pincode: ";
-			int newPin;
-			cin >> newPin;
-
-			//change the current users pincode
-			currentUser.setPinCode(newPin);
-
-			currentUser.setPinCode(newPin);
-			cout << "Current user " << currentUser.getPinCode() << endl;
 
 
-			userDatabase.allUsers->at(userInputIDNumber).setPinCode(newPin);
+			int newPin, newPin1, newPin2;
+			cout << "Please enter new pincode: "; 
+			cin >> newPin1;
 
-			cout << "array " << userDatabase.getAllUsers().at(userInputIDNumber).getPinCode() << endl;
+			system("cls");
+			cout << "Please re enter your new pincode: ";
+			cin >> newPin2;
 
-			userDatabase.rewriteUserDatabase();
-			//cout << list.getAllUsers().at(userInputIDNumber).getPinCode();
+			//currentUser.getNewPinCode();
 
+			if (newPin1 == newPin2)
+			{
+				newPin = newPin1;
+				currentUser.setPinCode(newPin);
+				currentUser.setPinCode(newPin);
+				userDatabase.allUsers->at(userInputIDNumber).setPinCode(newPin);
+				userDatabase.rewriteUserDatabase();
 
-			//list.rewriteUserDatabase("User_database.txt");
-			//Enter old pin again
+				cout << "Your pincode has been successfully updated!" << endl;
+			}
 
-			//Enter new code twice
+			else {
+				cout << "Error, the two pincodes do not match!" << endl;
+			}
 
-			//Confirm change
 
 		case 0: // Admin access
-			cout << "Admin menu";
+			//cout << "Admin menu";
 
 			break;
 

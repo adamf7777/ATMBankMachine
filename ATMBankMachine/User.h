@@ -38,6 +38,8 @@ public:
 	void printBalance();
 	void printOverdraft();
 	void setPinCode(int newPinCode);
+	void getNewPinCode();
+	
 
 	//int getAccountNumber();
 

@@ -72,12 +72,6 @@ void User::printOverdraft()
 
 	cout << firstName << ", ";
 	cout << "your current maximum overdraft limit is: " << char(156) << overdraftLimit << endl << endl;
-}
-
-/*
-void User::checkPinCode()
-{
-cout << "Please enter your - 4 digit Pin Code:" << endl;
 
 }
-*/
+
