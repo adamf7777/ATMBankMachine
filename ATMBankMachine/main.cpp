@@ -127,12 +127,20 @@ int main(int argc, const char * argv[])
 			if (newPin1 == newPin2)
 			{
 				newPin = newPin1;
-				currentUser.setPinCode(newPin);
-				currentUser.setPinCode(newPin);
-				userDatabase.allUsers->at(userInputIDNumber).setPinCode(newPin);
-				userDatabase.rewriteUserDatabase();
 
-				cout << "Your pincode has been successfully updated!" << endl;
+				if ((newPin < 1000) || (newPin > 9999))
+				{
+					cout << "Error - the pin must have 4 digits!" << endl;
+				}
+
+				else {
+					currentUser.setPinCode(newPin);
+					currentUser.setPinCode(newPin);
+					userDatabase.allUsers->at(userInputIDNumber).setPinCode(newPin);
+					userDatabase.rewriteUserDatabase();
+
+					cout << "Your pincode has been successfully updated!" << endl;
+				}
 			}
 
 			else {
