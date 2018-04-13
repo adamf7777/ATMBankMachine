@@ -52,11 +52,11 @@ std::vector<User> UserDatabase::getAllUsers() {
 	return *allUsers;
 }
 
-//Updates the array with the current user - Beta
+/*//Updates the array with the current user - Beta
 std::vector<User> UserDatabase::getCurrentUser() {
 
 
-}
+}*/
 
 //takes a user, adds the user to the array of all users
 void UserDatabase::addUser(User user) {

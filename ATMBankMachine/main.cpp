@@ -141,7 +141,7 @@ int main(int argc, const char * argv[])
 
 
 		case 0: // Admin access
-			//cout << "Admin menu";
+			cout << "Admin menu";
 
 			break;
 
