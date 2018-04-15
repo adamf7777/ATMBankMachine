@@ -1,6 +1,6 @@
 #ifndef User_H_
 #define User_H_
-
+#include "UserDatabase.h"
 /**
 * one line description of class or file
 *
@@ -39,7 +39,7 @@ public:
 	void printOverdraft();
 	void setPinCode(int newPinCode);
 	void getNewPinCode();
-	
+	void resetPinCode(UserDatabase userDatabase, int userInputIDNumber);
 
 	//int getAccountNumber();
 
