@@ -31,8 +31,6 @@ int main(int argc, const char * argv[])
 	cout << "Welcome to Bank of Ulster" << endl << endl;
 	cout << "Please enter your user ID Number " << endl;
 
-
-
 	cin >> userInputIDNumber;
 
 	cout << endl;
@@ -44,8 +42,6 @@ int main(int argc, const char * argv[])
 
 	//Find line for the user
 	userInputIDNumber = (userInputIDNumber - 1000);
-
-	
 
 	//Find the correct user from the database
 	UserDatabase userDatabase("User_database.txt");
