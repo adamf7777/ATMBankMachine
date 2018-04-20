@@ -76,7 +76,7 @@ void User::printOverdraft()
 
 }
 
-void User :: resetPinCode(UserDatabase userDatabase,int userInputIDNumber) {
+void User::resetPinCode(UserDatabase userDatabase, int userInputIDNumber) {
 
 	int newPin, newPin1, newPin2;
 	cout << "Please enter new pincode: ";
@@ -94,12 +94,12 @@ void User :: resetPinCode(UserDatabase userDatabase,int userInputIDNumber) {
 
 		if ((newPin < 1000) || (newPin > 9999))
 		{
-			cout << "Error - the pin must have 4 digits!" << endl;
+			cout << "Error - the pin code must have 4 digits!" << endl;
 		}
 
 		else {
 			User::setPinCode(newPin);
-			User::setPinCode(newPin);
+			//User::setPinCode(newPin);
 			userDatabase.allUsers->at(userInputIDNumber).setPinCode(newPin);
 			userDatabase.rewriteUserDatabase();
 
@@ -109,6 +109,7 @@ void User :: resetPinCode(UserDatabase userDatabase,int userInputIDNumber) {
 
 	else {
 		cout << "Error, the two pincodes do not match!" << endl;
+		cout << "Please try again later" << endl;
 	}
 
 }

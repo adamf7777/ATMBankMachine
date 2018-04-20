@@ -7,7 +7,7 @@
 * optional, long description, spanning
 * several lines.
 *
-* @author Nathan Fawectt <fawcett-a@ulster.ac.uk>
+* @author	Adam Fawcett <fawcett-a@ulster.ac.uk>
 * @license (url of your license)
 * @copyright Adam Fawcett 2018
 *

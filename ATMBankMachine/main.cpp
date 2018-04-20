@@ -51,7 +51,8 @@ int main(int argc, const char * argv[])
 	UserDatabase userDatabase("User_database.txt");
 
 	User currentUser = userDatabase.users.at(userInputIDNumber);
-
+	
+	
 	
 	//****Function to display number of users**********
 	//****Do not delete **********************
@@ -113,7 +114,7 @@ int main(int argc, const char * argv[])
 
 		case 5: //Change Pin Code
 			currentUser.resetPinCode(userDatabase, userInputIDNumber);
-
+			
 		case 0: // Admin access
 			cout << "Admin menu";
 
