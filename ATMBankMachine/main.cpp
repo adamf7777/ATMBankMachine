@@ -123,10 +123,10 @@ int main(int argc, const char * argv[])
 			cout << "[2] Remove User " << endl;
 			cout << "[3] Edit User Data " << endl;
 			cout << "[4] ATM Maintenance " << endl;
-			//cout << "[5] Change  Pin Code" << endl;
+			cout << "[5] Change  Pin Code" << endl;
 
 			cin >> adminInputOption;
-			//cout << "Debug: " << adminInputOption << endl;
+			cout << "Debug: " << adminInputOption << endl;
 
 			system("cls");
 

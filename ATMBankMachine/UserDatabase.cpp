@@ -33,7 +33,7 @@ void UserDatabase::rewriteUserDatabase()
 		fout << getAllUsers().at(i).getFirstName() << " "
 			<< getAllUsers().at(i).getLastName() << " "
 			<< getAllUsers().at(i).getAccountNumber() << " "
-			<< getAllUsers().at(i).getInitialBalance() << " "
+			<< getAllUsers().at(i).getBalance() << " "
 			<< getAllUsers().at(i).getOverdraftLimit() << " "
 			<< getAllUsers().at(i).getPinCode();
 		//prevents an extra line being printed at end of file 

@@ -33,25 +33,27 @@ public:
 	std::string getLastName();
 	std::string getName();
 	int getAccountNumber();
-	double getInitialBalance();
+	double getBalance();
+	
 	double getOverdraftLimit();
 	int getPinCode();
 
 	void printBalance();
 	void printOverdraft();
 	void setPinCode(int newPinCode);
+	void setBalance(double newBalance);
 	
 	void resetPinCode(UserDatabase userDatabase, int userInputIDNumber);
-	//beta
+	
 	void withdrawCash(UserDatabase userDatabase, int userInputIDNumber);
-	//int getAccountNumber();
+	
 
 private:
 
 	std::string firstName;
 	std::string lastName;
 	int accountNumber;
-	double initialBalance;
+	double balance;
 	double overdraftLimit;
 	int pinCode;
 
