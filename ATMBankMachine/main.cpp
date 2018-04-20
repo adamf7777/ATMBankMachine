@@ -150,16 +150,103 @@ int main(int argc, const char * argv[])
 			break;
 
 		case 0: // Admin access
-			cout << "Admin menu";
+
+			int adminInputOption;
+
+			cout << "Admin Menu";
+			cout << "Please select one of the options below:" << endl << endl;
+
+			cout << "[1] Add User " << endl;
+			cout << "[2] Remove User " << endl;
+			cout << "[3] Edit User Data " << endl;
+			cout << "[4] ATM Maintenance " << endl;
+			//cout << "[5] Change  Pin Code" << endl;
+
+			cin >> adminInputOption;
 
 			break;
 
-		default:
-			cout << "Error";
+			system("cls");
+
+			switch (adminInputOption) {
+			case 1:
+
+				int addUserFirstName;
+				int addUserSurname;
+				int addUserID;
+				int addUserAccountBalance;
+				int addUserOverdraft;
+				int addUserPincode;
+
+				cout << "Please enter the details of the user you would like to add: \n" << endl;
+				cout << "First Name: \n";
+				cin >> addUserFirstName;
+				cout << endl;
+				cout << "Surname: \n";
+				cin >> addUserSurname;
+				cout << endl;
+				cout << "User ID: \n";
+				cin >> addUserID;
+				cout << endl;
+				cout << "Initial Account Balance: \n";
+				cin >> addUserAccountBalance;
+				cout << endl;
+				cout << "Inital Overdraft Limit: \n";
+				cin >> addUserOverdraft;
+				cout << endl;
+				cout << "Setup Pincode: \n";
+				cin >> addUserPincode;
+				cout << endl;
+
+				break;
+
+			case 2:
+
+				int removeUserFirstName;
+				int removeUserSurname;
+				int removeUserID;
+				int removeUserAccountBalance;
+				int removeUserOverdraft;
+				int removeUserPincode;
+
+				cout << "Please enter the details of the user you would like to add: \n" << endl;
+				cout << "First Name: \n";
+				cin >> removeUserFirstName;
+				cout << endl;
+				cout << "Surname: \n";
+				cin >> removeUserSurname;
+				cout << endl;
+				cout << "User ID: \n";
+				cin >> removeUserID;
+				cout << endl;
+				cout << "Initial Account Balance: \n";
+				cin >> removeUserAccountBalance;
+				cout << endl;
+				cout << "Inital Overdraft Limit: \n";
+				cin >> removeUserOverdraft;
+				cout << endl;
+				cout << "Setup Pincode: \n";
+				cin >> removeUserPincode;
+				cout << endl;
+
+				break;
+
+			case 3:
+
+				int editUserID;
+
+				cout << "Please enter the User ID of the user you would like to edit: \n" << endl;
+				cout << "User ID:";
+				cin >> editUserID;
+
+				break;
+
+			default:
+				cout << "Error";
 
 
-		}//END OF SWITCH CASE
-
+			}//END OF SECOND SWITCH CASE
+		}//END OF FIRST SWITCH CASE
 
 		 //Any further services required
 		cout << "Would you like any further services? Y/N:\n";
