@@ -114,6 +114,7 @@ int main(int argc, const char * argv[])
 
 		case 5: //Change Pin Code
 			currentUser.resetPinCode(userDatabase, userInputIDNumber);
+			break;
 
 		case 0: // Admin access
 
