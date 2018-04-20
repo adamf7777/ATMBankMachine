@@ -1,6 +1,6 @@
 #ifndef User_H_
 #define User_H_
-
+//#include "UserDatabase.h"
 /**
 * one line description of class or file
 *
@@ -18,6 +18,8 @@
 #include <sstream> //string stream function
 
 //using namespace std;
+
+class UserDatabase;
 
 class User
 {
@@ -38,9 +40,10 @@ public:
 	void printBalance();
 	void printOverdraft();
 	void setPinCode(int newPinCode);
-	void getNewPinCode();
-
-
+	
+	void resetPinCode(UserDatabase userDatabase, int userInputIDNumber);
+	//beta
+	void withdrawCash(UserDatabase userDatabase, int userInputIDNumber);
 	//int getAccountNumber();
 
 private:
