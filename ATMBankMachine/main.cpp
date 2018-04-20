@@ -64,7 +64,7 @@ int main(int argc, const char * argv[])
 
 	system("cls");
 
-	while (anotherService == 'Y' || 'y')
+	while (anotherService == 'Y')
 	{
 
 		cout << "Please select one of the options below:" << endl << endl;
@@ -173,13 +173,16 @@ int main(int argc, const char * argv[])
 			}//END OF SECOND SWITCH CASE
 		}//END OF FIRST SWITCH CASE
 
+
 		 //Any further services required
-		cout << "Would you like any further services? Y/N:\n";
+		cout << "Do you require any further services? Y/N:\n";
 		cin >> anotherService;
 		cout << "\n\n";
 		system("cls");
 
-	}//END OF ANOTHER SERVICE
+		} //END OF ANOTHER SERVICE if
+
+	
 
 	system("cls");
 

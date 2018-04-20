@@ -196,19 +196,28 @@ void User::withdrawCash(UserDatabase userDatabase, int userInputIDNumber) {
 	} // end of else  for option other than 8
 	
 	if (withdrawalCheck == 0) {
-		withdrawalBalance = balance - withdrawalAmount;
 
-		User::setBalance(withdrawalBalance);
-		userDatabase.allUsers->at(userInputIDNumber).setBalance(withdrawalBalance);
-		userDatabase.rewriteUserDatabase();
+		if (withdrawalAmount<= balance)
+		{
+			withdrawalBalance = (balance-withdrawalAmount);
 
-		system("cls");
+			User::setBalance(withdrawalBalance);
+			userDatabase.allUsers->at(userInputIDNumber).setBalance(withdrawalBalance);
+			userDatabase.rewriteUserDatabase();
 
-		cout << "Please take your cash" << endl;
+			system("cls");
+
+			cout << "Counting " << char(156) << withdrawalAmount << endl << endl;
+			cout << "Please take your cash" << endl;
+		} // end of high enough balance
+
+		else {
+			cout << "You have insufficient funds for this transaction";
+		} // end of insufficient funds
 	}
 
 	else {
-		cout << "Error your value cannot be processed" << endl;
+		cout << "Error, this machine cannot dispense the amount of money you have requested" << endl;
 	}
 
 } // end of withdraw cash
