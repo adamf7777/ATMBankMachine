@@ -113,3 +113,8 @@ void User::resetPinCode(UserDatabase userDatabase, int userInputIDNumber) {
 	}
 
 }
+
+void User::withdrawCash(UserDatabase userDatabase, int userInputIDNumber) {
+	cout << "Withdraw Cash Menu" << endl;
+
+}

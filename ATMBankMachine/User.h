@@ -40,9 +40,10 @@ public:
 	void printBalance();
 	void printOverdraft();
 	void setPinCode(int newPinCode);
-	//void getNewPinCode();
+	
 	void resetPinCode(UserDatabase userDatabase, int userInputIDNumber);
-
+	//beta
+	void withdrawCash(UserDatabase userDatabase, int userInputIDNumber);
 	//int getAccountNumber();
 
 private:

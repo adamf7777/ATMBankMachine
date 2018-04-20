@@ -83,13 +83,8 @@ int main(int argc, const char * argv[])
 
 		switch (userInputOption) {
 		case 1:
-			int withdrawAmount;
-
-			currentUser.printBalance();
-			cout << endl;
-			cout << "Please select the amount of money you would like to withdraw: \n";
-			cout << char(156);
-			cin >> withdrawAmount;
+			
+			currentUser.withdrawCash(userDatabase, userInputIDNumber);
 
 			break;
 
