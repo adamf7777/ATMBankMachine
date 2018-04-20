@@ -152,6 +152,7 @@ int main(int argc, const char * argv[])
 		case 0: // Admin access
 
 			int adminInputOption;
+			Admin admin;
 
 			cout << "Admin Menu";
 			cout << "Please select one of the options below:" << endl << endl;
@@ -163,21 +164,21 @@ int main(int argc, const char * argv[])
 			//cout << "[5] Change  Pin Code" << endl;
 
 			cin >> adminInputOption;
-
-			break;
+			//cout << "Debug: " << adminInputOption << endl;
 
 			system("cls");
 
 			switch (adminInputOption) {
 			case 1:
 
-				Admin addUser();
+				//cout << "Debug: Option 1" << endl;
+				admin.addUser();
 
 				break;
 
 			case 2:
 
-				Admin removeUser();
+				admin.removeUser();
 
 				break;
 
@@ -205,7 +206,8 @@ int main(int argc, const char * argv[])
 			default:
 				cout << "Error";
 
-
+				break;
+		break;
 			}//END OF SECOND SWITCH CASE
 		}//END OF FIRST SWITCH CASE
 
