@@ -53,6 +53,7 @@ int main(int argc, const char * argv[])
 
 	User currentUser = userDatabase.users.at(userInputIDNumber);
 
+	
 	//****Function to display number of users**********
 	//****Do not delete **********************
 	//cout << endl << endl;
@@ -112,42 +113,7 @@ int main(int argc, const char * argv[])
 			break;
 
 		case 5: //Change Pin Code
-
-
-			int newPin, newPin1, newPin2;
-			cout << "Please enter new pincode: ";
-			cin >> newPin1;
-
-			system("cls");
-			cout << "Please re enter your new pincode: ";
-			cin >> newPin2;
-
-			//currentUser.getNewPinCode();
-
-			if (newPin1 == newPin2)
-			{
-				newPin = newPin1;
-
-				if ((newPin < 1000) || (newPin > 9999))
-				{
-					cout << "Error - the pin must have 4 digits!" << endl;
-				}
-
-				else {
-					currentUser.setPinCode(newPin);
-					currentUser.setPinCode(newPin);
-					userDatabase.allUsers->at(userInputIDNumber).setPinCode(newPin);
-					userDatabase.rewriteUserDatabase();
-
-					cout << "Your pincode has been successfully updated!" << endl;
-				}
-			}
-
-			else {
-				cout << "Error, the two pincodes do not match!" << endl;
-			}
-
-			break;
+			currentUser.resetPinCode(userDatabase, userInputIDNumber);
 
 		case 0: // Admin access
 
