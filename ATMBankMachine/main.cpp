@@ -2,6 +2,7 @@
 
 #include "User.h"
 #include "UserDatabase.h"
+#include "Admin.h"
 
 #include <conio.h>
 #include <string>
@@ -52,6 +53,8 @@ int main(int argc, const char * argv[])
 
 	User currentUser = userDatabase.users.at(userInputIDNumber);
 
+	Admin addUser();
+	
 
 	//****Function to display number of users**********
 	//****Do not delete **********************
@@ -171,63 +174,11 @@ int main(int argc, const char * argv[])
 			switch (adminInputOption) {
 			case 1:
 
-				int addUserFirstName;
-				int addUserSurname;
-				int addUserID;
-				int addUserAccountBalance;
-				int addUserOverdraft;
-				int addUserPincode;
-
-				cout << "Please enter the details of the user you would like to add: \n" << endl;
-				cout << "First Name: \n";
-				cin >> addUserFirstName;
-				cout << endl;
-				cout << "Surname: \n";
-				cin >> addUserSurname;
-				cout << endl;
-				cout << "User ID: \n";
-				cin >> addUserID;
-				cout << endl;
-				cout << "Initial Account Balance: \n";
-				cin >> addUserAccountBalance;
-				cout << endl;
-				cout << "Inital Overdraft Limit: \n";
-				cin >> addUserOverdraft;
-				cout << endl;
-				cout << "Setup Pincode: \n";
-				cin >> addUserPincode;
-				cout << endl;
+				addUser();
 
 				break;
 
 			case 2:
-
-				int removeUserFirstName;
-				int removeUserSurname;
-				int removeUserID;
-				int removeUserAccountBalance;
-				int removeUserOverdraft;
-				int removeUserPincode;
-
-				cout << "Please enter the details of the user you would like to add: \n" << endl;
-				cout << "First Name: \n";
-				cin >> removeUserFirstName;
-				cout << endl;
-				cout << "Surname: \n";
-				cin >> removeUserSurname;
-				cout << endl;
-				cout << "User ID: \n";
-				cin >> removeUserID;
-				cout << endl;
-				cout << "Initial Account Balance: \n";
-				cin >> removeUserAccountBalance;
-				cout << endl;
-				cout << "Inital Overdraft Limit: \n";
-				cin >> removeUserOverdraft;
-				cout << endl;
-				cout << "Setup Pincode: \n";
-				cin >> removeUserPincode;
-				cout << endl;
 
 				break;
 
@@ -238,6 +189,17 @@ int main(int argc, const char * argv[])
 				cout << "Please enter the User ID of the user you would like to edit: \n" << endl;
 				cout << "User ID:";
 				cin >> editUserID;
+
+				break;
+
+			case 4:
+
+				cout << "ATM Maintenance\n" << endl;
+				cout << "Please select one of the options below:" << endl << endl;
+
+				cout << "[1] Update ATM Balance " << endl;
+				cout << "[2] Update Receipt Amount " << endl;
+				cout << "[3] View Transaction History " << endl;
 
 				break;
 

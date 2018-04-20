@@ -23,34 +23,9 @@ class Admin
 {
 
 public:
-	//constructors 
-
-	User(std::string userInformation);
-
-	std::string getFirstName();
-	std::string getLastName();
-	std::string getName();
-	int getAccountNumber();
-	double getInitialBalance();
-	double getOverdraftLimit();
-	int getPinCode();
-
-	void printBalance();
-	void printOverdraft();
-	void setPinCode(int newPinCode);
-	void getNewPinCode();
-	void resetPinCode(UserDatabase userDatabase, int userInputIDNumber);
-
-	//int getAccountNumber();
-
+	void addUser();
+	void removeUser();
 private:
-
-	std::string firstName;
-	std::string lastName;
-	int accountNumber;
-	double initialBalance;
-	double overdraftLimit;
-	int pinCode;
 
 };
 
