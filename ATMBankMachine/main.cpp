@@ -2,6 +2,7 @@
 
 #include "User.h"
 #include "UserDatabase.h"
+#include "Admin.h"
 
 #include <conio.h>
 #include <string>
@@ -45,22 +46,20 @@ int main(int argc, const char * argv[])
 	//Find line for the user
 	userInputIDNumber = (userInputIDNumber - 1000);
 
-	
+
 
 	//Find the correct user from the database
 	UserDatabase userDatabase("User_database.txt");
 
 	User currentUser = userDatabase.users.at(userInputIDNumber);
-	
-	
-	
+
 	//****Function to display number of users**********
 	//****Do not delete **********************
 	//cout << endl << endl;
 	//cout << userDatabase.getAllUsers().size() << endl; //Displays the number of lines in the list
-													   //for (int i = 0; list.getAllUsers().size(); i++) {
-													   //	cout << list.getAllUsers().at(i).getFirstName() << endl;
-													   //}
+	//for (int i = 0; list.getAllUsers().size(); i++) {
+	//	cout << list.getAllUsers().at(i).getFirstName() << endl;
+	//}
 
 	system("cls");
 
@@ -80,7 +79,7 @@ int main(int argc, const char * argv[])
 
 		system("cls");
 
-		
+
 		switch (userInputOption) {
 		case 1:
 			int withdrawAmount;
@@ -113,19 +112,102 @@ int main(int argc, const char * argv[])
 			break;
 
 		case 5: //Change Pin Code
-			currentUser.resetPinCode(userDatabase, userInputIDNumber);
-			
-		case 0: // Admin access
-			cout << "Admin menu";
+
+
+			int newPin, newPin1, newPin2;
+			cout << "Please enter new pincode: ";
+			cin >> newPin1;
+
+			system("cls");
+			cout << "Please re enter your new pincode: ";
+			cin >> newPin2;
+
+			//currentUser.getNewPinCode();
+
+			if (newPin1 == newPin2)
+			{
+				newPin = newPin1;
+
+				if ((newPin < 1000) || (newPin > 9999))
+				{
+					cout << "Error - the pin must have 4 digits!" << endl;
+				}
+
+				else {
+					currentUser.setPinCode(newPin);
+					currentUser.setPinCode(newPin);
+					userDatabase.allUsers->at(userInputIDNumber).setPinCode(newPin);
+					userDatabase.rewriteUserDatabase();
+
+					cout << "Your pincode has been successfully updated!" << endl;
+				}
+			}
+
+			else {
+				cout << "Error, the two pincodes do not match!" << endl;
+			}
 
 			break;
 
-		default:
-			cout << "Error";
+		case 0: // Admin access
+
+			int adminInputOption;
+
+			cout << "Admin Menu";
+			cout << "Please select one of the options below:" << endl << endl;
+
+			cout << "[1] Add User " << endl;
+			cout << "[2] Remove User " << endl;
+			cout << "[3] Edit User Data " << endl;
+			cout << "[4] ATM Maintenance " << endl;
+			//cout << "[5] Change  Pin Code" << endl;
+
+			cin >> adminInputOption;
+
+			break;
+
+			system("cls");
+
+			switch (adminInputOption) {
+			case 1:
+
+				Admin addUser();
+
+				break;
+
+			case 2:
+
+				Admin removeUser();
+
+				break;
+
+			case 3:
+
+				int editUserID;
+
+				cout << "Please enter the User ID of the user you would like to edit: \n" << endl;
+				cout << "User ID:";
+				cin >> editUserID;
+
+				break;
+
+			case 4:
+
+				cout << "ATM Maintenance\n" << endl;
+				cout << "Please select one of the options below:" << endl << endl;
+
+				cout << "[1] Update ATM Balance " << endl;
+				cout << "[2] Update Receipt Amount " << endl;
+				cout << "[3] View Transaction History " << endl;
+
+				break;
+
+			default:
+				cout << "Error";
 
 
-		}//END OF SWITCH CASE
-
+			}//END OF SECOND SWITCH CASE
+		}//END OF FIRST SWITCH CASE
 
 		 //Any further services required
 		cout << "Would you like any further services? Y/N:\n";
