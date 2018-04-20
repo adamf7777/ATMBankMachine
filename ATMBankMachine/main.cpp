@@ -72,8 +72,8 @@ int main(int argc, const char * argv[])
 		cout << "[1] Cash Withdrawal " << endl;
 		cout << "[2] On-screen balance enquiry " << endl;
 		cout << "[3] Cash - lodgement " << endl;
-		cout << "[4] Check your overdraft limit " << endl;
-		cout << "[5] Change your Pin Code" << endl;
+		cout << "[4] Check Overdraft limit " << endl;
+		cout << "[5] Change Pin Code" << endl;
 
 
 		cin >> userInputOption;
@@ -123,7 +123,7 @@ int main(int argc, const char * argv[])
 			cout << "[2] Remove User " << endl;
 			cout << "[3] Edit User Data " << endl;
 			cout << "[4] ATM Maintenance " << endl;
-			cout << "[5] Change  Pin Code" << endl;
+			cout << "[5] Change Pin Code" << endl;
 
 			cin >> adminInputOption;
 			cout << "Debug: " << adminInputOption << endl;
@@ -175,7 +175,7 @@ int main(int argc, const char * argv[])
 
 
 		 //Any further services required
-		cout << "Do you require any further services? Y/N:\n";
+		cout << "Do you require any further services? [Y/N] " << endl;
 		cin >> anotherService;
 		cout << "\n\n";
 		system("cls");

@@ -85,19 +85,22 @@ void User::printOverdraft()
 void User::resetPinCode(UserDatabase userDatabase, int userInputIDNumber) {
 
 	int newPin, newPin1, newPin2;
+	cout << "Your new pincode must contain four digits" << endl << endl;
 	cout << "Please enter new pincode: ";
 	cin >> newPin1;
 
 	system("cls");
+	cout << "Your new pincode must contain four digits" << endl << endl;
 	cout << "Please re enter your new pincode: ";
 	cin >> newPin2;
 
-	//currentUser.getNewPinCode();
-
+	
+	// check that both of the pincodes entered match
 	if (newPin1 == newPin2)
 	{
 		newPin = newPin1;
 
+		// check if the 
 		if ((newPin < 1000) || (newPin > 9999))
 		{
 			cout << "Error - the pin code must have 4 digits!" << endl;
@@ -105,11 +108,12 @@ void User::resetPinCode(UserDatabase userDatabase, int userInputIDNumber) {
 
 		else {
 			User::setPinCode(newPin);
-			//User::setPinCode(newPin);
+			
 			userDatabase.allUsers->at(userInputIDNumber).setPinCode(newPin);
 			userDatabase.rewriteUserDatabase();
-
-			cout << "Your pincode has been successfully updated!" << endl;
+			
+			system("cls");
+			cout << "Your pincode has been successfully updated!" << endl << endl;
 		}
 	}
 
@@ -123,6 +127,7 @@ void User::resetPinCode(UserDatabase userDatabase, int userInputIDNumber) {
 void User::withdrawCash(UserDatabase userDatabase, int userInputIDNumber) {
 	double withdrawalAmount, withdrawalCheck=0, withdrawalBalance;
 	int  withdrawalOption;
+	char overdraftCheck;
 
 	//cout << "Cash Withdrawal Menu" << endl << endl;
 	printBalance();
@@ -197,9 +202,9 @@ void User::withdrawCash(UserDatabase userDatabase, int userInputIDNumber) {
 	
 	if (withdrawalCheck == 0) {
 
-		if (withdrawalAmount<= balance)
+		if (withdrawalAmount <= balance)
 		{
-			withdrawalBalance = (balance-withdrawalAmount);
+			withdrawalBalance = (balance - withdrawalAmount);
 
 			User::setBalance(withdrawalBalance);
 			userDatabase.allUsers->at(userInputIDNumber).setBalance(withdrawalBalance);
@@ -211,13 +216,37 @@ void User::withdrawCash(UserDatabase userDatabase, int userInputIDNumber) {
 			cout << "Please take your cash" << endl;
 		} // end of high enough balance
 
-		else {
-			cout << "You have insufficient funds for this transaction";
-		} // end of insufficient funds
-	}
+		else //insufficient funds menu
 
-	else {
-		cout << "Error, this machine cannot dispense the amount of money you have requested" << endl;
-	}
+			system("cls");
+			cout << "You have insufficient funds for this transaction" << endl << endl;
+		    printOverdraft();
+			cout << endl;
+			cout << "Would you like to use your overdraft for this transaction? [Y/N]" << endl;
+			cin >> overdraftCheck;
 
-} // end of withdraw cash
+			if (overdraftCheck == 'Y')
+			{
+
+				if (withdrawalAmount <= (balance + overdraftLimit))
+				{
+					// Overdraft limit
+
+				}
+
+
+				else
+				{
+					cout << "The overdraft limit is insufficient for this transaction" << endl;
+				}
+
+
+			} // end of insufficient funds
+
+
+			else {
+				cout << "Error, this machine cannot dispense the amount of money you have requested" << endl;
+			}
+		}
+	}
+//} // end of withdraw cash
