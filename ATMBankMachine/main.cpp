@@ -31,6 +31,8 @@ int main(int argc, const char * argv[])
 	cout << "Welcome to Bank of Ulster" << endl << endl;
 	cout << "Please enter your user ID Number " << endl;
 
+
+
 	cin >> userInputIDNumber;
 
 	cout << endl;
@@ -43,19 +45,21 @@ int main(int argc, const char * argv[])
 	//Find line for the user
 	userInputIDNumber = (userInputIDNumber - 1000);
 
+
+
 	//Find the correct user from the database
 	UserDatabase userDatabase("User_database.txt");
 
 	User currentUser = userDatabase.users.at(userInputIDNumber);
 
-	
+
 	//****Function to display number of users**********
 	//****Do not delete **********************
 	//cout << endl << endl;
 	//cout << userDatabase.getAllUsers().size() << endl; //Displays the number of lines in the list
-													   //for (int i = 0; list.getAllUsers().size(); i++) {
-													   //	cout << list.getAllUsers().at(i).getFirstName() << endl;
-													   //}
+	//for (int i = 0; list.getAllUsers().size(); i++) {
+	//	cout << list.getAllUsers().at(i).getFirstName() << endl;
+	//}
 
 	system("cls");
 
@@ -75,7 +79,7 @@ int main(int argc, const char * argv[])
 
 		system("cls");
 
-		
+
 		switch (userInputOption) {
 		case 1:
 			int withdrawAmount;
@@ -108,7 +112,42 @@ int main(int argc, const char * argv[])
 			break;
 
 		case 5: //Change Pin Code
-			currentUser.resetPinCode(userDatabase, userInputIDNumber);
+
+
+			int newPin, newPin1, newPin2;
+			cout << "Please enter new pincode: ";
+			cin >> newPin1;
+
+			system("cls");
+			cout << "Please re enter your new pincode: ";
+			cin >> newPin2;
+
+			//currentUser.getNewPinCode();
+
+			if (newPin1 == newPin2)
+			{
+				newPin = newPin1;
+
+				if ((newPin < 1000) || (newPin > 9999))
+				{
+					cout << "Error - the pin must have 4 digits!" << endl;
+				}
+
+				else {
+					currentUser.setPinCode(newPin);
+					currentUser.setPinCode(newPin);
+					userDatabase.allUsers->at(userInputIDNumber).setPinCode(newPin);
+					userDatabase.rewriteUserDatabase();
+
+					cout << "Your pincode has been successfully updated!" << endl;
+				}
+			}
+
+			else {
+				cout << "Error, the two pincodes do not match!" << endl;
+			}
+
+			break;
 
 		case 0: // Admin access
 			cout << "Admin menu";

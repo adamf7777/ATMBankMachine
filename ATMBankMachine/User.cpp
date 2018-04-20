@@ -1,5 +1,4 @@
 #include "User.h"
-#include "UserDatabase.h"
 //#include <string>
 //#include <ostream>
 //#include <s>
@@ -73,42 +72,5 @@ void User::printOverdraft()
 
 	cout << firstName << ", ";
 	cout << "your current maximum overdraft limit is: " << char(156) << overdraftLimit << endl << endl;
-
-}
-
-void User :: resetPinCode(UserDatabase userDatabase,int userInputIDNumber) {
-
-	int newPin, newPin1, newPin2;
-	cout << "Please enter new pincode: ";
-	cin >> newPin1;
-
-	system("cls");
-	cout << "Please re enter your new pincode: ";
-	cin >> newPin2;
-
-	//currentUser.getNewPinCode();
-
-	if (newPin1 == newPin2)
-	{
-		newPin = newPin1;
-
-		if ((newPin < 1000) || (newPin > 9999))
-		{
-			cout << "Error - the pin must have 4 digits!" << endl;
-		}
-
-		else {
-			User::setPinCode(newPin);
-			User::setPinCode(newPin);
-			userDatabase.allUsers->at(userInputIDNumber).setPinCode(newPin);
-			userDatabase.rewriteUserDatabase();
-
-			cout << "Your pincode has been successfully updated!" << endl;
-		}
-	}
-
-	else {
-		cout << "Error, the two pincodes do not match!" << endl;
-	}
 
 }

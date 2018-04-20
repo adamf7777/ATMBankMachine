@@ -7,7 +7,7 @@
 * optional, long description, spanning
 * several lines.
 *
-* @author Adam Fawectt <fawcett-a@ulster.ac.uk>
+* @author Nathan Fawectt <fawcett-a@ulster.ac.uk>
 * @license (url of your license)
 * @copyright Adam Fawcett 2018
 *
@@ -47,4 +47,10 @@ private:
 	//	std::vector<User>* allUsers = new std::vector<User>();
 
 };
+
+
+
+
+
+
 #endif
