@@ -53,9 +53,6 @@ int main(int argc, const char * argv[])
 
 	User currentUser = userDatabase.users.at(userInputIDNumber);
 
-	Admin addUser();
-	
-
 	//****Function to display number of users**********
 	//****Do not delete **********************
 	//cout << endl << endl;
@@ -174,11 +171,13 @@ int main(int argc, const char * argv[])
 			switch (adminInputOption) {
 			case 1:
 
-				addUser();
+				Admin addUser();
 
 				break;
 
 			case 2:
+
+				Admin removeUser();
 
 				break;
 
