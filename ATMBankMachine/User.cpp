@@ -118,10 +118,11 @@ void User::resetPinCode(UserDatabase userDatabase, int userInputIDNumber) {
 		cout << "Please try again later" << endl;
 	}
 
-}
+} // end of reset pincode
 
 void User::withdrawCash(UserDatabase userDatabase, int userInputIDNumber) {
-	double withdrawalOption, withdrawalAmount, withdrawalCheck, withdrawalBalance;
+	double withdrawalAmount, withdrawalCheck=0, withdrawalBalance;
+	int  withdrawalOption;
 
 	//cout << "Cash Withdrawal Menu" << endl << endl;
 	printBalance();
@@ -143,33 +144,71 @@ void User::withdrawCash(UserDatabase userDatabase, int userInputIDNumber) {
 		cout << char(156) << " ";
 		cin >> withdrawalAmount;
 
-		withdrawalCheck = (withdrawalAmount / 5);
+		withdrawalCheck = (withdrawalAmount/5);
 
-		if (withdrawalCheck - (int)withdrawalCheck > 0.0)
-
+		if(withdrawalCheck - (int)withdrawalCheck > 0.0)
 		{
-			cout << "Error - the number must be divisible by '5' " << endl;
-		}
+			withdrawalCheck = 1;
+		} // end of check divisible by 5
 
 		else
 		{
-			withdrawalBalance = balance - withdrawalAmount;
-
-			User::setBalance(withdrawalBalance);
-			userDatabase.allUsers->at(userInputIDNumber).setBalance(withdrawalBalance);
-			userDatabase.rewriteUserDatabase();
-
-			system("cls");
-
-			cout << "Please take your cash" << endl;
+			withdrawalCheck = 0;
 		}
+		/*else // if divisible by 5
+		{	
+			// continue as value checked as correct
 
+		} // end of if divisible by 5 */
+
+		} // end of if withdrawal option = 8
 			
-		} 
-			
-	else 
+	else // if the withdrawal option is not = 8
 	{
+		switch(withdrawalOption){
 		
+		case 1:
+			withdrawalAmount = 10;
+				break;
+		case 2:
+			withdrawalAmount = 20;
+				break;
+		case 3:
+			withdrawalAmount = 40;
+				break;
+		case 4:
+			withdrawalAmount = 50;
+				break;
+		case 5:
+			withdrawalAmount = 60;
+				break;
+		case 6:
+			withdrawalAmount = 80;
+				break;
+		case 7:
+			withdrawalAmount = 100;
+				break;
+
+		default: 
+			cout << "Error, incorrect value selected." << endl;
+			cout << "Please try again later" << endl;
+		} // end of switch case
+	} // end of else  for option other than 8
+	
+	if (withdrawalCheck == 0) {
+		withdrawalBalance = balance - withdrawalAmount;
+
+		User::setBalance(withdrawalBalance);
+		userDatabase.allUsers->at(userInputIDNumber).setBalance(withdrawalBalance);
+		userDatabase.rewriteUserDatabase();
+
+		system("cls");
+
+		cout << "Please take your cash" << endl;
 	}
 
-}
+	else {
+		cout << "Error your value cannot be processed" << endl;
+	}
+
+} // end of withdraw cash
