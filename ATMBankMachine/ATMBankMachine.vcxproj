@@ -138,6 +138,7 @@
     <ClInclude Include="UserDatabase.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="TODO.txt" />
     <Text Include="User_database.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
