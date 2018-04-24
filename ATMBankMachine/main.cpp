@@ -70,8 +70,8 @@ int main(int argc, const char * argv[])
 		cout << "Please select one of the options below:" << endl << endl;
 
 		cout << "[1] Cash Withdrawal " << endl;
-		cout << "[2] On-screen balance enquiry " << endl;
-		cout << "[3] Cash - lodgement " << endl;
+		cout << "[2] Balance nquiry " << endl;
+		cout << "[3] Cash Lodgement " << endl;
 		cout << "[4] Check Overdraft limit " << endl;
 		cout << "[5] Change Pin Code" << endl;
 
@@ -96,9 +96,8 @@ int main(int argc, const char * argv[])
 
 		case 3: // Allow for cash logdement 
 
-				//cout << "Do nothing 3";
-				//UserDatabase.rewriteUserDatabase();
-				//list.rewriteUserDatabase("User_database.txt");
+			currentUser.lodgeCash(userDatabase, userInputIDNumber);
+			
 			break;
 
 		case 4: // Overdraft Limit

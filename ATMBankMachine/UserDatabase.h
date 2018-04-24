@@ -2,13 +2,13 @@
 #define UserDatabase_H_
 
 /**
-* one line description of class or file
+* Used to read and write information from UserDatabase.
 *
 * optional, long description, spanning
 * several lines.
 *
 * @author	Adam Fawcett <fawcett-a@ulster.ac.uk>
-* @license (url of your license)
+* @license https://www.gnu.org/licenses/gpl-3.0.en.html
 * @copyright Adam Fawcett 2018
 *
 */
@@ -33,24 +33,16 @@ public:
 
 
 	std::vector<User> getAllUsers();
-	std::vector<User> getCurrentUser();
 
 	void addUser(User user);
-	void updateUser(User user);
 
 
 	std::vector<User>* allUsers = new std::vector<User>();
 
 private:
 	std::string filePath;
-	//create & initialise dynamic array to hold users 
-	//	std::vector<User>* allUsers = new std::vector<User>();
-
+	
 };
-
-
-
-
 
 
 #endif

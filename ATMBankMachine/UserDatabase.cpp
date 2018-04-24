@@ -1,3 +1,13 @@
+/**
+* one line description of class or file
+*
+* @author	Adam Fawcett <fawcett-a@ulster.ac.uk>
+* @license https://www.gnu.org/licenses/gpl-3.0.en.html
+* @copyright Adam Fawcett 2018
+*
+*/
+
+
 #include "UserDatabase.h"
 
 using namespace std;
