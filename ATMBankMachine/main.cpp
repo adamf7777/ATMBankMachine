@@ -7,7 +7,7 @@
 * @author Adam Fawcett <fawcett-a@ulster.ac.uk>
 * @author Matthew Cordner <cordner-m1@ulster.ac.uk>
 * @author Christopher Hull <faulkner-c5@ulster.ac.uk>
-* @author Micheal Glass <		>
+* @author Micheal Glass <glass-m@ulster.ac.uk>
 * @license https://www.gnu.org/licenses/gpl-3.0.en.html
 * @copyright Adam Fawcett 2018
 * @copyright Matthew Cordner 2018

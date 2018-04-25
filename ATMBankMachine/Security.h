@@ -13,3 +13,21 @@
 *
 */
 
+#include <string>
+#include <iostream>
+
+// String stream function gathers data from the user database txt file
+#include <sstream> 
+
+//The UserDatabase class works with the user class.
+class UserDatabase;
+class User;
+
+class Security
+{
+
+};
+
+
+
+
