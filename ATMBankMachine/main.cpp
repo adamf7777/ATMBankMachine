@@ -1,5 +1,5 @@
 /**
-* ATM Machine
+* ATMBankMachine
 *
 * optional, long description, spanning
 * several lines.

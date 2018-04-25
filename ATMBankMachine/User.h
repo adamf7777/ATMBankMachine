@@ -44,6 +44,10 @@ public:
 	// Defining functions involving class parameters
 	void printBalance();
 	void printOverdraft();
+	
+	void setFirstName(std::string newFirstName);
+	void setLastName(std::string newLastName);
+	void setOverdraftLimit(double newOverdraftLimit);
 	void setPinCode(int newPinCode);
 	void setBalance(double newBalance);
 	void resetPinCode(UserDatabase userDatabase, int userInputIDNumber);
