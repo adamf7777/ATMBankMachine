@@ -60,6 +60,7 @@ void UserDatabase::rewriteUserDatabase()
 //returns array of all users 
 std::vector<User> UserDatabase::getAllUsers() {
 	return *allUsers;
+
 }
 
 /*//Updates the array with the current user - Beta
