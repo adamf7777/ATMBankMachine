@@ -6,8 +6,6 @@
 * @copyright Adam Fawcett 2018
 *
 */
-
-
 #include "UserDatabase.h"
 
 using namespace std;
@@ -30,9 +28,7 @@ UserDatabase::UserDatabase(string inputFilePath)
 
 	userFile.close();
 
-
 }
-
 
 void UserDatabase::rewriteUserDatabase()
 {
@@ -77,7 +73,6 @@ void UserDatabase::rewriteUserDatabaseNewUser()
 			fout << endl;
 		}
 	}
-
 	fout.close();
 }
 

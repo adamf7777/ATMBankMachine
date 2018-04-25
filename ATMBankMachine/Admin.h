@@ -27,8 +27,10 @@ class Admin
 
 public:
 	void adminMenu();
-	void addUser(UserDatabase userDatabase, User newUser);
+	void addUser(UserDatabase userDatabase);
+	void setNewUserFirstname(std::string newUserFirstName);
 	//void removeUser();
+	std::string addUserFirstName;
 private:
 
 };

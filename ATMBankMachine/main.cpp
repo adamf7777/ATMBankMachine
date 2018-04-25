@@ -37,20 +37,14 @@ int main(int argc, const char * argv[])
 
 	int userInputIDNumber = 0;
 	int userInputPINCode = 0;
-
 	int userInputOption = 0;
-
 	char anotherService = 'Y';
-
 
 	//while(differentUser = )
 	system("cls");
 
-
 	cout << "Welcome to Bank of Ulster" << endl << endl;
 	cout << "Please enter your user ID Number " << endl;
-
-
 
 	cin >> userInputIDNumber;
 
@@ -64,14 +58,10 @@ int main(int argc, const char * argv[])
 	//Find line for the user
 	userInputIDNumber = (userInputIDNumber - 1000);
 
-
-
 	//Find the correct user from the database
 	UserDatabase userDatabase("User_database.txt");
-
 	User currentUser = userDatabase.users.at(userInputIDNumber);
 
-	
 	//****Function to display number of users**********
 	//****Do not delete **********************
 	//cout << endl << endl;
@@ -93,11 +83,9 @@ int main(int argc, const char * argv[])
 		cout << "[4] Check Overdraft limit " << endl;
 		cout << "[5] Change Pin Code" << endl;
 
-
 		cin >> userInputOption;
 
 		system("cls");
-
 
 		switch (userInputOption) {
 		case 1:
@@ -132,10 +120,8 @@ int main(int argc, const char * argv[])
 			Admin admin;
 			admin.adminMenu();
 			break;
-		
-			
-		}//END OF FIRST SWITCH CASE
 
+		}//END OF FIRST SWITCH CASE
 
 		 //Any further services required
 		cout << "Do you require any further services? [Y/N] " << endl;
@@ -145,15 +131,11 @@ int main(int argc, const char * argv[])
 
 		} //END OF ANOTHER SERVICE if
 
-	
-
 	system("cls");
 
 	//if 'N' return card 
 
 	cout << "Your card is now being returned\n";
-
-
 
 	return 0;
 
