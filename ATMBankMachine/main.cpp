@@ -128,66 +128,12 @@ int main(int argc, const char * argv[])
 			currentUser.resetPinCode(userDatabase, userInputIDNumber);
 			break;
 
-		case 0: // Admin access
-
-			int adminInputOption;
+		case 0: // Admin menu
 			Admin admin;
-
-			cout << "Admin Menu";
-			cout << "Please select one of the options below:" << endl << endl;
-
-			cout << "[1] Add User " << endl;
-			cout << "[2] Remove User " << endl;
-			cout << "[3] Edit User Data " << endl;
-			cout << "[4] ATM Maintenance " << endl;
-			cout << "[5] Change Pin Code" << endl;
-
-			cin >> adminInputOption;
-			cout << "Debug: " << adminInputOption << endl;
-
-			system("cls");
-
-			switch (adminInputOption) {
-			case 1:
-
-				//cout << "Debug: Option 1" << endl;
-				admin.addUser();
-
-				break;
-
-			case 2:
-
-				admin.removeUser();
-
-				break;
-
-			case 3:
-
-				int editUserID;
-
-				cout << "Please enter the User ID of the user you would like to edit: \n" << endl;
-				cout << "User ID:";
-				cin >> editUserID;
-
-				break;
-
-			case 4:
-
-				cout << "ATM Maintenance\n" << endl;
-				cout << "Please select one of the options below:" << endl << endl;
-
-				cout << "[1] Update ATM Balance " << endl;
-				cout << "[2] Update Receipt Amount " << endl;
-				cout << "[3] View Transaction History " << endl;
-
-				break;
-
-			default:
-				cout << "Error";
-
-				break;
-		break;
-			}//END OF SECOND SWITCH CASE
+			admin.adminMenu();
+			break;
+		
+			
 		}//END OF FIRST SWITCH CASE
 
 
