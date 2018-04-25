@@ -27,7 +27,7 @@ class Admin
 
 public:
 	void adminMenu();
-	void addUser();
+	void addUser(UserDatabase userDatabase, User newUser);
 	//void removeUser();
 private:
 

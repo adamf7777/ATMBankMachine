@@ -12,6 +12,12 @@ void Admin::adminMenu()
 {
 	int adminInputOption;
 	//Admin admin;
+	UserDatabase userDatabase("User_database.txt");
+	userDatabase.getAllUsers().size();
+
+	int newUserLine = (userDatabase.getAllUsers().size()) + 1;
+
+	User newUser = userDatabase.users.at(newUserLine);
 
 	cout << "Admin Menu";
 	cout << "Please select one of the options below:" << endl << endl;
@@ -31,7 +37,9 @@ void Admin::adminMenu()
 	case 1:
 
 		//cout << "Debug: Option 1" << endl;
-		addUser();
+		
+
+		addUser(userDatabase, newUser);
 
 		break;
 
@@ -70,7 +78,7 @@ void Admin::adminMenu()
 	}
 }
 
-void Admin::addUser()
+void Admin::addUser(UserDatabase userDatabase, User newUser)
 {
 	std::string addUserFirstName;
 	std::string addUserLastName;
@@ -101,21 +109,29 @@ void Admin::addUser()
 	cin >> addUserPincode;
 	cout << endl;
 
-	UserDatabase userDatabase("User_database.txt");
-	userDatabase.getAllUsers().size();
-
+	/*UserDatabase userDatabase("User_database.txt");
+	
+	userDatabase.getAllUsers().size();*/
+	
 	newUserDatabaseSize = (userDatabase.getAllUsers().size()) + 1;
 	cout << newUserDatabaseSize << endl << endl;
 
 	newUserIDNumber = newUserDatabaseSize + 1000;
 	cout << "The ID number for the new user is: " << newUserIDNumber << endl;
 
+	newUser.setFirstName(addUserFirstName);
+	newUser.setLastName(addUserLastName);
+	newUser.setBalance(addUserAccountBalance);
+	newUser.setOverdraftLimit(addUserOverdraftLimit);
+	newUser.setPinCode(addUserPincode);
+
 	userDatabase.allUsers->at(newUserIDNumber).setFirstName(addUserFirstName);
 	userDatabase.allUsers->at(newUserIDNumber).setLastName(addUserLastName);
-	userDatabase.allUsers->at(newUserIDNumber).setUserAccountBalance(addUserAccountBalance);
-	userDatabase.allUsers->at(newUserIDNumber).setUserOverdraftLimit(addUserOverdraftLimit);
+	userDatabase.allUsers->at(newUserIDNumber).setBalance(addUserAccountBalance);
+	userDatabase.allUsers->at(newUserIDNumber).setOverdraftLimit(addUserOverdraftLimit);
 	userDatabase.allUsers->at(newUserIDNumber).setPinCode(addUserPincode);
-	userDatabase.rewriteUserDatabase();
+	userDatabase.rewriteUserDatabaseNewUser();
+	cout << "Database Updated!" << endl;
 
 }
 
