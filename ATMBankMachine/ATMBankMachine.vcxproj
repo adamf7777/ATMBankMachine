@@ -125,6 +125,7 @@
     <ClCompile Include="Account.cpp" />
     <ClCompile Include="Admin.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Security.cpp" />
     <ClCompile Include="Transaction.cpp" />
     <ClCompile Include="User.cpp" />
     <ClCompile Include="UserDatabase.cpp" />
