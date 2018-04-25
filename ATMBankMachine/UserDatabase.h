@@ -31,6 +31,7 @@ public:
 
 	// declaring function to rewrite userdatabase vector array
 	void rewriteUserDatabase();
+	void rewriteUserDatabaseNewUser();
 
 	// declaring function to get vector for user pincode and the user details
 	std::vector<User> getPinCode;
