@@ -57,9 +57,7 @@ int main(int argc, const char * argv[])
 	cout << endl;
 
 	system("cls");
-	cout << "Please enter your 4-digit Pin Code " << endl;
-	cin >> userInputPINCode;
-	cout << endl;
+	
 
 	//Find line for the user
 	userInputIDNumber = (userInputIDNumber - 1000);
@@ -70,7 +68,11 @@ int main(int argc, const char * argv[])
 	UserDatabase userDatabase("User_database.txt");
 
 	User currentUser = userDatabase.users.at(userInputIDNumber);
-
+	cout << currentUser.getPinCode();
+	cout << "Please enter your 4-digit Pin Code " << endl;
+	cin >> userInputPINCode;
+	cout << endl;
+	
 	
 	//****Function to display number of users**********
 	//****Do not delete **********************
