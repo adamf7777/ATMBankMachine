@@ -64,5 +64,14 @@
     <Text Include="TODO.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="fivenotes.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="tennotes.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="twentynotes.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

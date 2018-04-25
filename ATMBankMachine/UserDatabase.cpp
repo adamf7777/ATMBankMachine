@@ -57,9 +57,34 @@ void UserDatabase::rewriteUserDatabase()
 	fout.close();
 }
 
+void UserDatabase::rewriteUserDatabaseNewUser()
+{
+	ofstream fout(filePath);
+	std::string lineContents;
+	int newUserDatabaseSize = (getAllUsers().size()) + 1;
+
+	for (int i = 0; i < newUserDatabaseSize; i++) {
+		fout << getAllUsers().at(i).getFirstName() << " "
+			<< getAllUsers().at(i).getLastName() << " "
+			<< getAllUsers().at(i).getAccountNumber() << " "
+			<< getAllUsers().at(i).getBalance() << " "
+			<< getAllUsers().at(i).getOverdraftLimit() << " "
+			<< getAllUsers().at(i).getPinCode();
+		//prevents an extra line being printed at end of file 
+		if (i == getAllUsers().size()-1) {
+		}
+		else {
+			fout << endl;
+		}
+	}
+
+	fout.close();
+}
+
 //returns array of all users 
 std::vector<User> UserDatabase::getAllUsers() {
 	return *allUsers;
+
 }
 
 /*//Updates the array with the current user - Beta

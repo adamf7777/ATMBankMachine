@@ -117,6 +117,20 @@ int User::getPinCode()
 	return pinCode;
 }
 
+void User::setFirstName(string newFirstName) 
+{
+	firstName = newFirstName;
+}
+
+void User::setLastName(string newLastName)
+{
+	lastName = newLastName;
+}
+
+void User::setOverdraftLimit(double newOverdraftLimit)
+{
+	overdraftLimit = newOverdraftLimit;
+}
 
 /**
 * Function to set new pincode

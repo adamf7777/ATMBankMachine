@@ -8,7 +8,7 @@
 * several lines.
 *
 * @author Matthew Cordner <cordner-m1@ulster.ac.uk>
-* @license (url of your license)
+* @license https://www.gnu.org/licenses/gpl-3.0.en.html
 * @copyright Matthew Cordner 2018
 *
 */#pragma once
@@ -19,12 +19,16 @@
 
 //using namespace std;
 
+class UserDatabase;
+class User;
+
 class Admin
 {
 
 public:
-	void addUser();
-	void removeUser();
+	void adminMenu();
+	void addUser(UserDatabase userDatabase, User newUser);
+	//void removeUser();
 private:
 
 };
