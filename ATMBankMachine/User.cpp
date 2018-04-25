@@ -271,9 +271,9 @@ void User::resetPinCode(UserDatabase userDatabase, int userInputIDNumber)
   * @see overdraftLimit
   * @see rewriteUserDatabase
   */
-void User::withdrawCash(UserDatabase userDatabase, int userInputIDNumber) 
+void User::withdrawCash(UserDatabase userDatabase, int userInputIDNumber)
 {
-	double withdrawalAmount, withdrawalCheck=0, withdrawalBalance;
+	double withdrawalAmount, withdrawalCheck = 0, withdrawalBalance;
 	int  withdrawalOption;
 	char overdraftCheck;
 
@@ -281,7 +281,7 @@ void User::withdrawCash(UserDatabase userDatabase, int userInputIDNumber)
 	printBalance();
 
 	// allow user to select one of the 8 options
-	cout << "Please select amount to be widthdrawn:" << endl << endl;
+	cout << "Please select amount to be withdrawn:" << endl << endl;
 	cout << "[1] " << char(156) << "10" << "		" << "[2] " << char(156) << "20" << endl;
 	cout << "[3] " << char(156) << "40" << "		" << "[4] " << char(156) << "50" << endl;
 	cout << "[5] " << char(156) << "60" << "		" << "[6] " << char(156) << "80" << endl;
@@ -296,122 +296,122 @@ void User::withdrawCash(UserDatabase userDatabase, int userInputIDNumber)
 	{
 		// tell user smallest note value available is five pounds
 		cout << "Please note, this smallest available note value is " << char(156) << "5" << endl << endl;
-		cout << "Please enter the amount you wish to widthdraw" << endl << endl;
+		cout << "Please enter the amount you wish to withdraw" << endl << endl;
 		cout << char(156) << " ";
 		cin >> withdrawalAmount;
 
 		// check that withdrawal amount is divisible by 5
-		withdrawalCheck = (withdrawalAmount/5);
+		withdrawalCheck = (withdrawalAmount / 5);
 
 		// if it can be divided into five pound notes
-		// set withdrawal check as 1
-		if(withdrawalCheck - (int)withdrawalCheck > 0.0)
-		{
-			withdrawalCheck = 1;
-		} // end of check divisible by 5
-
-		// if not set as zero
-		else
+		// set withdrawal check as 0
+		if (withdrawalCheck - (int)withdrawalCheck > 0.0)
 		{
 			withdrawalCheck = 0;
+		} // end of check divisible by 5
+
+		// if not set as 1
+		else
+		{
+			withdrawalCheck = 1;
 		}
 
-		} // end of if withdrawal option = 8
-			
+	} // end of if withdrawal option = 8
+
 
 	else // if the withdrawal option is not = 8
 	{
-		switch(withdrawalOption){
-		
+		switch (withdrawalOption) {
+
 		case 1:
 			withdrawalAmount = 10;
-				break;
+			break;
 		case 2:
 			withdrawalAmount = 20;
-				break;
+			break;
 		case 3:
 			withdrawalAmount = 40;
-				break;
+			break;
 		case 4:
 			withdrawalAmount = 50;
-				break;
+			break;
 		case 5:
 			withdrawalAmount = 60;
-				break;
+			break;
 		case 6:
 			withdrawalAmount = 80;
-				break;
+			break;
 		case 7:
 			withdrawalAmount = 100;
-				break;
+			break;
 
-		default: 
+		default:
 
 			// if withdrawal option not between 1 and 8 display error
 			cout << "Error, incorrect value selected." << endl;
 			cout << "Please try again later" << endl;
 		} // end of switch case
 	} // end of else  for option other than 8
-	
+
 
 	// if the withdrawal check is successful
 	// update balance
 
-		if (withdrawalCheck == 0) 
+	if (withdrawalCheck == 1)
+	{
+
+		// if withdrawal amount is less than/ equal to balance
+		// perform the transaction
+		if (withdrawalAmount <= balance)
 		{
+			withdrawalBalance = (balance - withdrawalAmount);
 
-			// if withdrawal amount is less than/ equal to balance
-			// perform the transaction
-			if (withdrawalAmount <= balance)
-			{
-				withdrawalBalance = (balance - withdrawalAmount);
-
-				// rewrite userdatabase with new balance for the selected user
-				User::setBalance(withdrawalBalance);
-				userDatabase.allUsers->at(userInputIDNumber).setBalance(withdrawalBalance);
-				userDatabase.rewriteUserDatabase();
-
-				system("cls");
-
-				cout << "Counting " << char(156) << withdrawalAmount << endl << endl;
-				cout << "Please take your cash" << endl;
-			} // end of sufficient balance
-
-			else // if user insufficient funds to perform transaction
-			 // allow them option to use overdraft
+			// rewrite userdatabase with new balance for the selected user
+			User::setBalance(withdrawalBalance);
+			userDatabase.allUsers->at(userInputIDNumber).setBalance(withdrawalBalance);
+			userDatabase.rewriteUserDatabase();
 
 			system("cls");
+
+			cout << "Counting " << char(156) << withdrawalAmount << endl << endl;
+			cout << "Please take your cash" << endl;
+		} // end of sufficient balance
+
+		else // if user insufficient funds to perform transaction
+		 // allow them option to use overdraft
+		{
+			system("cls");
 			cout << "You have insufficient funds for this transaction" << endl << endl;
-		    printOverdraft();
+			printOverdraft();
 			cout << endl;
 			cout << "Would you like to use your overdraft for this transaction? [Y/N]" << endl;
 			cin >> overdraftCheck;
 
-				if (overdraftCheck == 'Y')
+			if (overdraftCheck == 'Y')
+			{
+
+				if (withdrawalAmount <= (balance + overdraftLimit))
 				{
-
-					if (withdrawalAmount <= (balance + overdraftLimit))
-					{
 					// if overdraft will cover the transaction
-					}
+				}
 
-					else
-					{
-					cout << "The overdraft limit is insufficient for this transaction" << endl;
-					}
-
-				} // end of insufficient funds
-
-				// if amount selected not available display error message
 				else
 				{
-				cout << "Error, this machine cannot dispense the amount of money you have requested" << endl;
+					cout << "The overdraft limit is insufficient for this transaction" << endl;
 				}
-		} 
 
-} // end of withdraw cash function
+			} // end of insufficient funds
+
+			// if amount selected not available display error message
+			else
+			{
+				cout << "Error, this machine cannot dispense the amount of money you have requested" << endl;
+			}
 
 
+		} // end of withdraw cash function
+	}
+} // end of withdrawCash function
 
   /**
   * Function to allow the user lodge cash
@@ -425,7 +425,8 @@ void User::withdrawCash(UserDatabase userDatabase, int userInputIDNumber)
   * @see setBalance
   * @see rewriteUserDatabase
   */
-void User::lodgeCash(UserDatabase userDatabase, int userInputIDNumber) {
+void User::lodgeCash(UserDatabase userDatabase, int userInputIDNumber) 
+	{
 	
 	double lodgementAmount, lodgementBalance;
 
