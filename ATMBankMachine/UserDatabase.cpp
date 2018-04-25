@@ -8,6 +8,7 @@
 */
 #include "UserDatabase.h"
 
+
 using namespace std;
 
 UserDatabase::UserDatabase(string inputFilePath)
@@ -57,21 +58,49 @@ void UserDatabase::rewriteUserDatabaseNewUser()
 {
 	ofstream fout(filePath);
 	std::string lineContents;
-	int newUserDatabaseSize = (getAllUsers().size()) + 1;
+	//int newUserDatabaseSize = 22;
 
-	for (int i = 0; i < newUserDatabaseSize; i++) {
-		fout << getAllUsers().at(i).getFirstName() << " "
-			<< getAllUsers().at(i).getLastName() << " "
-			<< getAllUsers().at(i).getAccountNumber() << " "
-			<< getAllUsers().at(i).getBalance() << " "
-			<< getAllUsers().at(i).getOverdraftLimit() << " "
-			<< getAllUsers().at(i).getPinCode();
+	for (int i = 0; i < 22; i++) {
+		if (i < 21) {
+			fout << getAllUsers().at(i).getFirstName() << " "
+				<< getAllUsers().at(i).getLastName() << " "
+				<< getAllUsers().at(i).getAccountNumber() << " "
+				<< getAllUsers().at(i).getBalance() << " "
+				<< getAllUsers().at(i).getOverdraftLimit() << " "
+				<< getAllUsers().at(i).getPinCode();
+		}
+
+		else
+		{
+			cout << "22" << endl;
+			fout << "Matthew " << "Cordner " << "1022 " << "1234 " << "250 " << "1234 " << endl;
+			
+		}
 		//prevents an extra line being printed at end of file 
 		if (i == getAllUsers().size()-1) {
+
+			//cout << "Maatt" << endl;
+			//fout << "Matthew " << "Cordner " << "1022 " << "1234 "<< "250 " << "1234 " <<endl;
 		}
+	
+		
 		else {
-			fout << endl;
+			
+			//fout << "Matthew" << endl;
+			//cout << "Matthew" << endl;
+			
 		}
+
+
+
+		/*for (i = 21; i < 22; i++)
+		{
+			string name = "Matt";
+			cout << "Matthew";
+			fout << getAllUsers().at(i)
+		}*/
+
+		fout << endl;
 	}
 	fout.close();
 }

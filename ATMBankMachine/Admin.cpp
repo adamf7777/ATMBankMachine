@@ -9,19 +9,19 @@
 
 using namespace std;
 
-void Admin::setNewUserFirstname(string newUserFirstName)
+/*void Admin::setNewUserFirstname(string newUserFirstName)
 {
 	addUserFirstName = newUserFirstName;
-}
+}*/
 
 
 
 void Admin::adminMenu()
 {
 	int adminInputOption;
-	//Admin admin;
+	Admin admin;
 	UserDatabase userDatabase("User_database.txt");
-	userDatabase.getAllUsers().size();
+	//userDatabase.getAllUsers().size();
 
 	//int newUserLine = (userDatabase.getAllUsers().size()) + 1;
 
@@ -93,8 +93,8 @@ void Admin::addUser(UserDatabase userDatabase)
 	double addUserAccountBalance;
 	double addUserOverdraftLimit;
 	int addUserPincode;
-	int newUserDatabaseSize;
-	int newUserIDNumber;
+	//int newUserDatabaseSize;
+	//int newUserIDNumber;
 
 	cout << "Please enter the details of the user you would like to add: \n" << endl;
 	cout << "First Name: \n";
@@ -120,25 +120,26 @@ void Admin::addUser(UserDatabase userDatabase)
 	
 	userDatabase.getAllUsers().size();*/
 	
-	newUserDatabaseSize = (userDatabase.getAllUsers().size()) + 1;
-	cout << newUserDatabaseSize << endl << endl;
+	//newUserDatabaseSize = (userDatabase.getAllUsers().size()) + 1;
+	//cout << newUserDatabaseSize << endl << endl;
 
-	newUserIDNumber = newUserDatabaseSize + 1000;
-	cout << "The ID number for the new user is: " << newUserIDNumber << endl;
+	//newUserIDNumber = 1022;
+	userDatabase.rewriteUserDatabaseNewUser();
+	cout << "The ID number for the new user is: " << "1022" << endl;
 
-	Admin::setNewUserFirstname(addUserFirstName);
+	//Admin::setNewUserFirstname(addUserFirstName);
 	/*newUser.setLastName(addUserLastName);
 	newUser.setBalance(addUserAccountBalance);
 	newUser.setOverdraftLimit(addUserOverdraftLimit);
 	newUser.setPinCode(addUserPincode);*/
 
-	userDatabase.allUsers->at(newUserIDNumber).setFirstName(addUserFirstName);
+	//userDatabase.allUsers->at(newUserIDNumber).setFirstName(addUserFirstName);
 	/*userDatabase.allUsers->at(newUserIDNumber).setLastName(addUserLastName);
 	userDatabase.allUsers->at(newUserIDNumber).setBalance(addUserAccountBalance);
 	userDatabase.allUsers->at(newUserIDNumber).setOverdraftLimit(addUserOverdraftLimit);
 	userDatabase.allUsers->at(newUserIDNumber).setPinCode(addUserPincode);*/
-	userDatabase.rewriteUserDatabaseNewUser();
-	cout << "Database Updated!" << endl;
+	//userDatabase.rewriteUserDatabaseNewUser(Admin admin);
+	//cout << "Database Updated!" << endl;
 
 }
 

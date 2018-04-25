@@ -132,7 +132,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Account.h" />
-    <ClInclude Include="Admin.h" />
+    <ClInclude Include="Admin.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="Security.h" />
     <ClInclude Include="Transaction.h" />
     <ClInclude Include="User.h" />
