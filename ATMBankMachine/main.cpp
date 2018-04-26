@@ -51,9 +51,7 @@ int main(int argc, const char * argv[])
 	cout << endl;
 
 	system("cls");
-	cout << "Please enter your 4-digit Pin Code " << endl;
-	cin >> userInputPINCode;
-	cout << endl;
+	
 
 	//Find line for the user
 	userInputIDNumber = (userInputIDNumber - 1000);
@@ -63,6 +61,7 @@ int main(int argc, const char * argv[])
 	User currentUser = userDatabase.users.at(userInputIDNumber);
 	
 
+	
 	//****Function to display number of users**********
 	//****Do not delete **********************
 	//cout << endl << endl;
