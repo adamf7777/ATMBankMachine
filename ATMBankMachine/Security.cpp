@@ -12,7 +12,7 @@
 #include "UserDatabase.h"
 #include "User.h"
 
-//Security security;
-currentUser.getPinCode();
-if 
+
+//currentUser.getPinCode();
+ 
 
