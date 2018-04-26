@@ -25,14 +25,6 @@ class User;
 
 class Security
 {
-public:
-	User(std::string userInformation);
-
-};
-{
-private:
-		int actualPinCode;
-	    int enteredPinCode;
 
 };
 
