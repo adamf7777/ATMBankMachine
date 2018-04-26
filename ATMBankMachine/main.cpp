@@ -61,6 +61,7 @@ int main(int argc, const char * argv[])
 	//Find the correct user from the database
 	UserDatabase userDatabase("User_database.txt");
 	User currentUser = userDatabase.users.at(userInputIDNumber);
+	
 
 	//****Function to display number of users**********
 	//****Do not delete **********************

@@ -7,9 +7,11 @@
 *
 */
 #include "UserDatabase.h"
+//#include "Admin.h"
 
 
 using namespace std;
+
 
 UserDatabase::UserDatabase(string inputFilePath)
 {
@@ -73,6 +75,7 @@ void UserDatabase::rewriteUserDatabaseNewUser()
 		else
 		{
 			cout << "22" << endl;
+			
 			fout << "Matthew " << "Cordner " << "1022 " << "1234 " << "250 " << "1234 " << endl;
 			
 		}

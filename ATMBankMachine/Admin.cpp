@@ -8,18 +8,20 @@
 //#include <s>
 
 using namespace std;
+//Admin admin;
 
-/*void Admin::setNewUserFirstname(string newUserFirstName)
+
+std::string Admin::getNewUserFirstname()
 {
-	addUserFirstName = newUserFirstName;
-}*/
+	return addUserFirstName;
+}
 
 
 
 void Admin::adminMenu()
 {
 	int adminInputOption;
-	Admin admin;
+	
 	UserDatabase userDatabase("User_database.txt");
 	//userDatabase.getAllUsers().size();
 
@@ -87,8 +89,8 @@ void Admin::adminMenu()
 
 void Admin::addUser(UserDatabase userDatabase)
 {
-	std::string addUserFirstName;
-	std::string addUserLastName;
+	string addUserFirstName;
+	string addUserLastName;
 	//int addUserID;
 	double addUserAccountBalance;
 	double addUserOverdraftLimit;
@@ -116,6 +118,7 @@ void Admin::addUser(UserDatabase userDatabase)
 	cin >> addUserPincode;
 	cout << endl;
 
+	
 	/*UserDatabase userDatabase("User_database.txt");
 	
 	userDatabase.getAllUsers().size();*/
@@ -124,6 +127,7 @@ void Admin::addUser(UserDatabase userDatabase)
 	//cout << newUserDatabaseSize << endl << endl;
 
 	//newUserIDNumber = 1022;
+	
 	userDatabase.rewriteUserDatabaseNewUser();
 	cout << "The ID number for the new user is: " << "1022" << endl;
 

@@ -18,8 +18,8 @@
 #include <sstream> //string stream function
 
 //using namespace std;
-
 class UserDatabase;
+
 class User;
 
 class Admin
@@ -28,7 +28,7 @@ class Admin
 public:
 	void adminMenu();
 	void addUser(UserDatabase userDatabase);
-	void setNewUserFirstname(std::string newUserFirstName);
+	std::string getNewUserFirstname();
 	//void removeUser();
 	std::string addUserFirstName;
 private:
