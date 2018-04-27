@@ -36,6 +36,9 @@
     <ClCompile Include="Security.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Cash_available.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Admin.h">

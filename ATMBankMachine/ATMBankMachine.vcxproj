@@ -124,6 +124,7 @@
   <ItemGroup>
     <ClCompile Include="Account.cpp" />
     <ClCompile Include="Admin.cpp" />
+    <ClCompile Include="Cash_available.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Security.cpp" />
     <ClCompile Include="Transaction.cpp" />
