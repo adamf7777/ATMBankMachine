@@ -21,6 +21,7 @@
 #include "User.h"
 #include "UserDatabase.h"
 #include "Admin.h"
+#include "Security.h"
 
 #include <conio.h>
 #include <string>
@@ -60,7 +61,8 @@ int main(int argc, const char * argv[])
 	UserDatabase userDatabase("User_database.txt");
 	User currentUser = userDatabase.users.at(userInputIDNumber);
 	
-
+	//Security security;
+	//security.checkPincode(userDatabase, currentUser);
 	
 	//****Function to display number of users**********
 	//****Do not delete **********************

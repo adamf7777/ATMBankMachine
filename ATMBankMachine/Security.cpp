@@ -7,12 +7,19 @@
 *
 */
 
+using namespace std;
 // Include Header Files
 #include "Security.h"
 #include "UserDatabase.h"
 #include "User.h"
 
-
+//Security::security;
 //currentUser.getPinCode();
  
+void checkPincode(UserDatabase userdatabase, User currentUser)
+{
+	cout << currentUser.getAccountNumber();
+	cout << currentUser.getPinCode();
+	
 
+}

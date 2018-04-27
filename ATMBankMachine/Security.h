@@ -1,4 +1,4 @@
-#ifndef Security_H_
+ #ifndef Security_H_
 #define Security_H_
 
 /**
@@ -26,6 +26,11 @@ class User;
 class Security
 {
 
+public:
+	void checkPincode(UserDatabase userdatabase, User currentUser);
+	//Security security;
+private: 
+ 
 };
 
 #endif
