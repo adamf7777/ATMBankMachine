@@ -19,7 +19,7 @@ void Admin::setNewUserFirstname(string newUserFirstName)
 void Admin::adminMenu()
 {
 	int adminInputOption;
-	//Admin admin;
+	Admin admin;
 	UserDatabase userDatabase("User_database.txt");
 	userDatabase.getAllUsers().size();
 
