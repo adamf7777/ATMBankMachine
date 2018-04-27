@@ -20,13 +20,15 @@
 #include <algorithm>
 
 #include "User.h"
+//#include "Admin.h"
 
+//class Admin;
 
 class UserDatabase
 {
 public:
 
-	// declaring function to access the user database
+	// declaring function to access the user database file path
 	UserDatabase(std::string filePath);
 
 	// declaring function to rewrite userdatabase vector array
@@ -43,10 +45,12 @@ public:
 	// declaring function to 
 	void addUser(User user);
 
-
+	// declaring vector function for allusers
 	std::vector<User>* allUsers = new std::vector<User>();
 
 private:
+
+	//declaring the filepath as a function only accessable in the class
 	std::string filePath;
 	
 };
