@@ -39,7 +39,7 @@ public:
 	std::vector<User> getPinCode;
 	std::vector<User> users;
 
-	// declaring function to get all user data
+	// declaring function to get all user data and store in vector array
 	std::vector<User> getAllUsers();
 
 	// declaring function to 

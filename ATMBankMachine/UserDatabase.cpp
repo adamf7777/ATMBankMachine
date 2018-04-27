@@ -12,7 +12,12 @@
 
 using namespace std;
 
-
+/**
+* Function to gather data from database file
+*
+* Opens the file by getting the filepath 
+*
+*/
 UserDatabase::UserDatabase(string inputFilePath)
 {
 	filePath = inputFilePath;
@@ -33,6 +38,23 @@ UserDatabase::UserDatabase(string inputFilePath)
 
 }
 
+/**
+* Function to rewrite the database
+*
+* Rewrites the textfile for all of the users
+* using the fout function
+* Gathers the user info for each user and writes
+* each user to a line in the database
+*
+* @param getAllUsers to call up the array with all user data 
+* @param getFirstName to get first name for each user
+* @param getLastName to get last name for each user
+* @param getAccountNumber to get account number for each user
+* @param getBalance to get balance for each user
+* @param getOverDraftLimit to get overdraft limit for each user
+* @param getPinCode to get pincode for each other
+* @see getAllUsers 
+*/
 void UserDatabase::rewriteUserDatabase()
 {
 	ofstream fout(filePath);
@@ -108,7 +130,14 @@ void UserDatabase::rewriteUserDatabaseNewUser()
 	fout.close();
 }
 
-//returns array of all users 
+/**
+* Function to store all user data
+*
+* Creates a vector array which stores all the 
+* data for each user.
+*
+* @return allUsers as a string
+*/
 std::vector<User> UserDatabase::getAllUsers() {
 	return *allUsers;
 
