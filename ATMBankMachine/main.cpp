@@ -120,7 +120,7 @@ int main(int argc, const char * argv[])
 
 		case 0: // Admin menu
 			Admin admin;
-			admin.adminMenu();
+			admin.adminMenu(userDatabase);
 			break;
 
 		}//END OF FIRST SWITCH CASE

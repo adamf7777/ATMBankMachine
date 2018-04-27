@@ -14,11 +14,11 @@ void Admin::setNewUserFirstname(string newUserFirstName)
 	addUserFirstName = newUserFirstName;
 }
 
-void Admin::adminMenu()
+void Admin::adminMenu(UserDatabase userDatabase)
 {
 	int adminInputOption;
 	//Admin admin;
-	UserDatabase userDatabase("User_database.txt");
+//	UserDatabase userDatabase("User_database.txt");
 	userDatabase.getAllUsers().size();
 
 	//int newUserLine = (userDatabase.getAllUsers().size()) + 1;
@@ -87,13 +87,15 @@ void Admin::addUser(UserDatabase userDatabase)
 {
 	std::string addUserFirstName;
 	std::string addUserLastName;
-	//int addUserID;
+	int addUserAccountNumber;
 	double addUserAccountBalance;
 	double addUserOverdraftLimit;
 	int addUserPincode;
 	int newUserDatabaseSize;
 	int newUserIDNumber;
+	string newUserInfo;
 
+	
 	cout << "Please enter the details of the user you would like to add: \n" << endl;
 	cout << "First Name: \n";
 	cin >> addUserFirstName;
@@ -101,9 +103,9 @@ void Admin::addUser(UserDatabase userDatabase)
 	cout << "Last Name: \n";
 	cin >> addUserLastName;
 	cout << endl;
-	//cout << "User ID: \n";
-	//cin >> addUserID;
-	//cout << endl;
+	cout << "User ID: \n";
+	cin >> addUserAccountNumber;
+	cout << endl;
 	cout << "Initial Account Balance: \n";
 	cin >> addUserAccountBalance;
 	cout << endl;
@@ -114,29 +116,38 @@ void Admin::addUser(UserDatabase userDatabase)
 	cin >> addUserPincode;
 	cout << endl;
 
+	User* tempUser = new User();
+	tempUser->setFirstName(addUserFirstName);
+	tempUser->setLastName(addUserLastName);
+	tempUser->setAccountNumber(addUserAccountNumber);
+	tempUser->setBalance(addUserAccountBalance);
+	tempUser->setOverdraftLimit(addUserOverdraftLimit);
+	tempUser->setPinCode(addUserPincode);
+
+	userDatabase.addUser(tempUser);
 	/*UserDatabase userDatabase("User_database.txt");
 	
 	userDatabase.getAllUsers().size();*/
 	
-	newUserDatabaseSize = (userDatabase.getAllUsers().size()) + 1;
-	cout << newUserDatabaseSize << endl << endl;
+	//newUserDatabaseSize = (userDatabase.getAllUsers().size()) + 1;
+	//cout << newUserDatabaseSize << endl << endl;
 
-	newUserIDNumber = newUserDatabaseSize + 1000;
-	cout << "The ID number for the new user is: " << newUserIDNumber << endl;
+//	newUserIDNumber = newUserDatabaseSize + 1000;
+//	cout << "The ID number for the new user is: " << newUserIDNumber << endl;
 
-	setNewUserFirstname(addUserFirstName);
+	//setNewUserFirstname(addUserFirstName);
 	//newUser.setLastName(addUserLastName);
 	//newUser.setBalance(addUserAccountBalance);
 	//newUser.setOverdraftLimit(addUserOverdraftLimit);
 	//newUser.setPinCode(addUserPincode);
 
-	userDatabase.allUsers->at(newUserDatabaseSize).setFirstName(addUserFirstName);
+//	userDatabase.allUsers->at(newUserDatabaseSize).setFirstName(addUserFirstName);
 	//userDatabase.allUsers->at(newUserDatabaseSize).setLastName(addUserLastName);
 	//userDatabase.allUsers->at(newUserDatabaseSize).setBalance(addUserAccountBalance);
 	//userDatabase.allUsers->at(newUserDatabaseSize).setOverdraftLimit(addUserOverdraftLimit);
 	//userDatabase.allUsers->at(newUserDatabaseSize).setPinCode(addUserPincode);
 
-	userDatabase.rewriteUserDatabaseNewUser();
+	//userDatabase.rewriteUserDatabaseNewUser();
 	cout << "Database Updated!" << endl;
 
 }

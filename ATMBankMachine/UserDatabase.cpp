@@ -151,3 +151,17 @@ std::vector<User> UserDatabase::getCurrentUser() {
 void UserDatabase::addUser(User user) {
 	allUsers->push_back(user);
 }
+
+
+//  adds user to array list of all users and rewrites the database
+void UserDatabase::addUser(User* user) {
+	allUsers->push_back(*user);
+	rewriteUserDatabase();
+
+	return;
+}
+
+//remove user
+//search through the allUsers array to find position of the user in the allUsers array
+//remove it from the array of allUser (allUsers->removeAt(positon));
+//call the rewriteUserDatabase() function

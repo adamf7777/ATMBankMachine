@@ -29,7 +29,7 @@ class Admin : public UserDatabase
 public:
 	Admin() : UserDatabase("User_database.txt") {};
 	void setNewUserFirstname(std::string newUserFirstName);
-	void adminMenu();
+	void adminMenu(UserDatabase userDatabase);
 	void addUser(UserDatabase userDatabase);
 	std::string getNewUserFirstname();
 	//void removeUser();

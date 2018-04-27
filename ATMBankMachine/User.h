@@ -31,6 +31,7 @@ class User
 public:
 	
 	User(std::string userInformation);
+	User();
 
 	// Defining functions to get parameters from private
 	std::string getFirstName();
@@ -50,6 +51,7 @@ public:
 	void setOverdraftLimit(double newOverdraftLimit);
 	void setPinCode(int newPinCode);
 	void setBalance(double newBalance);
+	void setAccountNumber(int newAccountNumber);
 	void resetPinCode(UserDatabase userDatabase, int userInputIDNumber);
 	void withdrawCash(UserDatabase userDatabase, int userInputIDNumber);
 	void lodgeCash(UserDatabase userDatabase, int userInputIDNumber);
