@@ -14,12 +14,10 @@ void Admin::setNewUserFirstname(string newUserFirstName)
 	addUserFirstName = newUserFirstName;
 }
 
-
-
 void Admin::adminMenu()
 {
 	int adminInputOption;
-	Admin admin;
+	//Admin admin;
 	UserDatabase userDatabase("User_database.txt");
 	userDatabase.getAllUsers().size();
 
@@ -126,17 +124,18 @@ void Admin::addUser(UserDatabase userDatabase)
 	newUserIDNumber = newUserDatabaseSize + 1000;
 	cout << "The ID number for the new user is: " << newUserIDNumber << endl;
 
-	Admin::setNewUserFirstname(addUserFirstName);
-	/*newUser.setLastName(addUserLastName);
-	newUser.setBalance(addUserAccountBalance);
-	newUser.setOverdraftLimit(addUserOverdraftLimit);
-	newUser.setPinCode(addUserPincode);*/
+	setNewUserFirstname(addUserFirstName);
+	//newUser.setLastName(addUserLastName);
+	//newUser.setBalance(addUserAccountBalance);
+	//newUser.setOverdraftLimit(addUserOverdraftLimit);
+	//newUser.setPinCode(addUserPincode);
 
-	userDatabase.allUsers->at(newUserIDNumber).setFirstName(addUserFirstName);
-	/*userDatabase.allUsers->at(newUserIDNumber).setLastName(addUserLastName);
-	userDatabase.allUsers->at(newUserIDNumber).setBalance(addUserAccountBalance);
-	userDatabase.allUsers->at(newUserIDNumber).setOverdraftLimit(addUserOverdraftLimit);
-	userDatabase.allUsers->at(newUserIDNumber).setPinCode(addUserPincode);*/
+	userDatabase.allUsers->at(newUserDatabaseSize).setFirstName(addUserFirstName);
+	//userDatabase.allUsers->at(newUserDatabaseSize).setLastName(addUserLastName);
+	//userDatabase.allUsers->at(newUserDatabaseSize).setBalance(addUserAccountBalance);
+	//userDatabase.allUsers->at(newUserDatabaseSize).setOverdraftLimit(addUserOverdraftLimit);
+	//userDatabase.allUsers->at(newUserDatabaseSize).setPinCode(addUserPincode);
+
 	userDatabase.rewriteUserDatabaseNewUser();
 	cout << "Database Updated!" << endl;
 

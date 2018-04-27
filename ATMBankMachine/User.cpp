@@ -37,7 +37,6 @@ User::User(string userInformation)
 	userStream >> pinCode;
 }
 
-
 /**
 * Function to get user's first name
 *

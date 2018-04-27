@@ -16,16 +16,19 @@
 #include <string>
 #include <iostream>
 #include <sstream> //string stream function
+#include "UserDatabase.h"
 
 //using namespace std;
 class UserDatabase;
 
 class User;
 
-class Admin
+class Admin : public UserDatabase
 {
 
 public:
+	Admin() : UserDatabase("User_database.txt") {};
+	void setNewUserFirstname(std::string newUserFirstName);
 	void adminMenu();
 	void addUser(UserDatabase userDatabase);
 	std::string getNewUserFirstname();
