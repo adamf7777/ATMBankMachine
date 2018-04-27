@@ -19,7 +19,10 @@
 
 	using namespace std;
 
-	//#include "practice.h"
+
+	void getMachineCashStatus()
+	{
+	
 
 	int twentynotes;
 	int withdrawalamount;
@@ -29,15 +32,12 @@
 	int notesdispensed;
 	int fivenotes;
 
-	practice::practice(string twentynotes);
-	int main()
-
-	{
+	
 		withdrawalamount = 10;
 		twentynotes = (withdrawalamount / 20);
 		cout << "Number of Twenty pound notes:  " << twentynotes << "\n";
 
-		tenamount = (withdrawalamount - (twentynotes * 20));		tennotes = (tenamount / 10);		cout << "Number of Ten pound notes:  " << tennotes << "\n";		fiveamount = (tenamount - (tennotes * 10));		fivenotes = (fiveamount / 5);		cout << "Number of Five pound notes:  " << fivenotes << "\n";		notesdispensed = (fiveamount - (fivenotes * 5));		return(0);
+		tenamount = (withdrawalamount - (twentynotes * 20));		tennotes = (tenamount / 10);		cout << "Number of Ten pound notes:  " << tennotes << "\n";		fiveamount = (tenamount - (tennotes * 10));		fivenotes = (fiveamount / 5);		cout << "Number of Five pound notes:  " << fivenotes << "\n";		notesdispensed = (fiveamount - (fivenotes * 5));	
 	}
 
 
