@@ -9,23 +9,22 @@
 
 using namespace std;
 
-void Admin::setNewUserFirstname(string newUserFirstName)
-{
-	addUserFirstName = newUserFirstName;
-}
+//void Admin::setNewUserFirstname(string newUserFirstName)
+//{
+//	addUserFirstName = newUserFirstName;
+//}
 
 void Admin::adminMenu(UserDatabase userDatabase)
 {
 	int adminInputOption;
 	//Admin admin;
-//	UserDatabase userDatabase("User_database.txt");
+	//	UserDatabase userDatabase("User_database.txt");
+	//int newUserLine = (userDatabase.getAllUsers().size()) + 1;
+	//user newUser = userDatabase.users.at(newUserLine);
+
 	userDatabase.getAllUsers().size();
 
-	//int newUserLine = (userDatabase.getAllUsers().size()) + 1;
-
-	//ser newUser = userDatabase.users.at(newUserLine);
-
-	cout << "Admin Menu";
+	cout << "Admin Menu" << endl << endl;
 	cout << "Please select one of the options below:" << endl << endl;
 
 	cout << "[1] Add User " << endl;
@@ -91,20 +90,23 @@ void Admin::addUser(UserDatabase userDatabase)
 	double addUserAccountBalance;
 	double addUserOverdraftLimit;
 	int addUserPincode;
-	int newUserDatabaseSize;
+	int addUserDatabaseSize;
 	int newUserIDNumber;
 	string newUserInfo;
 
-	
+	addUserDatabaseSize = (userDatabase.getAllUsers().size()) + 1;
+	//cout << newUserDatabaseSize << endl << endl;
+
+	addUserAccountNumber = addUserDatabaseSize + 1000;
+	//cout << "The ID number for the new user is: " << addUserAccountNumber << endl;
+
 	cout << "Please enter the details of the user you would like to add: \n" << endl;
+	cout << "New user account number: " << addUserAccountNumber << endl;
 	cout << "First Name: \n";
 	cin >> addUserFirstName;
 	cout << endl;
 	cout << "Last Name: \n";
 	cin >> addUserLastName;
-	cout << endl;
-	cout << "User ID: \n";
-	cin >> addUserAccountNumber;
 	cout << endl;
 	cout << "Initial Account Balance: \n";
 	cin >> addUserAccountBalance;
@@ -155,19 +157,32 @@ void Admin::addUser(UserDatabase userDatabase)
 //
 //void Admin::removeUser()
 //{
-//	int removeUserFirstName;
-//	int removeUserSurname;
-//	int removeUserID;
-//	int removeUserAccountBalance;
-//	int removeUserOverdraft;
+//	std::string addUserFirstName;
+//	std::string addUserLastName;
+//	int addUserAccountNumber;
+//	double addUserAccountBalance;
+//	double addUserOverdraftLimit;
+//	int addUserPincode;
+//	int newUserDatabaseSize;
+//	int newUserIDNumber;
+//	string newUserInfo;
+//
+//	std::string removeUserFirstName;
+//	std::string removeUserLastname;
+//	int removeUserAccountNumber;
+//	double removeUserAccountBalance;
+//	double removeUserOverdraftLimit;
 //	int removeUserPincode;
+//	int removeUserDatabaseSize;
+//	int removeUserIDNumber;
+//	string removeUserIDNumber;
 //
 //	cout << "Please enter the details of the user you would like to add: \n" << endl;
 //	cout << "First Name: \n";
 //	cin >> removeUserFirstName;
 //	cout << endl;
 //	cout << "Surname: \n";
-//	cin >> removeUserSurname;
+//	cin >> removeUserLastname;
 //	cout << endl;
 //	cout << "User ID: \n";
 //	cin >> removeUserID;
