@@ -28,12 +28,15 @@ class Admin : public UserDatabase
 
 public:
 	Admin() : UserDatabase("User_database.txt") {};
-	void setNewUserFirstname(std::string newUserFirstName);
 	void adminMenu(UserDatabase userDatabase);
 	void addUser(UserDatabase userDatabase);
-	std::string getNewUserFirstname();
-	//void removeUser();
-	std::string addUserFirstName;
+	void removeUser(UserDatabase userDatabase);
+	void editUser(UserDatabase userDatabase);
+	void atmMaintenance();
+	void updateATMBalance();
+	void updateReceiptAmount();
+	void viewTransactionHistory();
+
 private:
 
 };

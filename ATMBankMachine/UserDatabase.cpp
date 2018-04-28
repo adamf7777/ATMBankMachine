@@ -161,7 +161,11 @@ void UserDatabase::addUser(User* user) {
 	return;
 }
 
-//remove user
 //search through the allUsers array to find position of the user in the allUsers array
 //remove it from the array of allUser (allUsers->removeAt(positon));
 //call the rewriteUserDatabase() function
+
+////remove user
+//void UserDatabase::removeUser(User* user) {
+//	allUsers->removeAt(*user);
+//}
