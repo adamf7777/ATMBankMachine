@@ -43,8 +43,8 @@ int main(int argc, const char * argv[])
 	system("cls");
 
 	cout << "Welcome to Bank of Ulster" << endl << endl;
-	cout << "Please enter your User ID Number " << endl;
-	cout << "User ID Number: " << endl;
+	cout << "Please enter your User ID Number " << endl << endl;
+	cout << "User ID Number: ";
 
 	cin >> userInputIDNumber;
 	cout << endl;

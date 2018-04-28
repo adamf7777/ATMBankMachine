@@ -2,27 +2,17 @@
 #include "User.h"
 #include "UserDatabase.h"
 
-
 //#include <string>
 //#include <ostream>
 //#include <s>
 
 using namespace std;
 
-//void Admin::setNewUserFirstname(string newUserFirstName)
-//{
-//	addUserFirstName = newUserFirstName;
-//}
-
 void Admin::adminMenu(UserDatabase userDatabase)
 {
 	int adminInputOption;
-	//Admin admin;
-	//	UserDatabase userDatabase("User_database.txt");
-	//int newUserLine = (userDatabase.getAllUsers().size()) + 1;
-	//user newUser = userDatabase.users.at(newUserLine);
 
-	userDatabase.getAllUsers().size();
+	//userDatabase.getAllUsers().size();
 
 	cout << "Admin Menu" << endl << endl;
 	cout << "Please select one of the options below:" << endl << endl;
@@ -31,18 +21,16 @@ void Admin::adminMenu(UserDatabase userDatabase)
 	cout << "[2] Remove User " << endl;
 	cout << "[3] Edit User Data " << endl;
 	cout << "[4] ATM Maintenance " << endl;
-	cout << "[5] Change Pin Code" << endl;
+	cout << "[5] Change Pin Code" << endl << endl;
+	cout << "Option: ";
 
 	cin >> adminInputOption;
-	//cout << "Debug: " << adminInputOption << endl;
 
 	system("cls");
 
 	switch (adminInputOption) {
 	case 1:
 
-		//cout << "Debug: Option 1" << endl;
-	
 		addUser(userDatabase);
 
 		break;
@@ -91,32 +79,28 @@ void Admin::addUser(UserDatabase userDatabase)
 	double addUserOverdraftLimit;
 	int addUserPincode;
 	int addUserDatabaseSize;
-	int newUserIDNumber;
-	string newUserInfo;
+	//int newUserIDNumber;
+	//string newUserInfo;
 
 	addUserDatabaseSize = (userDatabase.getAllUsers().size()) + 1;
 	//cout << newUserDatabaseSize << endl << endl;
 
 	addUserAccountNumber = addUserDatabaseSize + 1000;
 	//cout << "The ID number for the new user is: " << addUserAccountNumber << endl;
-
-	cout << "Please enter the details of the user you would like to add: \n" << endl;
+	
+	cout << "Admin Menu: Add User" << endl << endl;
+	cout << "Please enter the details of the user you would like to add: " << endl << endl;
 	cout << "New user account number: " << addUserAccountNumber << endl;
-	cout << "First Name: \n";
+	cout << "First Name:			";
 	cin >> addUserFirstName;
-	cout << endl;
-	cout << "Last Name: \n";
+	cout << "Last Name:			";
 	cin >> addUserLastName;
-	cout << endl;
-	cout << "Initial Account Balance: \n";
+	cout << "Initial Account Balance:	";
 	cin >> addUserAccountBalance;
-	cout << endl;
-	cout << "Inital Overdraft Limit: \n";
+	cout << "Inital Overdraft Limit:		";
 	cin >> addUserOverdraftLimit;
-	cout << endl;
-	cout << "Setup Pincode: \n";
+	cout << "Setup Pincode:			";
 	cin >> addUserPincode;
-	cout << endl;
 
 	User* tempUser = new User();
 	tempUser->setFirstName(addUserFirstName);
@@ -127,29 +111,7 @@ void Admin::addUser(UserDatabase userDatabase)
 	tempUser->setPinCode(addUserPincode);
 
 	userDatabase.addUser(tempUser);
-	/*UserDatabase userDatabase("User_database.txt");
-	
-	userDatabase.getAllUsers().size();*/
-	
-	//newUserDatabaseSize = (userDatabase.getAllUsers().size()) + 1;
-	//cout << newUserDatabaseSize << endl << endl;
 
-//	newUserIDNumber = newUserDatabaseSize + 1000;
-//	cout << "The ID number for the new user is: " << newUserIDNumber << endl;
-
-	//setNewUserFirstname(addUserFirstName);
-	//newUser.setLastName(addUserLastName);
-	//newUser.setBalance(addUserAccountBalance);
-	//newUser.setOverdraftLimit(addUserOverdraftLimit);
-	//newUser.setPinCode(addUserPincode);
-
-//	userDatabase.allUsers->at(newUserDatabaseSize).setFirstName(addUserFirstName);
-	//userDatabase.allUsers->at(newUserDatabaseSize).setLastName(addUserLastName);
-	//userDatabase.allUsers->at(newUserDatabaseSize).setBalance(addUserAccountBalance);
-	//userDatabase.allUsers->at(newUserDatabaseSize).setOverdraftLimit(addUserOverdraftLimit);
-	//userDatabase.allUsers->at(newUserDatabaseSize).setPinCode(addUserPincode);
-
-	//userDatabase.rewriteUserDatabaseNewUser();
 	cout << "Database Updated!" << endl;
 
 }
