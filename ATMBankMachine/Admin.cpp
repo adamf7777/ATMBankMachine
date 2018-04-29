@@ -151,7 +151,6 @@ void Admin::editUser(UserDatabase userDatabase)
 	double editUserAccountBalance;
 	double editUserOverdraftLimit;
 	int editUserPincode;
-	std::string returnOption;
 
 	cout << "Admin Menu: Edit User" << endl << endl;
 	cout << "Please enter the Account Number of the user you would like to edit: " << endl << endl;
@@ -225,8 +224,7 @@ void Admin::updateATMBalance(UserDatabase userDatabase)
 	int newATMNotesTen;
 	int newATMNotesTwenty;
 	int totalNotes;
-	bool tryAgain;
-	std::string returnOption;
+	std::string tryAgain;
 
 	cout << "Admin Menu: ATM Maintenance: Update ATM Balance" << endl << endl;
 	cout << "Please enter the total amount of money being added to the ATM: " << endl << endl;
@@ -243,33 +241,40 @@ void Admin::updateATMBalance(UserDatabase userDatabase)
 
 	totalNotes = ((newATMNotesFive * 5) + (newATMNotesTen * 10) + (newATMNotesTwenty * 20));
 
-	if (totalNotes != totalAdded)
+	if (totalNotes == totalAdded)
 	{
-		cout << endl << "ERROR! Incorrect amount of each note entered, amount does not match the total being added!" << endl;
-		cout << "Would you like to re-enter? (Y/N):";
-		cin >> tryAgain;
-
-		if (tryAgain = "Y")
-		{
-			while (totalNotes != totalAdded)
-			{
-				cout << endl << "Please enter the amount of each note being added to the ATM: " << endl << endl;
-				cout << "Amount of FIVE(5) pound notes being added:	";
-				cin >> newATMNotesFive;
-				cout << "Amount of TEN(10) pound notes being added:	";
-				cin >> newATMNotesTen;
-				cout << "Amount of TWENTY(20) pound notes being added:	";
-				cin >> newATMNotesTwenty;
-			}
-		}
-		else
-		{
-
-		}
+		cout << endl << "ATM Balance Updated!" << endl << endl;
 	}
 	else
 	{
-		cout << endl << "ATM Balance Updated!" << endl << endl;
+		cout << endl << "ERROR! Incorrect amount of each note entered, amount does not match the total being added!" << endl;
+		cout << "Would you like to re-enter? (Y/N): ";
+		cin >> tryAgain;
+
+		if (tryAgain == "Y")
+		{
+			cout << "\nTotal amount of money being added: ";
+			cin >> totalAdded;
+			cout << endl << "Please enter the amount of each note being added to the ATM: " << endl << endl;
+			cout << "Amount of FIVE(5) pound notes being added:	";
+			cin >> newATMNotesFive;
+			cout << "Amount of TEN(10) pound notes being added:	";
+			cin >> newATMNotesTen;
+			cout << "Amount of TWENTY(20) pound notes being added:	";
+			cin >> newATMNotesTwenty;
+
+			totalNotes = ((newATMNotesFive * 5) + (newATMNotesTen * 10) + (newATMNotesTwenty * 20));
+
+			if (totalNotes == totalAdded)
+			{
+				cout << endl << "ATM Balance Updated!" << endl << endl;
+			}
+			else
+			{
+				cout << endl << "There has been an error, please report the problem to service!" << endl << endl;
+			}
+
+		}
 	}
 
 	returnToATMMaintenanceMenu(userDatabase);
