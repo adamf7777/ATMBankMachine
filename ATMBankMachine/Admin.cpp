@@ -47,7 +47,7 @@ void Admin::adminMenu(UserDatabase userDatabase)
 
 	case 4:
 
-		atmMaintenance();
+		atmMaintenanceMenu(userDatabase);
 
 		break;
 
@@ -68,7 +68,6 @@ void Admin::addUser(UserDatabase userDatabase)
 	double addUserOverdraftLimit;
 	int addUserPincode;
 	int addUserDatabaseSize;
-	std::string returnOption;
 
 	addUserDatabaseSize = (userDatabase.getAllUsers().size()) + 1;
 	//cout << newUserDatabaseSize << endl << endl;
@@ -102,20 +101,7 @@ void Admin::addUser(UserDatabase userDatabase)
 
 	cout << "\nDatabase Updated!" << endl << endl;
 
-	cout << "Would you like to return to the Admin menu? (Y/N): ";
-	cin >> returnOption;
-
-	system("cls");
-
-	if (returnOption == "Y")
-	{
-		adminMenu(userDatabase);
-	}
-	else
-	{
-		cout << "\n\n\n		Thanks for using this service, please press 'X' to exit!" << endl;
-		cin >> returnOption;
-	}
+	returnToAdminMenu(userDatabase);
 
 }
 
@@ -151,6 +137,10 @@ void Admin::removeUser(UserDatabase userDatabase)
 	tempUser->setBalance(removeUserAccountBalance);
 	tempUser->setOverdraftLimit(removeUserOverdraftLimit);
 	tempUser->setPinCode(removeUserPincode);
+
+	cout << "\nDatabase Updated!" << endl << endl;
+
+	returnToAdminMenu(userDatabase);
 }
 
 void Admin::editUser(UserDatabase userDatabase)
@@ -161,6 +151,7 @@ void Admin::editUser(UserDatabase userDatabase)
 	double editUserAccountBalance;
 	double editUserOverdraftLimit;
 	int editUserPincode;
+	std::string returnOption;
 
 	cout << "Admin Menu: Edit User" << endl << endl;
 	cout << "Please enter the Account Number of the user you would like to edit: " << endl << endl;
@@ -177,11 +168,13 @@ void Admin::editUser(UserDatabase userDatabase)
 
 	//userDatabase.editUser(tempUser);
 
-	cout << "Database Updated!" << endl;
+	cout << "\nDatabase Updated!" << endl << endl;
+
+	returnToAdminMenu(userDatabase);
 
 }
 
-void Admin::atmMaintenance()
+void Admin::atmMaintenanceMenu(UserDatabase userDatabase)
 {
 	int adminMaintenanceOption;
 
@@ -190,7 +183,8 @@ void Admin::atmMaintenance()
 
 	cout << "[1] Update ATM Balance " << endl;
 	cout << "[2] Update Receipt Amount " << endl;
-	cout << "[3] View Transaction History " << endl << endl;
+	cout << "[3] View Transaction History " << endl;
+	cout << "[4] Return to Admin Menu" << endl << endl;
 	cout << "Option: ";
 
 	cin >> adminMaintenanceOption;
@@ -200,61 +194,134 @@ void Admin::atmMaintenance()
 	switch (adminMaintenanceOption) {
 	case 1:
 
-		updateATMBalance();
+		updateATMBalance(userDatabase);
 
 		break;
 
 	case 2:
 
-		updateReceiptAmount();
+		updateReceiptAmount(userDatabase);
 
 		break;
 
 	case 3:
 
-		viewTransactionHistory();
+		viewTransactionHistory(userDatabase);
+
+		break;
+
+	case 4:
+
+		adminMenu(userDatabase);
 
 		break;
 	}
 }
 
-void Admin::updateATMBalance()
+void Admin::updateATMBalance(UserDatabase userDatabase)
 {
-	int newATMBalance;
-	int newATMBalanceFive;
-	int newATMBalanceTen;
-	int newATMBalanceTwenty;
+	int totalAdded;
+	int newATMNotesFive;
+	int newATMNotesTen;
+	int newATMNotesTwenty;
 	int totalNotes;
+	bool tryAgain;
+	std::string returnOption;
 
 	cout << "Admin Menu: ATM Maintenance: Update ATM Balance" << endl << endl;
-	cout << "Please enter the amount of money being added to the ATM: " << endl << endl;
-	cout << "Amount of money being added: ";
-	cin >> newATMBalance;
+	cout << "Please enter the total amount of money being added to the ATM: " << endl << endl;
+	cout << "Total amount of money being added: ";
+	cin >> totalAdded;
 
-	cout << endl << "Please enter the amount of FIVE(5) pound notes being added to the ATM: " << endl << endl;
-	cout << "Amount of notes being added: ";
-	cin >> newATMBalanceFive;
+	cout << endl << "Please enter the amount of each note being added to the ATM: " << endl << endl;
+	cout << "Amount of FIVE(5) pound notes being added:	";
+	cin >> newATMNotesFive;
+	cout << "Amount of TEN(10) pound notes being added:	";
+	cin >> newATMNotesTen;
+	cout << "Amount of TWENTY(20) pound notes being added:	";
+	cin >> newATMNotesTwenty;
 
-	cout << endl << "Please enter the amount of TEN(10) pound notes being added to the ATM: " << endl << endl;
-	cout << "Amount of notes being added: ";
-	cin >> newATMBalanceTen;
+	totalNotes = ((newATMNotesFive * 5) + (newATMNotesTen * 10) + (newATMNotesTwenty * 20));
 
-	cout << endl << "Please enter the amount of TWENTY(20) pound notes being added to the ATM: " << endl << endl;
-	cout << "Amount of notes being added: ";
-	cin >> newATMBalanceTwenty;
-
-	totalNotes = ((newATMBalanceFive * 5) + (newATMBalanceTen * 10) + (newATMBalanceTwenty * 20));
-
-	if (totalNotes != newATMBalance)
+	if (totalNotes != totalAdded)
 	{
-		cout << endl << "ERROR! Incorrect the current amounts of notes do not total the amount" << endl << endl;
+		cout << endl << "ERROR! Incorrect amount of each note entered, amount does not match the total being added!" << endl;
+		cout << "Would you like to re-enter? (Y/N):";
+		cin >> tryAgain;
+
+		if (tryAgain = "Y")
+		{
+			while (totalNotes != totalAdded)
+			{
+				cout << endl << "Please enter the amount of each note being added to the ATM: " << endl << endl;
+				cout << "Amount of FIVE(5) pound notes being added:	";
+				cin >> newATMNotesFive;
+				cout << "Amount of TEN(10) pound notes being added:	";
+				cin >> newATMNotesTen;
+				cout << "Amount of TWENTY(20) pound notes being added:	";
+				cin >> newATMNotesTwenty;
+			}
+		}
+		else
+		{
+
+		}
+	}
+	else
+	{
+		cout << endl << "ATM Balance Updated!" << endl << endl;
+	}
+
+	returnToATMMaintenanceMenu(userDatabase);
+
+}
+
+void Admin::updateReceiptAmount(UserDatabase userDatabase)
+{
+
+}
+
+void Admin::viewTransactionHistory(UserDatabase userDatabase)
+{
+
+}
+
+void Admin::returnToAdminMenu(UserDatabase userDatabase)
+{
+	std::string returnOption;
+
+	cout << "Would you like to return to the Admin menu? (Y/N): ";
+	cin >> returnOption;
+
+	system("cls");
+
+	if (returnOption == "Y")
+	{
+		adminMenu(userDatabase);
+	}
+	else
+	{
+		cout << "\n\n\n		Thanks for using this service, please press 'X' to exit!" << endl;
+		cin >> returnOption;
 	}
 }
-void Admin::updateReceiptAmount()
-{
 
-}
-void Admin::viewTransactionHistory()
+void Admin::returnToATMMaintenanceMenu(UserDatabase userDatabase)
 {
+	std::string returnOption;
 
+	cout << "Would you like to return to the ATM Maintenance menu? (Y/N): ";
+	cin >> returnOption;
+
+	system("cls");
+
+	if (returnOption == "Y")
+	{
+		atmMaintenanceMenu(userDatabase);
+	}
+	else
+	{
+		cout << "\n\n\n		Thanks for using this service, please press 'X' to exit!" << endl;
+		cin >> returnOption;
+	}
 }

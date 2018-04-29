@@ -32,10 +32,12 @@ public:
 	void addUser(UserDatabase userDatabase);
 	void removeUser(UserDatabase userDatabase);
 	void editUser(UserDatabase userDatabase);
-	void atmMaintenance();
-	void updateATMBalance();
-	void updateReceiptAmount();
-	void viewTransactionHistory();
+	void atmMaintenanceMenu(UserDatabase userDatabase);
+	void updateATMBalance(UserDatabase userDatabase);
+	void updateReceiptAmount(UserDatabase userDatabase);
+	void viewTransactionHistory(UserDatabase userDatabase);
+	void returnToAdminMenu(UserDatabase userDatabase);
+	void returnToATMMaintenanceMenu(UserDatabase userDatabase);
 
 private:
 
