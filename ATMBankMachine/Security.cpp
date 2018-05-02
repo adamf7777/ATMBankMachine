@@ -22,12 +22,13 @@ int Security::pinCodeCheck(User currentUser, UserDatabase userDatabase)
 	int retrievedPin;
 	int pinCheckCount = 0;
 	int pinSuccessful = 0;
+	int pinStatusCheck;
 
 	retrievedPin = currentUser.getPinCode();
 
 
 	//requestUserPin = 1111;
-	while (pinSuccessful == 0 && pinCheckCount <= 2)
+	while ((pinSuccessful == 0) && (pinCheckCount <= 3))
 	{
 
 		cout << "Please enter pin" << endl;
@@ -38,18 +39,47 @@ int Security::pinCodeCheck(User currentUser, UserDatabase userDatabase)
 			pinSuccessful = 1;
 		}
 
-		else if (pinCheckCount < 3)
+		else if (pinCheckCount < 2)
 		{
+			system("cls");
+
+			pinStatusCheck = pinCheckCount;
+			pinStatusCheck = pinStatusCheck + 2;
+
+			cout << "Pin is incorrect - please try again" << endl << endl;
+			cout << "Attempt [" << pinStatusCheck << " of 3]" << endl;
+			
 			pinCheckCount++;
 			//return 0;
 			pinSuccessful = 0;
 		}
 
-		else if (pinCheckCount >= 2)
+		else if (pinSuccessful = 0 && pinCheckCount >= 2)
 		{
 			//return 0;
+			//char accountLock;
 
-			pinSuccessful = 0;
+			//pinSuccessful = 0;
+			pinCheckCount = 5;
+			//system("cls");
+
+			cout << "**************************************************" << endl;
+			cout << "**               Security Alert!                **" << endl;
+			cout << "**************************************************" << endl << endl;
+
+			cout << "You have entered your pincode incorrectly 3 times!" << endl << endl;
+			cout << "Your account has been locked " << endl << endl;
+			cout << "You will need to contact your bank to unlock your account" << endl << endl;
+
+			cout << "**************************************************" << endl;
+
+			//cout << "Press any key to exit " << endl;
+			
+			//cin >> accountLock;
+
+			//return 0;
+			//pinSuccessful = 0;
+			
 		}
 
 	}
