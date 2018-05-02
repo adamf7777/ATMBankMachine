@@ -20,7 +20,7 @@
 
 	using namespace std;
 
-
+/*
 	void getMachineCashStatus()
 	{
 	
@@ -42,3 +42,6 @@
 
 		tenamount = (withdrawalamount - (twentynotes * 20));		tennotes = (tenamount / 10);		cout << "Number of Ten pound notes:  " << tennotes << "\n";		fiveamount = (tenamount - (tennotes * 10));		fivenotes = (fiveamount / 5);		cout << "Number of Five pound notes:  " << fivenotes << "\n";		notesdispensed = (fiveamount - (fivenotes * 5));	//Depoist amount with number of notes recorded
 	}
+
+
+	*/

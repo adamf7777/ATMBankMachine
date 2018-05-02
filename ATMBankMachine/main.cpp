@@ -69,7 +69,7 @@ int main(int argc, const char * argv[])
 	UserDatabase userDatabase("User_database.txt");
 	User currentUser = userDatabase.users.at(userInputIDNumberLine);
 	
-	int mainPinCheck;
+	//int mainPinCheck;
 
 	Security security;
 
