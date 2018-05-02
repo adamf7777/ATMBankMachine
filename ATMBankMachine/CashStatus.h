@@ -1,5 +1,5 @@
-#ifndef Account_H_
-#define Account_H_
+#ifndef CashStatus_H_
+#define CashStatus_H_
 
 /**
 * one line description of class or file
@@ -13,7 +13,28 @@
 *
 */
 
+#include <string>
+#include <iostream>
+#include <sstream> //string stream function
+
+//using namespace std;
+
+
+class User;
+
+class CashStatus
+{
+public:
 void getMachineCashStatus();
+
+};
+
 
 
 #endif
+/**
+* The CashStatus class is the overseeing the dispensation and depositing of cash by recording the quantity of notes within the system
+*
+* Remove twenty pound notes, ten pound notes and five pound notes from system.
+* Add twenty pound notes, ten pound notes and five pound notes from system.
+*/#pragma once
