@@ -27,8 +27,8 @@ class Security
 {
 
 public:
-	void checkPincode(UserDatabase userdatabase, User currentUser);
-	void pinCodeCheck(User currentUser);
+	//void checkPincode(UserDatabase userdatabase, User currentUser);
+	int pinCodeCheck(User currentUser, UserDatabase userDatabase);
 	//Security security;
 private: 
  

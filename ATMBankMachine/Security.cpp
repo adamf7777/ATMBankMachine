@@ -16,22 +16,52 @@ using namespace std;
 //Security::security;
 //currentUser.getPinCode();
  
-void pinCodeCheck()
+int Security::pinCodeCheck(User currentUser, UserDatabase userDatabase)
 {
-	int storeUserPin;
+	int requestUserPin;
+	int retrievedPin;
+	int pinCheckCount = 0;
+	int pinSuccessful = 0;
 
-	cout << "Please Enter Pin Code:" << endl << endl;
-	cin >> storeUserPin;
+	retrievedPin = currentUser.getPinCode();
 
-	if (storeUserPin < 1000 || storeUserPin > 9999)
+
+	//requestUserPin = 1111;
+	while (pinSuccessful == 0 && pinCheckCount <= 2)
 	{
-		while (storeUserPin < 1000 || storeUserPin > 9999)
+
+		cout << "Please enter pin" << endl;
+		cin >> requestUserPin;
+
+		if ((retrievedPin == requestUserPin) && pinCheckCount < 3)
 		{
-			cout << "Invalid Pin Code, Please Enter a 4 Digit Pin Code!" << endl;
-			cout << "Please Enter Pin Code:" << endl;
-				cin >> storeUserPin;
-	 }
-}
+			pinSuccessful = 1;
+		}
 
+		else if (pinCheckCount < 3)
+		{
+			pinCheckCount++;
+			//return 0;
+			pinSuccessful = 0;
+		}
 
+		else if (pinCheckCount >= 2)
+		{
+			//return 0;
+
+			pinSuccessful = 0;
+		}
+
+	}
+
+	if (pinSuccessful == 0)
+	{
+		//cout << "The pin has been incorrectly entered " << endl << endl;
+		return 0;
+	}
+
+	else 
+	{
+		return 1;
+	}
 }

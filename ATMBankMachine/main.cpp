@@ -69,18 +69,23 @@ int main(int argc, const char * argv[])
 	UserDatabase userDatabase("User_database.txt");
 	User currentUser = userDatabase.users.at(userInputIDNumberLine);
 	
-	Security security;
-	security.checkPincode(userDatabase, currentUser);
-	
-	//****Function to display number of users**********
-	//****Do not delete **********************
-	//cout << endl << endl;
-	//cout << userDatabase.getAllUsers().size() << endl; //Displays the number of lines in the list
-	//for (int i = 0; list.getAllUsers().size(); i++) {
-	//	cout << list.getAllUsers().at(i).getFirstName() << endl;
-	//}
+	int mainPinCheck;
 
-	system("cls");
+	Security security;
+
+	
+	//system("cls");
+	if (security.pinCodeCheck(currentUser, userDatabase) == 0)
+	{
+		anotherService = 'N';
+		cout << "The incorrect pin has been entered more than 3 times. " << endl;
+	}
+
+	else
+	{
+		anotherService = 'Y';
+		cout << "correct pin" << endl;
+	}
 
 	while (anotherService == 'Y')
 	{
