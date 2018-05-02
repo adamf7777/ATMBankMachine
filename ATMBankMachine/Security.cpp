@@ -16,10 +16,13 @@ using namespace std;
 //Security::security;
 //currentUser.getPinCode();
  
-void checkPincode(UserDatabase userdatabase, User currentUser)
+void pinCodeCheck()
 {
-	cout << currentUser.getAccountNumber();
-	cout << currentUser.getPinCode();
-	
+	int storeUserPin;
+
+	cout << "Please Enter Pin Code" << endl << endl;
+	cin >> storeUserPin;
+
+
 
 }
