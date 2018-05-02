@@ -22,6 +22,7 @@
 #include "UserDatabase.h"
 #include "Admin.h"
 #include "Security.h"
+#include "CashStatus.h"
 
 #include <conio.h>
 #include <string>
@@ -72,7 +73,7 @@ int main(int argc, const char * argv[])
 	//int mainPinCheck;
 
 	Security security;
-
+	CashStatus cashStatus;
 	
 	//system("cls");
 	if (security.pinCodeCheck(currentUser, userDatabase) == 0)
@@ -84,7 +85,7 @@ int main(int argc, const char * argv[])
 	else
 	{
 		anotherService = 'Y';
-		cout << "correct pin" << endl;
+		system("cls");
 	}
 
 	while (anotherService == 'Y')
@@ -106,7 +107,7 @@ int main(int argc, const char * argv[])
 			switch (userInputOption) {
 			case 1:
 
-				currentUser.withdrawCash(userDatabase, userInputIDNumberLine);
+				currentUser.withdrawCash(userDatabase, userInputIDNumberLine, cashStatus);
 
 				break;
 

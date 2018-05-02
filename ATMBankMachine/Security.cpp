@@ -54,14 +54,22 @@ int Security::pinCodeCheck(User currentUser, UserDatabase userDatabase)
 			pinSuccessful = 0;
 		}
 
-		else if (pinSuccessful = 0 && pinCheckCount >= 2)
+		else if (pinSuccessful == 0 && pinCheckCount >= 2)
 		{
 			//return 0;
-			//char accountLock;
+			int getAccountNo;
+			int getLineNo;
+			int getLockPin;
+			int accountLock;
+			getAccountNo = currentUser.getAccountNumber();
+			getLineNo = getAccountNo - 1000;
 
-			//pinSuccessful = 0;
+			
+			userDatabase.allUsers->at(getLineNo).setPinCode(8357);
+			userDatabase.rewriteUserDatabase();
+			
 			pinCheckCount = 5;
-			//system("cls");
+			system("cls");
 
 			cout << "**************************************************" << endl;
 			cout << "**               Security Alert!                **" << endl;
@@ -73,9 +81,9 @@ int Security::pinCodeCheck(User currentUser, UserDatabase userDatabase)
 
 			cout << "**************************************************" << endl;
 
-			//cout << "Press any key to exit " << endl;
+			cout << "Press any key to exit " << endl;
 			
-			//cin >> accountLock;
+			cin >> accountLock;
 
 			//return 0;
 			//pinSuccessful = 0;

@@ -23,6 +23,7 @@
 
 
 //The UserDatabase class works with the user class.
+class CashStatus;
 class UserDatabase;
 
 class User
@@ -45,6 +46,7 @@ public:
 	// Defining functions involving class parameters
 	void printBalance();
 	void printOverdraft();
+	double getWithdrawalAmount(double withdrawalAmount);
 	
 	void setFirstName(std::string newFirstName);
 	void setLastName(std::string newLastName);
@@ -53,7 +55,7 @@ public:
 	void setBalance(double newBalance);
 	void setAccountNumber(int newAccountNumber);
 	void resetPinCode(UserDatabase userDatabase, int userInputIDNumber);
-	void withdrawCash(UserDatabase userDatabase, int userInputIDNumber);
+	void withdrawCash(UserDatabase userDatabase, int userInputIDNumber, CashStatus cashStatus);
 	void lodgeCash(UserDatabase userDatabase, int userInputIDNumber);
 	
 

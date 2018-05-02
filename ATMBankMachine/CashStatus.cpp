@@ -38,21 +38,21 @@
 		int twentybalance;
 	}*/
 
-	void CashStatus::withdrawCash(User currentUser, UserDatabase userDatabase)
+	void CashStatus::withdrawCash(User currentUser, UserDatabase userDatabase, double withdrawalAmount)
 	{
 		//withdrawalAmount for number of notes
-		int twentynotes;
-		int withdrawalamount;
-		int tenamount;
-		int tennotes;
-		int fiveamount;
-		int notesdispensed;
-		int fivenotes;
-		int Balance;
-		int twentybalance;
+		double twentynotes;
+		//int withdrawalamount;
+		double tenamount;
+		double tennotes=0;
+		double fiveamount;
+		double notesdispensed;
+		double fivenotes;
+	
+		double twentybalance;
+		double Balance = 0;
 
-
-		twentynotes = (currentUser.getWithdrawalAmount() 20);
+		twentynotes = (currentUser.getWithdrawalAmount(withdrawalAmount)/20 );
 		cout << "Number of Twenty pound notes:  " << twentynotes << "\n";
 		ofstream twentyfile;
 		twentyfile.open("tennotes.txt");
@@ -61,7 +61,7 @@
 		twentyfile.close();
 
 
-		tenamount = (withdrawalamount - (twentynotes * 20));		tennotes = (tenamount / 10);		cout << "Number of Ten pound notes:  " << tennotes << "\n";		ofstream tenfile;
+		tenamount = (currentUser.getWithdrawalAmount(withdrawalAmount) - (twentynotes * 20));		tennotes = (tenamount / 10);		cout << "Number of Ten pound notes:  " << tennotes << "\n";		ofstream tenfile;
 		tenfile.open("tennotes.txt");
 		tenfile << "balance";
 		Balance = (Balance - tennotes);

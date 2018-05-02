@@ -11,6 +11,7 @@
 // Include the header files
 #include "User.h"
 #include "UserDatabase.h"
+#include "CashStatus.h"
 
 
 using namespace std;
@@ -200,6 +201,10 @@ void User::printOverdraft()
 
 }
 
+double User::getWithdrawalAmount(double withdrawalAmount)
+{
+	return withdrawalAmount;
+}
 
 /** 
 * Function to allow the user to change their pincode
@@ -291,9 +296,9 @@ void User::resetPinCode(UserDatabase userDatabase, int userInputIDNumber)
   * @see overdraftLimit
   * @see rewriteUserDatabase
   */
-void User::withdrawCash(UserDatabase userDatabase, int userInputIDNumber)
+void User::withdrawCash(UserDatabase userDatabase, int userInputIDNumber, CashStatus cashStatus)
 {
-	double withdrawalAmount, withdrawalCheck = 0, withdrawalBalance;
+	double withdrawalAmount, withdrawalCheck = 0, withdrawalBalance, newBalance, newOverdraftLimit;
 	int  withdrawalOption;
 	char overdraftCheck;
 
@@ -322,6 +327,8 @@ void User::withdrawCash(UserDatabase userDatabase, int userInputIDNumber)
 
 		// check that withdrawal amount is divisible by 5
 		withdrawalCheck = (withdrawalAmount / 5);
+
+		
 
 		// if it can be divided into five pound notes
 		// set withdrawal check as 0
@@ -371,6 +378,8 @@ void User::withdrawCash(UserDatabase userDatabase, int userInputIDNumber)
 			cout << "Error, incorrect value selected." << endl;
 			cout << "Please try again later" << endl;
 		} // end of switch case
+
+		withdrawalCheck = 1;
 	} // end of else  for option other than 8
 
 
@@ -404,7 +413,7 @@ void User::withdrawCash(UserDatabase userDatabase, int userInputIDNumber)
 			cout << "You have insufficient funds for this transaction" << endl << endl;
 			printOverdraft();
 			cout << endl;
-			cout << "Would you like to use your overdraft for this transaction? [Y/N]" << endl;
+			cout << "Would you like to use your overdraft for this transaction? [Y/N]" << endl << endl;
 			cin >> overdraftCheck;
 
 			if (overdraftCheck == 'Y')
@@ -413,6 +422,18 @@ void User::withdrawCash(UserDatabase userDatabase, int userInputIDNumber)
 				if (withdrawalAmount <= (balance + overdraftLimit))
 				{
 					// if overdraft will cover the transaction
+					cout << "Updating your overdraft limit" << endl << endl;
+					newOverdraftLimit = overdraftLimit - (withdrawalAmount - balance);
+					//currentUser.setOverdraftLimit(newOverdraftLimit);
+
+					newBalance = 0;
+					User::setBalance(newBalance);
+					userDatabase.allUsers->at(userInputIDNumber).setBalance(newBalance);
+
+					User::setOverdraftLimit(newOverdraftLimit);
+					userDatabase.allUsers->at(userInputIDNumber).setOverdraftLimit(newOverdraftLimit);
+					userDatabase.rewriteUserDatabase();
+					cout << "Your new overdraft limit is: " << char(156) << newOverdraftLimit << endl << endl;
 				}
 
 				else

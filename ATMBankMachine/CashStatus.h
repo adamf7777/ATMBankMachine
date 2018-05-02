@@ -21,12 +21,12 @@
 
 
 class User;
-
+class UserDatabase;
 class CashStatus
 {
 public:
 //void getMachineCashStatus(User currentUser, UserDatabase userDatabase);
-void withdrawCash(User currentUser, UserDatabase userDatabase);
+void withdrawCash(User currentUser, UserDatabase userDatabase, double withdrawalAmount);
 
 
 private:
