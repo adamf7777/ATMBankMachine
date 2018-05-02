@@ -16,6 +16,7 @@
 #include <iostream>
 #include <fstream>
 #include "User.h"
+#include "CashStatus.h"
 
 	using namespace std;
 
@@ -32,14 +33,12 @@
 	int notesdispensed;
 	int fivenotes;
 
-	
+	//withdrawalAmount for number of notes
+	file.open("twentynotes.txt");
+
 		withdrawalamount = 10;
 		twentynotes = (withdrawalamount / 20);
 		cout << "Number of Twenty pound notes:  " << twentynotes << "\n";
 
-		tenamount = (withdrawalamount - (twentynotes * 20));		tennotes = (tenamount / 10);		cout << "Number of Ten pound notes:  " << tennotes << "\n";		fiveamount = (tenamount - (tennotes * 10));		fivenotes = (fiveamount / 5);		cout << "Number of Five pound notes:  " << fivenotes << "\n";		notesdispensed = (fiveamount - (fivenotes * 5));	
+		tenamount = (withdrawalamount - (twentynotes * 20));		tennotes = (tenamount / 10);		cout << "Number of Ten pound notes:  " << tennotes << "\n";		fiveamount = (tenamount - (tennotes * 10));		fivenotes = (fiveamount / 5);		cout << "Number of Five pound notes:  " << fivenotes << "\n";		notesdispensed = (fiveamount - (fivenotes * 5));	//Depoist amount with number of notes recorded
 	}
-
-
-
-
