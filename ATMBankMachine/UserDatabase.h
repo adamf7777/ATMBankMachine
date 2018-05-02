@@ -49,7 +49,7 @@ public:
 	void addUser(User* user);
 
 	//Overriding with dynamic object
-	//void removeUser(User* user);
+	void removeUser(User* user);
 
 	// declaring vector function for allusers
 	std::vector<User>* allUsers = new std::vector<User>();

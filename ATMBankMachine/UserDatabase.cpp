@@ -78,7 +78,7 @@ void UserDatabase::rewriteUserDatabase()
 	fout.close();
 }
 
-void UserDatabase::rewriteUserDatabaseNewUser()
+/*void UserDatabase::rewriteUserDatabaseNewUser()
 {
 	ofstream fout(filePath);
 	std::string lineContents;
@@ -118,17 +118,17 @@ void UserDatabase::rewriteUserDatabaseNewUser()
 
 
 
-		/*for (i = 21; i < 22; i++)
+		for (i = 21; i < 22; i++)
 		{
 			string name = "Matt";
 			cout << "Matthew";
 			fout << getAllUsers().at(i)
-		}*/
+		}
 
 		fout << endl;
 	}
 	fout.close();
-}
+}*/
 
 /**
 * Function to store all user data
@@ -165,7 +165,17 @@ void UserDatabase::addUser(User* user) {
 //remove it from the array of allUser (allUsers->removeAt(positon));
 //call the rewriteUserDatabase() function
 
+
 ////remove user
 //void UserDatabase::removeUser(User* user) {
 //	allUsers->removeAt(*user);
 //}
+
+/*void UserDatabase::removeUser(User* user)
+{
+	getAllUsers().at(10);
+
+
+
+
+}*/

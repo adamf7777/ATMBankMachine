@@ -113,30 +113,25 @@ void Admin::removeUser(UserDatabase userDatabase)
 	double removeUserAccountBalance;
 	double removeUserOverdraftLimit;
 	int removeUserPincode;
-	//int removeUserDatabaseSize;
-	//int removeUserIDNumber;
-	//string removeUserIDNumber;
+	int removeUserLineNumber;
 
 	cout << "Admin Menu: Remove User" << endl << endl;
 	cout << "Please enter the Account Number of the user you would like to remove: " << endl << endl;
 	cout << "Account Number: ";
 	cin >> removeUserAccountNumber;
 
-	//userDatabase.removeUser(tempUser);
+	removeUserLineNumber = removeUserAccountNumber - 1000;
+	
+	userDatabase.allUsers->at(removeUserLineNumber).setFirstName("Deleted");
+	userDatabase.allUsers->at(removeUserLineNumber).setLastName("User");
+	userDatabase.allUsers->at(removeUserLineNumber).setAccountNumber(removeUserAccountNumber);
+	userDatabase.allUsers->at(removeUserLineNumber).setBalance(0);
+	userDatabase.allUsers->at(removeUserLineNumber).setOverdraftLimit(0);
+	userDatabase.allUsers->at(removeUserLineNumber).setPinCode(0000);
+	
+	
 
-	removeUserFirstname = "REMOVED";
-	removeUserLastname = "REMOVED";
-	removeUserAccountBalance = 0;
-	removeUserOverdraftLimit = 0;
-	removeUserPincode = 0;
-
-	User* tempUser = new User();
-	tempUser->setFirstName(removeUserFirstname);
-	tempUser->setLastName(removeUserLastname);
-	tempUser->setAccountNumber(removeUserAccountBalance);
-	tempUser->setBalance(removeUserAccountBalance);
-	tempUser->setOverdraftLimit(removeUserOverdraftLimit);
-	tempUser->setPinCode(removeUserPincode);
+	userDatabase.rewriteUserDatabase();
 
 	cout << "\nDatabase Updated!" << endl << endl;
 
