@@ -43,6 +43,7 @@
 		//withdrawalAmount for number of notes
 		double twentynotes;
 		//int withdrawalamount;
+		double dispenseAmount;
 		double tenamount;
 		double tennotes=0;
 		double fiveamount;
@@ -52,11 +53,25 @@
 		double twentybalance;
 		double Balance = 0;
 
-		twentynotes = (currentUser.getWithdrawalAmount(withdrawalAmount)/20 );
-		cout << "Number of Twenty pound notes:  " << twentynotes << "\n";
+		dispenseAmount = currentUser.getWithdrawalAmount(withdrawalAmount);
+
+		twentynotes = (dispenseAmount / 20);
+
+		ifstream inFile;
+		inFile.open("twentynotes.txt");
+		
+		/*
+		check for error
+		if (inFile.fail()){
+		cout << "Error Opening File" << endl;
+		*/
+
+		cout << "100" << endl;
 		ofstream twentyfile;
-		twentyfile.open("tennotes.txt");
-		twentyfile << "balance";
+		
+		//inFile.close("twentynotes.txt");
+		
+		
 		Balance = (Balance - tennotes);
 		twentyfile.close();
 
@@ -73,4 +88,6 @@
 		fivefile.close();
 		notesdispensed = (fiveamount - (fivenotes * 5));	}
 
-	//}
+	/*double CashStatus::getWithdrawalAmount(User user) {
+		withdrawalAmount = 
+	}*/

@@ -4,8 +4,8 @@
 /**
 * Used to read and write information from UserDatabase.
 *
-* 
-* several lines.
+* Manipulates the parameters in User_database.txt file which 
+* comprises of a vector array
 *
 * @author	Adam Fawcett <fawcett-a@ulster.ac.uk>
 * @license https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -33,7 +33,7 @@ public:
 
 	// declaring function to rewrite userdatabase vector array
 	void rewriteUserDatabase();
-	void rewriteUserDatabaseNewUser();
+	
 
 	// declaring function to get vector for user pincode and the user details
 	std::vector<User> getPinCode;
@@ -48,9 +48,7 @@ public:
 	//Overriding with dynamic object
 	void addUser(User* user);
 
-	//Overriding with dynamic object
-	void removeUser(User* user);
-
+	
 	// declaring vector function for allusers
 	std::vector<User>* allUsers = new std::vector<User>();
 

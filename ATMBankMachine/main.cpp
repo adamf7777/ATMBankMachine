@@ -43,7 +43,9 @@ int main(int argc, const char * argv[])
 	//while(differentUser = )
 	system("cls");
 
-	cout << "Welcome to Bank of Ulster" << endl << endl;
+	cout << "************************************************************************" << endl << endl;
+	cout << "                      Welcome to Bank of Ulster                         " << endl << endl;
+	cout << "************************************************************************" << endl << endl;                                                 
 	cout << "Please enter your User ID Number " << endl << endl;
 	cout << "User ID Number: ";
 
@@ -92,6 +94,7 @@ int main(int argc, const char * argv[])
 	{
 		if (userInputIDNumber > 1000)
 		{
+
 			cout << "Please select one of the options below:" << endl << endl;
 
 			cout << "[1] Cash Withdrawal " << endl;

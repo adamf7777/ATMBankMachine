@@ -60,6 +60,8 @@ void UserDatabase::rewriteUserDatabase()
 	ofstream fout(filePath);
 	std::string lineContents;
 
+	// for each user print all parameters to a single line
+	// take a new line for each user
 	for (int i = 0; i < getAllUsers().size(); i++) {
 		fout << getAllUsers().at(i).getFirstName() << " "
 			<< getAllUsers().at(i).getLastName() << " "
@@ -67,6 +69,7 @@ void UserDatabase::rewriteUserDatabase()
 			<< getAllUsers().at(i).getBalance() << " "
 			<< getAllUsers().at(i).getOverdraftLimit() << " "
 			<< getAllUsers().at(i).getPinCode();
+		
 		//prevents an extra line being printed at end of file 
 		if (i == getAllUsers().size() - 1) {
 		}
@@ -75,60 +78,10 @@ void UserDatabase::rewriteUserDatabase()
 		}
 	}
 
+	// close the txt file
 	fout.close();
 }
 
-/*void UserDatabase::rewriteUserDatabaseNewUser()
-{
-	ofstream fout(filePath);
-	std::string lineContents;
-	//int newUserDatabaseSize = 22;
-
-	for (int i = 0; i < 22; i++) {
-		if (i < 21) {
-			fout << getAllUsers().at(i).getFirstName() << " "
-				<< getAllUsers().at(i).getLastName() << " "
-				<< getAllUsers().at(i).getAccountNumber() << " "
-				<< getAllUsers().at(i).getBalance() << " "
-				<< getAllUsers().at(i).getOverdraftLimit() << " "
-				<< getAllUsers().at(i).getPinCode();
-		}
-
-		else
-		{
-			cout << "22" << endl;
-			
-			fout << "Matthew " << "Cordner " << "1022 " << "1234 " << "250 " << "1234 " << endl;
-			
-		}
-		//prevents an extra line being printed at end of file 
-		if (i == getAllUsers().size()-1) {
-
-			//cout << "Maatt" << endl;
-			//fout << "Matthew " << "Cordner " << "1022 " << "1234 "<< "250 " << "1234 " <<endl;
-		}
-	
-		
-		else {
-			
-			//fout << "Matthew" << endl;
-			//cout << "Matthew" << endl;
-			
-		}
-
-
-
-		for (i = 21; i < 22; i++)
-		{
-			string name = "Matt";
-			cout << "Matthew";
-			fout << getAllUsers().at(i)
-		}
-
-		fout << endl;
-	}
-	fout.close();
-}*/
 
 /**
 * Function to store all user data
@@ -143,16 +96,30 @@ std::vector<User> UserDatabase::getAllUsers() {
 
 }
 
-/*//Updates the array with the current user - Beta
-std::vector<User> UserDatabase::getCurrentUser() {
-}*/
 
-//takes a user, adds the user to the array of all users
+
+/**
+* Function to add new user to the database
+*
+* Passes in temp user from Admin.cpp into the
+* next available line for storage in database
+*
+* @param user passed in
+* @see Admin.addUser
+*/
 void UserDatabase::addUser(User user) {
 	allUsers->push_back(user);
 }
 
-
+/**
+* Function to add new user to the database
+*
+* Passes in temp user from Admin.cpp into the
+* next available line for storage in database
+*
+* @param user passed in
+* @see Admin.addUser
+*/
 //  adds user to array list of all users and rewrites the database
 void UserDatabase::addUser(User* user) {
 	allUsers->push_back(*user);
@@ -161,21 +128,3 @@ void UserDatabase::addUser(User* user) {
 	return;
 }
 
-//search through the allUsers array to find position of the user in the allUsers array
-//remove it from the array of allUser (allUsers->removeAt(positon));
-//call the rewriteUserDatabase() function
-
-
-////remove user
-//void UserDatabase::removeUser(User* user) {
-//	allUsers->removeAt(*user);
-//}
-
-/*void UserDatabase::removeUser(User* user)
-{
-	getAllUsers().at(10);
-
-
-
-
-}*/

@@ -120,21 +120,40 @@ int User::getPinCode()
 	return pinCode;
 }
 
+/**
+* Function to get user's firstname
+*
+* @param newFirstName passed in as a string
+*/
 void User::setFirstName(string newFirstName) 
 {
 	firstName = newFirstName;
 }
 
+/**
+* Function to get user's last name
+*
+* @param newLastName passed in as a string
+*/
 void User::setLastName(string newLastName)
 {
 	lastName = newLastName;
 }
 
+/**
+* Function to set overdraft limit
+*
+* @param newOverdraftLimit passed in as a double 
+*/
 void User::setOverdraftLimit(double newOverdraftLimit)
 {
 	overdraftLimit = newOverdraftLimit;
 }
-
+/**
+* Function to set new account number 
+*
+* @param newAccountNumber passed in as integer
+*/
 void User::setAccountNumber(int newAccountNumber)
 {
 	accountNumber = newAccountNumber;
@@ -191,7 +210,7 @@ void User::printBalance() //Make print user balance
 *
 * Displays the user's name along with their overdraft limit
 *
-* @see overdraftLimit
+* @see overdraftLimit which calls the overdraft limit
 */
 void User::printOverdraft()
 {
@@ -341,6 +360,7 @@ void User::withdrawCash(UserDatabase userDatabase, int userInputIDNumber, CashSt
 		else
 		{
 			withdrawalCheck = 1;
+			cout << "You must select an amount divisible by £5!" << endl << endl;
 		}
 
 	} // end of if withdrawal option = 8
@@ -394,8 +414,12 @@ void User::withdrawCash(UserDatabase userDatabase, int userInputIDNumber, CashSt
 		if (withdrawalAmount <= balance)
 		{
 			withdrawalBalance = (balance - withdrawalAmount);
-
+			
+			
+			//cashStatus.withdrawCash(User currentUser, UserDatabase userDatabase, double withdrawalAmount);
 			// rewrite userdatabase with new balance for the selected user
+			
+
 			User::setBalance(withdrawalBalance);
 			userDatabase.allUsers->at(userInputIDNumber).setBalance(withdrawalBalance);
 			userDatabase.rewriteUserDatabase();
@@ -403,7 +427,7 @@ void User::withdrawCash(UserDatabase userDatabase, int userInputIDNumber, CashSt
 			system("cls");
 
 			cout << "Counting " << char(156) << withdrawalAmount << endl << endl;
-			cout << "Please take your cash" << endl;
+			cout << "Please take your cash" << endl << endl;
 		} // end of sufficient balance
 
 		else // if user insufficient funds to perform transaction
@@ -416,41 +440,57 @@ void User::withdrawCash(UserDatabase userDatabase, int userInputIDNumber, CashSt
 			cout << "Would you like to use your overdraft for this transaction? [Y/N]" << endl << endl;
 			cin >> overdraftCheck;
 
+			// if user selects overdraft option
 			if (overdraftCheck == 'Y')
 			{
 
+				// if overdraft will cover the transaction
 				if (withdrawalAmount <= (balance + overdraftLimit))
 				{
-					// if overdraft will cover the transaction
+					
 					cout << "Updating your overdraft limit" << endl << endl;
+					// set new overdraft limit based on money used
 					newOverdraftLimit = overdraftLimit - (withdrawalAmount - balance);
-					//currentUser.setOverdraftLimit(newOverdraftLimit);
-
+					
+					// set the new balance equal to zero as it has been exhausted
 					newBalance = 0;
+
+					// update balance in database
 					User::setBalance(newBalance);
 					userDatabase.allUsers->at(userInputIDNumber).setBalance(newBalance);
 
+					// update overdraft limit
 					User::setOverdraftLimit(newOverdraftLimit);
 					userDatabase.allUsers->at(userInputIDNumber).setOverdraftLimit(newOverdraftLimit);
 					userDatabase.rewriteUserDatabase();
 					cout << "Your new overdraft limit is: " << char(156) << newOverdraftLimit << endl << endl;
 				}
 
+				// if overdraft won't cover transaction
 				else
 				{
+					// display an error message
 					cout << "The overdraft limit is insufficient for this transaction" << endl;
 				}
 
 			} // end of insufficient funds
 
-			// if amount selected not available display error message
+			
+			// skip if the user doesn't want to use overdraft
 			else
 			{
-				cout << "Error, this machine cannot dispense the amount of money you have requested" << endl;
+				
 			}
 
 
-		} // end of withdraw cash function
+		} // end of withdraw cash option
+	
+	}
+	
+	// withdrawal amount not divisible by 5
+	else 
+	{
+		cout << "Error, this machine cannot dispense the amount of money you have requested" << endl << endl;
 	}
 } // end of withdrawCash function
 
