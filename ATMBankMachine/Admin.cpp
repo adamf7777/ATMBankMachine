@@ -109,11 +109,13 @@ void Admin::removeUser(UserDatabase userDatabase)
 {
 	std::string removeUserFirstname;
 	std::string removeUserLastname;
+	std::string userDeleteConfirm;
 	int removeUserAccountNumber;
 	double removeUserAccountBalance;
 	double removeUserOverdraftLimit;
 	int removeUserPincode;
 	int removeUserLineNumber;
+	
 
 	cout << "Admin Menu: Remove User" << endl << endl;
 	cout << "Please enter the Account Number of the user you would like to remove: " << endl << endl;
@@ -121,19 +123,28 @@ void Admin::removeUser(UserDatabase userDatabase)
 	cin >> removeUserAccountNumber;
 
 	removeUserLineNumber = removeUserAccountNumber - 1000;
-	
-	userDatabase.allUsers->at(removeUserLineNumber).setFirstName("Deleted");
-	userDatabase.allUsers->at(removeUserLineNumber).setLastName("User");
-	userDatabase.allUsers->at(removeUserLineNumber).setAccountNumber(removeUserAccountNumber);
-	userDatabase.allUsers->at(removeUserLineNumber).setBalance(0);
-	userDatabase.allUsers->at(removeUserLineNumber).setOverdraftLimit(0);
-	userDatabase.allUsers->at(removeUserLineNumber).setPinCode(0000);
-	
-	
 
-	userDatabase.rewriteUserDatabase();
+	cout << "Are you sure you want to delete " << userDatabase.allUsers->at(removeUserLineNumber).getName() << "'s "
+		<< "account? [Y/N] " << endl;
+	cin >> userDeleteConfirm;
 
-	cout << "\nDatabase Updated!" << endl << endl;
+	if (userDeleteConfirm == "Y") 
+	{
+		userDatabase.allUsers->at(removeUserLineNumber).setFirstName("Deleted");
+		userDatabase.allUsers->at(removeUserLineNumber).setLastName("User");
+		userDatabase.allUsers->at(removeUserLineNumber).setAccountNumber(removeUserAccountNumber);
+		userDatabase.allUsers->at(removeUserLineNumber).setBalance(0);
+		userDatabase.allUsers->at(removeUserLineNumber).setOverdraftLimit(0);
+		userDatabase.allUsers->at(removeUserLineNumber).setPinCode(0000);
+
+		userDatabase.rewriteUserDatabase();
+
+		cout << "\nDatabase Updated!" << endl << endl;
+	}
+
+	{
+		// Do nothing
+	}
 
 	returnToAdminMenu(userDatabase);
 }
