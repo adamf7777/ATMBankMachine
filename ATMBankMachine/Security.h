@@ -28,6 +28,7 @@ class Security
 
 public:
 	void checkPincode(UserDatabase userdatabase, User currentUser);
+	void pinCodeCheck(User currentUser);
 	//Security security;
 private: 
  
