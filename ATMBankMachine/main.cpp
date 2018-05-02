@@ -69,8 +69,8 @@ int main(int argc, const char * argv[])
 	UserDatabase userDatabase("User_database.txt");
 	User currentUser = userDatabase.users.at(userInputIDNumberLine);
 	
-	//Security security;
-	//security.checkPincode(userDatabase, currentUser);
+	Security security;
+	security.checkPincode(userDatabase, currentUser);
 	
 	//****Function to display number of users**********
 	//****Do not delete **********************
