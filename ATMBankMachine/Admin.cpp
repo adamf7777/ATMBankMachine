@@ -18,8 +18,7 @@ void Admin::adminMenu(UserDatabase userDatabase)
 	cout << "[1] Add User " << endl;
 	cout << "[2] Remove User " << endl;
 	cout << "[3] Edit User Data " << endl;
-	cout << "[4] ATM Maintenance " << endl;
-	cout << "[5] Change Pin Code" << endl << endl;
+	cout << "[4] ATM Maintenance " << endl << endl;
 	cout << "Option: ";
 
 	cin >> adminMenuInputOption;
@@ -63,13 +62,13 @@ void Admin::addUser(UserDatabase userDatabase)
 {
 	std::string addUserFirstName;
 	std::string addUserLastName;
-	int addUserAccountNumber;
 	double addUserAccountBalance;
 	double addUserOverdraftLimit;
+	int addUserAccountNumber;
 	int addUserPincode;
 	int addUserDatabaseSize;
 
-	addUserDatabaseSize = (userDatabase.getAllUsers().size()) + 1;
+	addUserDatabaseSize = (userDatabase.getAllUsers().size());
 	//cout << newUserDatabaseSize << endl << endl;
 
 	addUserAccountNumber = addUserDatabaseSize + 1000;
@@ -107,16 +106,10 @@ void Admin::addUser(UserDatabase userDatabase)
 
 void Admin::removeUser(UserDatabase userDatabase)
 {
-	std::string removeUserFirstname;
-	std::string removeUserLastname;
 	std::string userDeleteConfirm;
 	int removeUserAccountNumber;
-	double removeUserAccountBalance;
-	double removeUserOverdraftLimit;
-	int removeUserPincode;
 	int removeUserLineNumber;
 	
-
 	cout << "Admin Menu: Remove User" << endl << endl;
 	cout << "Please enter the Account Number of the user you would like to remove: " << endl << endl;
 	cout << "Account Number: ";
@@ -124,45 +117,115 @@ void Admin::removeUser(UserDatabase userDatabase)
 
 	removeUserLineNumber = removeUserAccountNumber - 1000;
 	
-	userDatabase.allUsers->at(removeUserLineNumber).setFirstName("Deleted");
-	userDatabase.allUsers->at(removeUserLineNumber).setLastName("User");
-	userDatabase.allUsers->at(removeUserLineNumber).setAccountNumber(removeUserAccountNumber);
-	userDatabase.allUsers->at(removeUserLineNumber).setBalance(0);
-	userDatabase.allUsers->at(removeUserLineNumber).setOverdraftLimit(0);
-	userDatabase.allUsers->at(removeUserLineNumber).setPinCode(0000);
-	
-	userDatabase.rewriteUserDatabase();
+	cout << "Are you sure you wish to delete " << userDatabase.allUsers->at(removeUserLineNumber).getName() << "'s "
+		<< "account? (Y/N): ";
+	cin >> userDeleteConfirm;
 
-	cout << "\nDatabase Updated!" << endl << endl;
+	if (userDeleteConfirm == "Y")
+		{
+		userDatabase.allUsers->at(removeUserLineNumber).setFirstName("Deleted");
+		userDatabase.allUsers->at(removeUserLineNumber).setLastName("User");
+		userDatabase.allUsers->at(removeUserLineNumber).setAccountNumber(removeUserAccountNumber);
+		userDatabase.allUsers->at(removeUserLineNumber).setBalance(0);
+		userDatabase.allUsers->at(removeUserLineNumber).setOverdraftLimit(0);
+		userDatabase.allUsers->at(removeUserLineNumber).setPinCode(0000);
+		
+		userDatabase.rewriteUserDatabase();
+		
+		cout << "\nDatabase Updated!" << endl << endl;
+		}
 
 	returnToAdminMenu(userDatabase);
 }
 
 void Admin::editUser(UserDatabase userDatabase)
 {
+	std::string userEditConfirm;
 	std::string editUserFirstName;
 	std::string editUserLastName;
-	int editUserAccountNumber;
 	double editUserAccountBalance;
 	double editUserOverdraftLimit;
 	int editUserPincode;
+	int editUserAccountNumber;
+	int editUserLineNumber;
+	int editOption;
 
 	cout << "Admin Menu: Edit User" << endl << endl;
 	cout << "Please enter the Account Number of the user you would like to edit: " << endl << endl;
 	cout << "Account Number: ";
 	cin >> editUserAccountNumber;
 
-	//User* tempUser = new User();
-	//tempUser->setFirstName(editUserFirstName);
-	//tempUser->setLastName(editUserLastName);
-	//tempUser->setAccountNumber(editUserAccountNumber);
-	//tempUser->setBalance(editUserAccountBalance);
-	//tempUser->setOverdraftLimit(editUserOverdraftLimit);
-	//tempUser->setPinCode(editUserPincode);
+	editUserLineNumber = editUserAccountNumber - 1000;
 
-	//userDatabase.editUser(tempUser);
+	cout << "\nDo you wish to edit " << userDatabase.allUsers->at(editUserLineNumber).getName() << "'s "
+		<< "account? (Y/N): ";
+	cin >> userEditConfirm;
 
-	cout << "\nDatabase Updated!" << endl << endl;
+	if (userEditConfirm == "Y")
+	{
+		cout << "\nWhich of the following details do you wish to edit?" << endl << endl;
+		cout << "[1] First Name" << endl;
+		cout << "[2] Last Name" << endl;
+		cout << "[3] Balance" << endl;
+		cout << "[4] Overdraft Limit" << endl;
+		cout << "[5] Pin Code" << endl << endl;
+		cout << "Option: ";
+
+		cin >> editOption;
+
+		switch (editOption)
+		{
+		case 1:
+
+			cout << "\nPlease enter the new First Name for the user: ";
+			cin >> editUserFirstName;
+			userDatabase.allUsers->at(editUserLineNumber).setFirstName(editUserFirstName);
+
+			break;
+
+		case 2:
+
+			cout << "\nPlease enter the new Last Name for the user: ";
+			cin >> editUserLastName;
+			userDatabase.allUsers->at(editUserLineNumber).setLastName(editUserLastName);
+
+			break;
+
+		case 3:
+
+			cout << "\nPlease enter the new Account Balance for the user: ";
+			cin >> editUserAccountBalance;
+			userDatabase.allUsers->at(editUserLineNumber).setBalance(editUserAccountBalance);
+
+			break;
+
+		case 4:
+
+			cout << "\nPlease enter the new Overdraft Limit for the user: ";
+			cin >> editUserOverdraftLimit;
+			userDatabase.allUsers->at(editUserLineNumber).setOverdraftLimit(editUserOverdraftLimit);
+
+			break;
+		
+		case 5:
+
+			cout << "\nPlease enter the new Pin Code for the user: ";
+			cin >> editUserPincode;
+			userDatabase.allUsers->at(editUserLineNumber).setPinCode(editUserPincode);
+
+			break;
+
+		default:
+
+			cout << "Error";
+
+			break;
+		}
+
+		userDatabase.rewriteUserDatabase();
+
+		cout << "\nDatabase Updated!" << endl << endl;
+	}
 
 	returnToAdminMenu(userDatabase);
 
