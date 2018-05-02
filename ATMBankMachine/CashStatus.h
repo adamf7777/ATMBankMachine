@@ -25,7 +25,11 @@ class User;
 class CashStatus
 {
 public:
-void getMachineCashStatus();
+//void getMachineCashStatus(User currentUser, UserDatabase userDatabase);
+void withdrawCash(User currentUser, UserDatabase userDatabase);
+
+
+private:
 
 };
 
