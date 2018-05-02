@@ -131,16 +131,9 @@ void Admin::removeUser(UserDatabase userDatabase)
 	userDatabase.allUsers->at(removeUserLineNumber).setOverdraftLimit(0);
 	userDatabase.allUsers->at(removeUserLineNumber).setPinCode(0000);
 	
-	
-
 	userDatabase.rewriteUserDatabase();
 
-		cout << "\nDatabase Updated!" << endl << endl;
-	}
-
-	{
-		// Do nothing
-	}
+	cout << "\nDatabase Updated!" << endl << endl;
 
 	returnToAdminMenu(userDatabase);
 }
