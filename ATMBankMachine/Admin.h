@@ -16,21 +16,29 @@
 #include <string>
 #include <iostream>
 #include <sstream> //string stream function
+#include "UserDatabase.h"
 
 //using namespace std;
 class UserDatabase;
 
 class User;
 
-class Admin
+class Admin : public UserDatabase
 {
 
 public:
-	void adminMenu();
+	Admin() : UserDatabase("User_database.txt") {};
+	void adminMenu(UserDatabase userDatabase);
 	void addUser(UserDatabase userDatabase);
-	std::string getNewUserFirstname();
-	//void removeUser();
-	std::string addUserFirstName;
+	void removeUser(UserDatabase userDatabase);
+	void editUser(UserDatabase userDatabase);
+	void atmMaintenanceMenu(UserDatabase userDatabase);
+	void updateATMBalance(UserDatabase userDatabase);
+	void updateReceiptAmount(UserDatabase userDatabase);
+	void viewTransactionHistory(UserDatabase userDatabase);
+	void returnToAdminMenu(UserDatabase userDatabase);
+	void returnToATMMaintenanceMenu(UserDatabase userDatabase);
+
 private:
 
 };

@@ -43,7 +43,13 @@ public:
 	std::vector<User> getAllUsers();
 
 	// declaring function to 
+	//void addUser(User* user);
 	void addUser(User user);
+	//Overriding with dynamic object
+	void addUser(User* user);
+
+	//Overriding with dynamic object
+	void removeUser(User* user);
 
 	// declaring vector function for allusers
 	std::vector<User>* allUsers = new std::vector<User>();
