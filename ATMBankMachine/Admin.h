@@ -27,6 +27,7 @@ class Admin : public UserDatabase
 {
 
 public:
+
 	Admin() : UserDatabase("User_database.txt") {};
 	void adminMenu(UserDatabase userDatabase);
 	void addUser(UserDatabase userDatabase);
