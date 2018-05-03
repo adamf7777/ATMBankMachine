@@ -39,6 +39,6 @@ private:
 	void editUser(UserDatabase userDatabase);	
 	void updateATMBalance(UserDatabase userDatabase);
 	void updateReceiptAmount(UserDatabase userDatabase);
-	void viewTransactionHistory(UserDatabase userDatabase);
+
 };
 #endif

@@ -337,7 +337,6 @@ void Admin::editUser(UserDatabase userDatabase)
 * @param adminMaintenanceOption variable to contain the users entered menu option they wish to enter
 * @see updateATMBalance
 * @see updateReceiptAmount
-* @see viewTransactionHistory
 * @see adminMenu
 */
 void Admin::atmMaintenanceMenu(UserDatabase userDatabase)
@@ -349,8 +348,7 @@ void Admin::atmMaintenanceMenu(UserDatabase userDatabase)
 
 	cout << "[1] Update ATM Balance " << endl;
 	cout << "[2] Update Receipt Amount " << endl;
-	cout << "[3] View Transaction History " << endl;
-	cout << "[4] Return to Admin Menu" << endl << endl;
+	cout << "[3] Return to Admin Menu" << endl << endl;
 	cout << "Option: ";
 
 	cin >> adminMaintenanceOption;
@@ -371,12 +369,6 @@ void Admin::atmMaintenanceMenu(UserDatabase userDatabase)
 		break;
 
 	case 3:
-
-		viewTransactionHistory(userDatabase);
-
-		break;
-
-	case 4:
 
 		adminMenu(userDatabase);
 
@@ -528,11 +520,6 @@ void Admin::updateReceiptAmount(UserDatabase userDatabase)
 	}
 
 	returnToATMMaintenanceMenu(userDatabase);
-}
-
-void Admin::viewTransactionHistory(UserDatabase userDatabase)
-{
-
 }
 
 /**
