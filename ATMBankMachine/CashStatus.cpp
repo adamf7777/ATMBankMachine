@@ -16,29 +16,78 @@
 #include <iostream>
 #include <fstream>
 #include "User.h"
+#include "UserDatabase.h"
 #include "CashStatus.h"
+#include "Admin.h"
 
 	using namespace std;
 
 
-	void getMachineCashStatus()
+	/*void getMachineCashStatus()
 	{
+
+
+		int twentynotes;
+		int withdrawalamount;
+		int tenamount;
+		int tennotes;
+		int fiveamount;
+		int notesdispensed;
+		int fivenotes;
+		int Balance;
+		int twentybalance;
+	}*/
+
+	void CashStatus::withdrawCash(User currentUser, UserDatabase userDatabase, double withdrawalAmount)
+	{
+		//withdrawalAmount for number of notes
+		double twentynotes;
+		//int withdrawalamount;
+		double dispenseAmount;
+		double tenamount;
+		double tennotes=0;
+		double fiveamount;
+		double notesdispensed;
+		double fivenotes;
 	
+		double twentybalance;
+		double Balance = 0;
 
-	int twentynotes;
-	int withdrawalamount;
-	int tenamount;
-	int tennotes;
-	int fiveamount;
-	int notesdispensed;
-	int fivenotes;
+		dispenseAmount = currentUser.getWithdrawalAmount(withdrawalAmount);
 
-	//withdrawalAmount for number of notes
-	file.open("twentynotes.txt");
+		twentynotes = (dispenseAmount / 20);
 
-		withdrawalamount = 10;
-		twentynotes = (withdrawalamount / 20);
-		cout << "Number of Twenty pound notes:  " << twentynotes << "\n";
+		ifstream inFile;
+		inFile.open("twentynotes.txt");
+		
+		/*
+		check for error
+		if (inFile.fail()){
+		cout << "Error Opening File" << endl;
+		*/
 
-		tenamount = (withdrawalamount - (twentynotes * 20));		tennotes = (tenamount / 10);		cout << "Number of Ten pound notes:  " << tennotes << "\n";		fiveamount = (tenamount - (tennotes * 10));		fivenotes = (fiveamount / 5);		cout << "Number of Five pound notes:  " << fivenotes << "\n";		notesdispensed = (fiveamount - (fivenotes * 5));	//Depoist amount with number of notes recorded
-	}
+		cout << "100" << endl;
+		ofstream twentyfile;
+		
+		//inFile.close("twentynotes.txt");
+		
+		
+		Balance = (Balance - tennotes);
+		twentyfile.close();
+
+
+		tenamount = (currentUser.getWithdrawalAmount(withdrawalAmount) - (twentynotes * 20));		tennotes = (tenamount / 10);		cout << "Number of Ten pound notes:  " << tennotes << "\n";		ofstream tenfile;
+		tenfile.open("tennotes.txt");
+		tenfile << "balance";
+		Balance = (Balance - tennotes);
+		tenfile.close();
+		fiveamount = (tenamount - (tennotes * 10));		fivenotes = (fiveamount / 5);		cout << "Number of Five pound notes:  " << fivenotes << "\n";		ofstream fivefile;
+		fivefile.open("fivenotes.txt");
+		fivefile << "500";
+		Balance = (500 - fivenotes);
+		fivefile.close();
+		notesdispensed = (fiveamount - (fivenotes * 5));	}
+
+	/*double CashStatus::getWithdrawalAmount(User user) {
+		withdrawalAmount = 
+	}*/

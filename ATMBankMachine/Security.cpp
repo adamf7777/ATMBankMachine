@@ -16,22 +16,90 @@ using namespace std;
 //Security::security;
 //currentUser.getPinCode();
  
-void pinCodeCheck()
+int Security::pinCodeCheck(User currentUser, UserDatabase userDatabase)
 {
-	int storeUserPin;
+	int requestUserPin;
+	int retrievedPin;
+	int pinCheckCount = 0;
+	int pinSuccessful = 0;
+	int pinStatusCheck;
 
-	cout << "Please Enter Pin Code:" << endl << endl;
-	cin >> storeUserPin;
+	retrievedPin = currentUser.getPinCode();
 
-	if (storeUserPin < 1000 || storeUserPin > 9999)
+
+	//requestUserPin = 1111;
+	while ((pinSuccessful == 0) && (pinCheckCount <= 3))
 	{
-		while (storeUserPin < 1000 || storeUserPin > 9999)
+
+		cout << "Please enter pin" << endl;
+		cin >> requestUserPin;
+
+		if ((retrievedPin == requestUserPin) && pinCheckCount < 3)
 		{
-			cout << "Invalid Pin Code, Please Enter a 4 Digit Pin Code!" << endl;
-			cout << "Please Enter Pin Code:" << endl;
-				cin >> storeUserPin;
-	 }
-}
+			pinSuccessful = 1;
+		}
 
+		else if (pinCheckCount < 2)
+		{
+			system("cls");
 
+			pinStatusCheck = pinCheckCount;
+			pinStatusCheck = pinStatusCheck + 2;
+
+			cout << "Pin is incorrect - please try again" << endl << endl;
+			cout << "Attempt [" << pinStatusCheck << " of 3]" << endl;
+			
+			pinCheckCount++;
+			//return 0;
+			pinSuccessful = 0;
+		}
+
+		else if (pinSuccessful == 0 && pinCheckCount >= 2)
+		{
+			//return 0;
+			int getAccountNo;
+			int getLineNo;
+			int getLockPin;
+			int accountLock;
+			getAccountNo = currentUser.getAccountNumber();
+			getLineNo = getAccountNo - 1000;
+
+			
+			userDatabase.allUsers->at(getLineNo).setPinCode(8357);
+			userDatabase.rewriteUserDatabase();
+			
+			pinCheckCount = 5;
+			system("cls");
+
+			cout << "**************************************************" << endl;
+			cout << "**               Security Alert!                **" << endl;
+			cout << "**************************************************" << endl << endl;
+
+			cout << "You have entered your pincode incorrectly 3 times!" << endl << endl;
+			cout << "Your account has been locked " << endl << endl;
+			cout << "You will need to contact your bank to unlock your account" << endl << endl;
+
+			cout << "**************************************************" << endl;
+
+			cout << "Press any key to exit " << endl;
+			
+			cin >> accountLock;
+
+			//return 0;
+			//pinSuccessful = 0;
+			
+		}
+
+	}
+
+	if (pinSuccessful == 0)
+	{
+		//cout << "The pin has been incorrectly entered " << endl << endl;
+		return 0;
+	}
+
+	else 
+	{
+		return 1;
+	}
 }

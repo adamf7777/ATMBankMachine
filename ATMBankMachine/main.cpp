@@ -22,6 +22,7 @@
 #include "UserDatabase.h"
 #include "Admin.h"
 #include "Security.h"
+#include "CashStatus.h"
 
 #include <conio.h>
 #include <string>
@@ -42,7 +43,9 @@ int main(int argc, const char * argv[])
 	//while(differentUser = )
 	system("cls");
 
-	cout << "Welcome to Bank of Ulster" << endl << endl;
+	cout << "************************************************************************" << endl << endl;
+	cout << "                      Welcome to Bank of Ulster                         " << endl << endl;
+	cout << "************************************************************************" << endl << endl;                                                 
 	cout << "Please enter your User ID Number " << endl << endl;
 	cout << "User ID Number: ";
 
@@ -69,23 +72,29 @@ int main(int argc, const char * argv[])
 	UserDatabase userDatabase("User_database.txt");
 	User currentUser = userDatabase.users.at(userInputIDNumberLine);
 	
-	//Security security;
-	//security.checkPincode(userDatabase, currentUser);
-	
-	//****Function to display number of users**********
-	//****Do not delete **********************
-	//cout << endl << endl;
-	//cout << userDatabase.getAllUsers().size() << endl; //Displays the number of lines in the list
-	//for (int i = 0; list.getAllUsers().size(); i++) {
-	//	cout << list.getAllUsers().at(i).getFirstName() << endl;
-	//}
+	//int mainPinCheck;
 
-	system("cls");
+	Security security;
+	CashStatus cashStatus;
+	
+	//system("cls");
+	if (security.pinCodeCheck(currentUser, userDatabase) == 0)
+	{
+		anotherService = 'N';
+		cout << "The incorrect pin has been entered more than 3 times. " << endl;
+	}
+
+	else
+	{
+		anotherService = 'Y';
+		system("cls");
+	}
 
 	while (anotherService == 'Y')
 	{
 		if (userInputIDNumber > 1000)
 		{
+
 			cout << "Please select one of the options below:" << endl << endl;
 
 			cout << "[1] Cash Withdrawal " << endl;
@@ -101,7 +110,7 @@ int main(int argc, const char * argv[])
 			switch (userInputOption) {
 			case 1:
 
-				currentUser.withdrawCash(userDatabase, userInputIDNumberLine);
+				currentUser.withdrawCash(userDatabase, userInputIDNumberLine, cashStatus);
 
 				break;
 
