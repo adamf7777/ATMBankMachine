@@ -82,8 +82,8 @@ void Admin::adminMenu(UserDatabase userDatabase)
 * addUser, function to add a user to the array in userDatabase
 *
 * Writes an input capture form to the command window to allow entry of new user's data 
-* to be stored within tthe variables. The size of the array of current users is obtained 
-* from the userdatabase class to be used in the calcuation of an account number for the
+* to be stored within the variables. The size of the array of current users is obtained 
+* from the userdatabase class to be used in the calculation of an account number for the
 * new user. A new user is then created called tempUser which is then passed into the 
 * userdatabase to be stored as a user using the addUser function. The returnToAdminMenu 
 * function is then entered.
@@ -93,7 +93,7 @@ void Admin::adminMenu(UserDatabase userDatabase)
 * @param addUserAccountBalance variable to store the account balance entered by the user
 * @param addUserOverdraftLimit variable to store the overdraft limit entered by the user
 * @param addUserPincode variable to store the pin code entered by the user
-* @param addUserAccountNumber used to store the users account number after sumation
+* @param addUserAccountNumber used to store the users account number after summation
 * @param addUserDatabaseSize used to store the database size obtained from the userdatabase
 * @see returnToAdminMenu
 */
@@ -213,7 +213,7 @@ void Admin::removeUser(UserDatabase userDatabase)
 * the database has been updated is sent to the command window. The returnToAdminMenu
 * function is then entered.
 *
-* @param userEditConfirm variable to contain the users decison on whether they wish to edit
+* @param userEditConfirm variable to contain the users decision on whether they wish to edit
 * @param editUserFirstName variable to contain the entered edited first name
 * @param editUserLastName variable to contain the entered edited last name
 * @param editUserAccountBalance variable to contain the entered edited account balance
@@ -392,16 +392,16 @@ void Admin::atmMaintenanceMenu(UserDatabase userDatabase)
 * to enter the total amount of money being added to the ATM, this value is stored within
 * the variable totalAdded. The message is then output asking the user to enter the amount
 * of each note being added which is stored within its corresponding variable. A calculation
-* takes place to calcuate totalNotes, the amount the entered notes adds up to. An if statement 
+* takes place to calculate totalNotes, the amount the entered notes adds up to. An if statement 
 * is used to compare totalAdded to totalNotes to see if they are equal. If they are the if statement
-* will run outputing a message that the database is updating. The new overall balance is then
+* will run outputting a message that the database is updating. The new overall balance is then
 * calculated using the getBalance function from the userdatabase class by adding the totalAdded
 * variable to this and storing the result as newBalance. The setBalance function from the userdatabase
-* class is then called to add the contents of the  newBalance variable to the array. The rewritedatabase function
+* class is then called to add the contents of the newBalance variable to the array. The rewritedatabase function
 * is then called from the userdatabase class to write the updated array to the .txt file. If the if
 * statement requirements are not met, the else statement is entered. The else statement outputs a message
 * to the command window asking the user if they wish to re-enter the info, the user input is stored in 
-* tryAgain. If the user enters 'Y' another if statment is used that preforms as above only this time if
+* tryAgain. If the user enters 'Y' another if statement is used that preforms as above only this time if
 * the parameters are not met, the else statement is entered, displaying a message to contact service to 
 * report the problem. The returnToAdminMenu function is then entered after succession of the first if or
 * the else.
@@ -491,21 +491,21 @@ void Admin::updateATMBalance(UserDatabase userDatabase)
 }
 
 /**
-* updateReceiptAmount, function to update the reciept amount of the ATM within the array in userDatabase
+* updateReceiptAmount, function to update the receipt amount of the ATM within the array in userDatabase
 *
 * Writes the current receipt amount to the command window using the getOverdraftLimit function in
 * the user database class as the admin user will never require an overdraft limit this section of the
-* array will store the reciept amount instead. A message is then written to the command window asking the user
+* array will store the receipt amount instead. A message is then written to the command window asking the user
 * if they wish to add another receipt roll to the ATM, their answer will be stored in receiptOption. An
 * if statement will then run if the user has entered 'Y' displaying a message to the user that the database
-* is being updated with the new receipt amount. A calculate is completed to add the current receipt amount
+* is being updated with the new receipt amount. A calculation is completed to add the current receipt amount
 * and 1000 (for a new receipt roll) and stored within newReceiptAmount. The setOverdraftLimit function from the 
 * class is then called to add the contents of the newReceiptAmount variable to the array. The rewritedatabase function
 * is then called from the userdatabase class to write the updated array to the .txt file. A message is then displayed
 * showing the updated receipt amount. The returnToAdminMenu function is then entered.
 *
 * @param receiptOption variable to contain the users answer as to whether they would like to add a new receipt roll
-* @param newReceiptAmount variable to contain the newly calculated total reciept amount
+* @param newReceiptAmount variable to contain the newly calculated total receipt amount
 * @see returnToAdminMenu
 */
 void Admin::updateReceiptAmount(UserDatabase userDatabase)
