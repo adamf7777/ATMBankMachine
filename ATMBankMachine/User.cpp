@@ -220,6 +220,15 @@ void User::printOverdraft()
 
 }
 
+/**
+* Function to get withdrawal amount
+*
+* Calculates the withdrawal amount 
+*
+* @param withdrawalAmount double passed in
+* @return withdrawalAmount as double
+* @see overdraftLimit which calls the overdraft limit
+*/
 double User::getWithdrawalAmount(double withdrawalAmount)
 {
 	return withdrawalAmount;
@@ -419,6 +428,7 @@ void User::withdrawCash(UserDatabase userDatabase, int userInputIDNumber, CashSt
 			//cashStatus.withdrawCash(User currentUser, UserDatabase userDatabase, double withdrawalAmount);
 			// rewrite userdatabase with new balance for the selected user
 			
+		
 
 			User::setBalance(withdrawalBalance);
 			userDatabase.allUsers->at(userInputIDNumber).setBalance(withdrawalBalance);
@@ -447,7 +457,8 @@ void User::withdrawCash(UserDatabase userDatabase, int userInputIDNumber, CashSt
 				// if overdraft will cover the transaction
 				if (withdrawalAmount <= (balance + overdraftLimit))
 				{
-					
+					system("cls");
+
 					cout << "Updating your overdraft limit" << endl << endl;
 					// set new overdraft limit based on money used
 					newOverdraftLimit = overdraftLimit - (withdrawalAmount - balance);
@@ -464,6 +475,8 @@ void User::withdrawCash(UserDatabase userDatabase, int userInputIDNumber, CashSt
 					userDatabase.allUsers->at(userInputIDNumber).setOverdraftLimit(newOverdraftLimit);
 					userDatabase.rewriteUserDatabase();
 					cout << "Your new overdraft limit is: " << char(156) << newOverdraftLimit << endl << endl;
+				
+					cout << "Please take your cash" << endl << endl;
 				}
 
 				// if overdraft won't cover transaction

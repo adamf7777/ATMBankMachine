@@ -15,7 +15,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
-#include "User.h"
+//#include "User.h"
 #include "UserDatabase.h"
 #include "CashStatus.h"
 #include "Admin.h"
