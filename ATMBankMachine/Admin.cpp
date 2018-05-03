@@ -117,7 +117,7 @@ void Admin::removeUser(UserDatabase userDatabase)
 
 	removeUserLineNumber = removeUserAccountNumber - 1000;
 	
-	cout << "Are you sure you wish to delete " << userDatabase.allUsers->at(removeUserLineNumber).getName() << "'s "
+	cout << "\nAre you sure you wish to delete " << userDatabase.allUsers->at(removeUserLineNumber).getName() << "'s "
 		<< "account? (Y/N): ";
 	cin >> userDeleteConfirm;
 
@@ -177,7 +177,9 @@ void Admin::editUser(UserDatabase userDatabase)
 		{
 		case 1:
 
-			cout << "\nPlease enter the new First Name for the user: ";
+			cout << "\nThe current First Name stored for this account is "
+				<< userDatabase.allUsers->at(editUserLineNumber).getFirstName();
+			cout << "\n\nPlease enter the new First Name for the user: ";
 			cin >> editUserFirstName;
 			userDatabase.allUsers->at(editUserLineNumber).setFirstName(editUserFirstName);
 
@@ -185,6 +187,8 @@ void Admin::editUser(UserDatabase userDatabase)
 
 		case 2:
 
+			cout << "\nThe current Last Name stored for this account is "
+				<< userDatabase.allUsers->at(editUserLineNumber).getLastName();
 			cout << "\nPlease enter the new Last Name for the user: ";
 			cin >> editUserLastName;
 			userDatabase.allUsers->at(editUserLineNumber).setLastName(editUserLastName);
@@ -193,6 +197,8 @@ void Admin::editUser(UserDatabase userDatabase)
 
 		case 3:
 
+			cout << "\nThe current Account Balance stored for this account is "
+				<< userDatabase.allUsers->at(editUserLineNumber).getBalance();
 			cout << "\nPlease enter the new Account Balance for the user: ";
 			cin >> editUserAccountBalance;
 			userDatabase.allUsers->at(editUserLineNumber).setBalance(editUserAccountBalance);
@@ -201,6 +207,8 @@ void Admin::editUser(UserDatabase userDatabase)
 
 		case 4:
 
+			cout << "\nThe current Overdraft Limit stored for this account is "
+				<< userDatabase.allUsers->at(editUserLineNumber).getOverdraftLimit();
 			cout << "\nPlease enter the new Overdraft Limit for the user: ";
 			cin >> editUserOverdraftLimit;
 			userDatabase.allUsers->at(editUserLineNumber).setOverdraftLimit(editUserOverdraftLimit);
@@ -209,6 +217,8 @@ void Admin::editUser(UserDatabase userDatabase)
 		
 		case 5:
 
+			cout << "\nThe current Pin Code stored for this account is "
+				<< userDatabase.allUsers->at(editUserLineNumber).getPinCode();
 			cout << "\nPlease enter the new Pin Code for the user: ";
 			cin >> editUserPincode;
 			userDatabase.allUsers->at(editUserLineNumber).setPinCode(editUserPincode);
@@ -277,15 +287,17 @@ void Admin::atmMaintenanceMenu(UserDatabase userDatabase)
 
 void Admin::updateATMBalance(UserDatabase userDatabase)
 {
-	int totalAdded;
+	double totalAdded;
+	double newBalance;
+	double totalNotes;
 	int newATMNotesFive;
 	int newATMNotesTen;
 	int newATMNotesTwenty;
-	int totalNotes;
 	std::string tryAgain;
 
 	cout << "Admin Menu: ATM Maintenance: Update ATM Balance" << endl << endl;
-	cout << "Please enter the total amount of money being added to the ATM: " << endl << endl;
+	cout << "Current ATM Balance: " << userDatabase.allUsers->at(0).getBalance() << endl << endl;
+	cout << "Please enter the total amount of money being added to the ATM, " << endl << endl;
 	cout << "Total amount of money being added: ";
 	cin >> totalAdded;
 
@@ -301,6 +313,10 @@ void Admin::updateATMBalance(UserDatabase userDatabase)
 
 	if (totalNotes == totalAdded)
 	{
+		cout << endl << "------------UPDATING DATABASE------------" << endl;
+		newBalance = (userDatabase.allUsers->at(0).getBalance()) + totalAdded;
+		userDatabase.allUsers->at(0).setBalance(newBalance);
+		userDatabase.rewriteUserDatabase();
 		cout << endl << "ATM Balance Updated!" << endl << endl;
 	}
 	else
@@ -325,6 +341,10 @@ void Admin::updateATMBalance(UserDatabase userDatabase)
 
 			if (totalNotes == totalAdded)
 			{
+				cout << endl << "------------UPDATING DATABASE------------" << endl;
+				newBalance = (userDatabase.allUsers->at(0).getBalance()) + totalAdded;
+				userDatabase.allUsers->at(0).setBalance(newBalance);
+				userDatabase.rewriteUserDatabase();
 				cout << endl << "ATM Balance Updated!" << endl << endl;
 			}
 			else
