@@ -20,7 +20,7 @@
 //using namespace std;
 
 
-class User;
+//class User;
 class UserDatabase;
 class CashStatus
 {
