@@ -1,6 +1,7 @@
 /**
 * Provides menu's and functionality to administrate user data and
-* ATM machine data
+* perform ATM Maintenance
+*
 * @author Matthew Cordner <cordner-m1@ulster.ac.uk>
 * @license https://www.gnu.org/licenses/gpl-3.0.en.html
 * @copyright Matthew Cordner 2018
@@ -387,7 +388,7 @@ void Admin::atmMaintenanceMenu(UserDatabase userDatabase)
 * updateATMBalance, function to update the balance of the ATM within the array in userDatabase
 *
 * Writes the current ATM balance to the command window using the getBalance function in
-* the user database class. A message is then written to the command window asking to user
+* the user database class. A message is then written to the command window asking the user
 * to enter the total amount of money being added to the ATM, this value is stored within
 * the variable totalAdded. The message is then output asking the user to enter the amount
 * of each note being added which is stored within its corresponding variable. A calculation
@@ -396,7 +397,7 @@ void Admin::atmMaintenanceMenu(UserDatabase userDatabase)
 * will run outputing a message that the database is updating. The new overall balance is then
 * calculated using the getBalance function from the userdatabase class by adding the totalAdded
 * variable to this and storing the result as newBalance. The setBalance function from the userdatabase
-* class is then called to add the newBalance variable to the array. The rewritedatabase function
+* class is then called to add the contents of the  newBalance variable to the array. The rewritedatabase function
 * is then called from the userdatabase class to write the updated array to the .txt file. If the if
 * statement requirements are not met, the else statement is entered. The else statement outputs a message
 * to the command window asking the user if they wish to re-enter the info, the user input is stored in 
@@ -489,9 +490,44 @@ void Admin::updateATMBalance(UserDatabase userDatabase)
 
 }
 
+/**
+* updateReceiptAmount, function to update the reciept amount of the ATM within the array in userDatabase
+*
+* Writes the current receipt amount to the command window using the getOverdraftLimit function in
+* the user database class as the admin user will never require an overdraft limit this section of the
+* array will store the reciept amount instead. A message is then written to the command window asking the user
+* if they wish to add another receipt roll to the ATM, their answer will be stored in receiptOption. An
+* if statement will then run if the user has entered 'Y' displaying a message to the user that the database
+* is being updated with the new receipt amount. A calculate is completed to add the current receipt amount
+* and 1000 (for a new receipt roll) and stored within newReceiptAmount. The setOverdraftLimit function from the 
+* class is then called to add the contents of the newReceiptAmount variable to the array. The rewritedatabase function
+* is then called from the userdatabase class to write the updated array to the .txt file. A message is then displayed
+* showing the updated receipt amount. The returnToAdminMenu function is then entered.
+*
+* @param receiptOption variable to contain the users answer as to whether they would like to add a new receipt roll
+* @param newReceiptAmount variable to contain the newly calculated total reciept amount
+* @see returnToAdminMenu
+*/
 void Admin::updateReceiptAmount(UserDatabase userDatabase)
 {
+	std::string receiptOption;
+	int newReceiptAmount;
 
+	cout << "Admin Menu: ATM Maintenance: Update Receipt Amount" << endl << endl;
+	cout << "Current Receipt Amount: " << userDatabase.allUsers->at(0).getOverdraftLimit() << endl << endl;
+	cout << "Do you wish to add a new receipt roll into the ATM? (Y/N): " ;
+	cin >> receiptOption;
+
+	if (receiptOption == "Y")
+	{
+		cout << endl << "------------UPDATING RECEIPT AMOUNT------------" << endl;
+		newReceiptAmount = (userDatabase.allUsers->at(0).getOverdraftLimit()) + 1000;
+		userDatabase.allUsers->at(0).setOverdraftLimit(newReceiptAmount);
+		userDatabase.rewriteUserDatabase();
+		cout << endl << "Receipt Amount Updated! New Receipt Amount is " << newReceiptAmount << endl << endl;
+	}
+
+	returnToATMMaintenanceMenu(userDatabase);
 }
 
 void Admin::viewTransactionHistory(UserDatabase userDatabase)
@@ -499,6 +535,18 @@ void Admin::viewTransactionHistory(UserDatabase userDatabase)
 
 }
 
+/**
+* returnToAdminMenu, function to return the user to the admin menu
+*
+* Writes a message to the command window asking the user if they would like to return to the admin menu.
+* The users answer is then taken and stored within the variable returnOption, which is used in an
+* if statement which is the condition is met, returns the user to the admin menu, otherwise if the 
+* condition is not met, the else statement is entered and a message thanking the user for using the
+* service is shown instructing them to exit.
+*
+* @param returnOption variable to contain the users answer as to whether they would like to return to the admin menu
+* @see adminMenu
+*/
 void Admin::returnToAdminMenu(UserDatabase userDatabase)
 {
 	std::string returnOption;
@@ -519,6 +567,18 @@ void Admin::returnToAdminMenu(UserDatabase userDatabase)
 	}
 }
 
+/**
+* returnToATMMaintenanceMenu, function to return the user to the ATM Maintenance Menu
+*
+* Writes a message to the command window asking the user if they would like to return to the ATM Maintenance Menu.
+* The users answer is then taken and stored within the variable returnOption, which is then used in an
+* if statement, which is the condition is met, returns the user to the ATM Maintenance Menu, otherwise if the
+* condition is not met, the else statement is entered and a message thanking the user for using the
+* service is shown instructing them to exit.
+*
+* @param returnOption variable to contain the users answer as to whether they would like to return to the ATM Maintenance Menu
+* @see atmMaintenanceMenu
+*/
 void Admin::returnToATMMaintenanceMenu(UserDatabase userDatabase)
 {
 	std::string returnOption;
