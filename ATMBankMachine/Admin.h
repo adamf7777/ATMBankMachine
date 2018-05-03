@@ -2,8 +2,8 @@
 #define Admin_H_
 
 /**
-* The admin class is the overseeing class for administration of user's and the machine itself
-*
+* The admin class is the overseeing class for administration of user's 
+* and the ATM machine itself
 * optional, long description, spanning
 * several lines.
 *

@@ -1,13 +1,32 @@
+/**
+* Provides menu's and functionality to administrate user data and
+* ATM machine data
+* @author Matthew Cordner <cordner-m1@ulster.ac.uk>
+* @license https://www.gnu.org/licenses/gpl-3.0.en.html
+* @copyright Matthew Cordner 2018
+*
+*/
+
+// Includes header files
 #include "Admin.h"
 #include "User.h"
 #include "UserDatabase.h"
 
-//#include <string>
-//#include <ostream>
-//#include <s>
-
 using namespace std;
 
+/**
+* adminMenu, function to navigate around the Admin Class
+*
+* Prints out menu with user options shown and waits for user to enter decided option.
+* User input is stored within adminMenuInputOption and is used in the switch statement 
+* to allow the user to enter another function.
+*
+* @param adminMenuInputOption variable to contain the users entered menu option they wish to enter
+* @see addUser
+* @see removeUser
+* @see editUser
+* @see atmMaintenanceMenu
+*/
 void Admin::adminMenu(UserDatabase userDatabase)
 {
 	int adminMenuInputOption;
@@ -58,21 +77,38 @@ void Admin::adminMenu(UserDatabase userDatabase)
 	}
 }
 
+/**
+* addUser, function to add a user to the array in userDatabase
+*
+* Writes an input capture form to the command window to allow entry of new user's data 
+* to be stored within tthe variables. The size of the array of current users is obtained 
+* from the userdatabase class to be used in the calcuation of an account number for the
+* new user. A new user is then created called tempUser which is then passed into the 
+* userdatabase to be stored as a user using the addUser function. The returnToAdminMenu 
+* function is then entered.
+*
+* @param addUserFirstName variable to store the first name entered by the user
+* @param addUserLastName variable to store the last name entered by the user
+* @param addUserAccountBalance variable to store the account balance entered by the user
+* @param addUserOverdraftLimit variable to store the overdraft limit entered by the user
+* @param addUserPincode variable to store the pin code entered by the user
+* @param addUserAccountNumber used to store the users account number after sumation
+* @param addUserDatabaseSize used to store the database size obtained from the userdatabase
+* @see returnToAdminMenu
+*/
 void Admin::addUser(UserDatabase userDatabase)
 {
 	std::string addUserFirstName;
 	std::string addUserLastName;
 	double addUserAccountBalance;
 	double addUserOverdraftLimit;
-	int addUserAccountNumber;
 	int addUserPincode;
+	int addUserAccountNumber;
 	int addUserDatabaseSize;
 
 	addUserDatabaseSize = (userDatabase.getAllUsers().size());
-	//cout << newUserDatabaseSize << endl << endl;
 
 	addUserAccountNumber = addUserDatabaseSize + 1000;
-	//cout << "The ID number for the new user is: " << addUserAccountNumber << endl;
 	
 	cout << "Admin Menu: Add User" << endl << endl;
 	cout << "Please enter the details of the user you would like to add: " << endl << endl;
@@ -101,9 +137,27 @@ void Admin::addUser(UserDatabase userDatabase)
 	cout << "\nDatabase Updated!" << endl << endl;
 
 	returnToAdminMenu(userDatabase);
-
 }
 
+/**
+* removeUser, function to remove a user from the array in userDatabase
+*
+* Writes an input capture form to the command window to allow entry of the account
+* number that the user would like to remove. The line within the array that the user is
+* stored on is then calculated with a message to the user expecting an input to confirm
+* the user they are removing is the correct user. An if statement is used to control this
+* option. If the user enters 'Y' then the users information will be overwritten in the
+* array using functions within the userdatabase class. The rewritedatabase function is then
+* called from the userdatabase class to write the updated array to the .txt file. If the user   
+* enters anything else other than 'Y' the returnToAdminMenu function is entered. A message that
+* the database has been updated is sent to the command window. The returnToAdminMenu 
+* function is then entered.
+*
+* @param userDeleteConfirm variable to contain the users decison on whether they wish to delete
+* @param removeUserAccountNumber variable to contain the account number of the user that is to be deleted
+* @param removeUserLineNumber variable to store the line number within the array the user is stored on
+* @see returnToAdminMenu
+*/
 void Admin::removeUser(UserDatabase userDatabase)
 {
 	std::string userDeleteConfirm;
@@ -138,6 +192,37 @@ void Admin::removeUser(UserDatabase userDatabase)
 	returnToAdminMenu(userDatabase);
 }
 
+/**
+* editUser, function to edit a users data within the array in userDatabase
+*
+* Writes an input capture form to the command window to allow entry of the account
+* number that the user would like to edit. The line within the array that the user is
+* stored on is then calculated with a message to the user expecting an input to confirm
+* the user they are editing is the correct user. An if statement is used to control this
+* option. If the user enters 'Y' a menu will be written to the command window to allow the
+* user to choose which piece of the users information they would like to edit. The input
+* from the user will be stored within the editOption variable and be used to determine the
+* case to enter as part of the switch statement. When the user enters any of the case's of
+* the swtich statement, the current information for that specific field will be shown and
+* a message for the user to enter the new information will be shown. The new user information
+* will be stored within the corresponding variable and written to the array at that speific
+* line number using the corresponding function within the userdatabase class. The rewritedatabase 
+* function is then called from the userdatabase class to write the updated array to the .txt file. If the user
+* enters anything else other than 'Y' the returnToAdminMenu function is entered. A message that
+* the database has been updated is sent to the command window. The returnToAdminMenu
+* function is then entered.
+*
+* @param userEditConfirm variable to contain the users decison on whether they wish to edit
+* @param editUserFirstName variable to contain the entered edited first name
+* @param editUserLastName variable to contain the entered edited last name
+* @param editUserAccountBalance variable to contain the entered edited account balance
+* @param editUserOverdraftLimit variable to contain the entered edited overdraft limit
+* @param editUserPincode variable to contain the entered edited pin code
+* @param editUserAccountNumber variable to contain the entered account number for editing
+* @param editUserLineNumber variable to store the line number within the array the user is stored on
+* @param editOption varible to contain the users entered option on what they want to edit
+* @see returnToAdminMenu
+*/
 void Admin::editUser(UserDatabase userDatabase)
 {
 	std::string userEditConfirm;
@@ -241,6 +326,19 @@ void Admin::editUser(UserDatabase userDatabase)
 
 }
 
+/**
+* adminMenu, function to navigate around the Admin Class
+*
+* Prints out menu with user options shown and waits for user to enter decided option.
+* User input is stored within adminMaintenanceOption and is used in the switch statement
+* to allow the user to enter another function.
+*
+* @param adminMaintenanceOption variable to contain the users entered menu option they wish to enter
+* @see updateATMBalance
+* @see updateReceiptAmount
+* @see viewTransactionHistory
+* @see adminMenu
+*/
 void Admin::atmMaintenanceMenu(UserDatabase userDatabase)
 {
 	int adminMaintenanceOption;
@@ -285,11 +383,43 @@ void Admin::atmMaintenanceMenu(UserDatabase userDatabase)
 	}
 }
 
+/**
+* updateATMBalance, function to update the balance of the ATM within the array in userDatabase
+*
+* Writes the current ATM balance to the command window using the getBalance function in
+* the user database class. A message is then written to the command window asking to user
+* to enter the total amount of money being added to the ATM, this value is stored within
+* the variable totalAdded. The message is then output asking the user to enter the amount
+* of each note being added which is stored within its corresponding variable. A calculation
+* takes place to calcuate totalNotes, the amount the entered notes adds up to. An if statement 
+* is used to compare totalAdded to totalNotes to see if they are equal. If they are the if statement
+* will run outputing a message that the database is updating. The new overall balance is then
+* calculated using the getBalance function from the userdatabase class by adding the totalAdded
+* variable to this and storing the result as newBalance. The setBalance function from the userdatabase
+* class is then called to add the newBalance variable to the array. The rewritedatabase function
+* is then called from the userdatabase class to write the updated array to the .txt file. If the if
+* statement requirements are not met, the else statement is entered. The else statement outputs a message
+* to the command window asking the user if they wish to re-enter the info, the user input is stored in 
+* tryAgain. If the user enters 'Y' another if statment is used that preforms as above only this time if
+* the parameters are not met, the else statement is entered, displaying a message to contact service to 
+* report the problem. The returnToAdminMenu function is then entered after succession of the first if or
+* the else.
+* 
+* @param totalAdded variable to contain the amount of money the user enters to be added to the ATM
+* @param totalNotes variable to contain the amount of money calculated from the amount of notes the user 
+*		 enters to be added to the ATM
+* @param newBalance variable to contain the new updated total of money within the ATM
+* @param newATMNotesFive variable to contain the amount of 5 pound notes being added to the ATM
+* @param newATMNotesTen variable to contain the amount of 10 pound notes being added to the ATM
+* @param newATMNotesTwenty variable to contain the amount of 20 pound notes being added to the ATM
+* @param tryAgain variable to contain the users answer as to whether they would like to re-enter the information
+* @see returnToAdminMenu
+*/
 void Admin::updateATMBalance(UserDatabase userDatabase)
 {
 	double totalAdded;
-	double newBalance;
 	double totalNotes;
+	double newBalance;
 	int newATMNotesFive;
 	int newATMNotesTen;
 	int newATMNotesTwenty;
