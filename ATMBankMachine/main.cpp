@@ -136,9 +136,9 @@ int main(int argc, const char * argv[])
 				currentUser.resetPinCode(userDatabase, userInputIDNumberLine);
 				break;
 
-			case 0: // Admin menu
-				//Admin admin;
-				//admin.adminMenu(userDatabase);
+			case 0: 
+				
+				cout << "Error! Please contact service identifying 101 as the error number!";
 				break;
 
 			}//END OF FIRST SWITCH CASE

@@ -30,8 +30,11 @@ int Security::pinCodeCheck(User currentUser, UserDatabase userDatabase)
 	//requestUserPin = 1111;
 	while ((pinSuccessful == 0) && (pinCheckCount <= 3))
 	{
-
-		cout << "Please enter pin" << endl;
+		cout << "************************************************************************" << endl << endl;
+		cout << "                      Welcome to Bank of Ulster                         " << endl << endl;
+		cout << "************************************************************************" << endl << endl;
+		cout << "Please enter your Pin Number " << endl << endl;
+		cout << "Pin Number: ";
 		cin >> requestUserPin;
 
 		if ((retrievedPin == requestUserPin) && pinCheckCount < 3)
