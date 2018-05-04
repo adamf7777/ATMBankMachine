@@ -19,13 +19,15 @@
 
 //using namespace std;
 
-
+//classes that il be used in the class
 //class User;
 class UserDatabase;
 class CashStatus
 {
 public:
-//void getMachineCashStatus(User currentUser, UserDatabase userDatabase);
+/*
+* Calls the fucntion withdarwCash in the class
+*/
 void withdrawCash(User currentUser, UserDatabase userDatabase, double withdrawalAmount);
 
 
