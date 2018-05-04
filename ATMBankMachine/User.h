@@ -22,8 +22,7 @@
 #include <sstream> 
 
 
-//The UserDatabase class works with the user class.
-class CashStatus;
+//The user class works with the userdatabase class.
 class UserDatabase;
 
 class User
@@ -31,6 +30,7 @@ class User
 
 public:
 	
+	// Userfunctions to get user information
 	User(std::string userInformation);
 	User();
 

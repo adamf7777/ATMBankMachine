@@ -1,5 +1,5 @@
 /**
-* Gives users and manipulates user data required for user operation.
+* Allows the user options required for operation
 *
 * @author	Adam Fawcett <fawcett-a@ulster.ac.uk>
 * @license https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -22,10 +22,7 @@ using namespace std;
 * Reads in data from the database txt file and stores 
 * data in the variables below
 *
-* @param hello number of hellos to print
-* @param world number of worlds to print
-* @return zero on failure, non-zero otherwise
-* @see func_2 (optional links to other code)
+* @param userInformation passed in as a string
 */
 User::User(string userInformation)
 {
@@ -249,7 +246,6 @@ double User::getWithdrawalAmount(double withdrawalAmount)
 * @see setPinCode
 * @see rewriteUserDatabase
 */
-
 void User::resetPinCode(UserDatabase userDatabase, int userInputIDNumber)
 {
 
