@@ -13,8 +13,20 @@ using namespace std;
 #include "UserDatabase.h"
 #include "User.h"
 
-//Security::security;
-//currentUser.getPinCode();
+/**
+* System upon start up asks for Account ID
+* Then asks for Pin Code, below checks the entered pin with the 
+* retrieved pin from the .txt file and checks if they are matching,
+* if it is a failed or invalid attempt, it asks the user for the pin again
+* whilst showcasing that the user is now on attempt 2 out of 3.
+* If failed after 3 attempts it returns the card and locks the account with a
+* set pin code that the user will not know and will have to contact their 
+* bank to rectify any issue.
+*
+*
+*
+*
+*/
  
 int Security::pinCodeCheck(User currentUser, UserDatabase userDatabase)
 {
@@ -27,7 +39,7 @@ int Security::pinCodeCheck(User currentUser, UserDatabase userDatabase)
 	retrievedPin = currentUser.getPinCode();
 
 
-	//requestUserPin = 1111;
+	
 	while ((pinSuccessful == 0) && (pinCheckCount <= 3))
 	{
 		cout << "************************************************************************" << endl << endl;
@@ -53,13 +65,13 @@ int Security::pinCodeCheck(User currentUser, UserDatabase userDatabase)
 			cout << "Attempt [" << pinStatusCheck << " of 3]" << endl;
 			
 			pinCheckCount++;
-			//return 0;
+			
 			pinSuccessful = 0;
 		}
 
 		else if (pinSuccessful == 0 && pinCheckCount >= 2)
 		{
-			//return 0;
+			
 			int getAccountNo;
 			int getLineNo;
 			int getLockPin;
@@ -88,8 +100,7 @@ int Security::pinCodeCheck(User currentUser, UserDatabase userDatabase)
 			
 			cin >> accountLock;
 
-			//return 0;
-			//pinSuccessful = 0;
+			
 			
 		}
 
@@ -97,7 +108,7 @@ int Security::pinCodeCheck(User currentUser, UserDatabase userDatabase)
 
 	if (pinSuccessful == 0)
 	{
-		//cout << "The pin has been incorrectly entered " << endl << endl;
+		
 		return 0;
 	}
 

@@ -41,7 +41,7 @@ User::User(string userInformation)
 // default constructor
 User::User() {
 };
-/**0
+/**
 * Function to get user's first name
 *
 * @return first name as string if successful, zero on failure

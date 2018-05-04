@@ -1,8 +1,8 @@
 /**
 * ATMBankMachine
 *
-* optional, long description, spanning
-* several lines.
+* Main structure of the program.
+* Using Case break structure.
 *
 * @author Adam Fawcett <fawcett-a@ulster.ac.uk>
 * @author Matthew Cordner <cordner-m1@ulster.ac.uk>
