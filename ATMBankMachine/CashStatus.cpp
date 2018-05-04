@@ -1,9 +1,9 @@
 
 /**
 * Controls the notes depensed from the system.
-*
 * Provides variables based on the type of notes in the system
 * which can be removed by the user when using the variable cashwithdrawal.
+* Unable to remove the number of notes from the text files
 *
 * @author Mícheál Glass <glass-m@ulster.ac.uk>
 * @license https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -15,7 +15,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
-//#include "User.h"
+#include "User.h"
 #include "UserDatabase.h"
 #include "CashStatus.h"
 #include "Admin.h"
@@ -23,20 +23,7 @@
 	using namespace std;
 
 
-	/*void getMachineCashStatus()
-	{
 
-
-		int twentynotes;
-		int withdrawalamount;
-		int tenamount;
-		int tennotes;
-		int fiveamount;
-		int notesdispensed;
-		int fivenotes;
-		int Balance;
-		int twentybalance;
-	}*/
 
 	void CashStatus::withdrawCash(User currentUser, UserDatabase userDatabase, double withdrawalAmount)
 	{
@@ -56,7 +43,7 @@
 		dispenseAmount = currentUser.getWithdrawalAmount(withdrawalAmount);
 
 		twentynotes = (dispenseAmount / 20);
-
+		cout << "Number of Twenty pound notes:  " << twentynotes << "\n";
 		ifstream inFile;
 		inFile.open("twentynotes.txt");
 		
@@ -71,11 +58,10 @@
 		
 		//inFile.close("twentynotes.txt");
 		
-		
-		Balance = (Balance - tennotes);
+	
 		twentyfile.close();
 
-
+		//remove the required amount of £20 notes from the withdrawl amount to find out how many £10 notes are required
 		tenamount = (currentUser.getWithdrawalAmount(withdrawalAmount) - (twentynotes * 20));		tennotes = (tenamount / 10);		cout << "Number of Ten pound notes:  " << tennotes << "\n";		ofstream tenfile;
 		tenfile.open("tennotes.txt");
 		tenfile << "balance";

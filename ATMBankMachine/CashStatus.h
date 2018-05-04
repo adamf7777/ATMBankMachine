@@ -2,14 +2,14 @@
 #define CashStatus_H_
 
 /**
-* one line description of class or file
+* Controls the notes depensed from the system.
+* Provides variables based on the type of notes in the system
+* which can be removed by the user when using the variable cashwithdrawal.
+* Unable to remove the number of notes from the text files
 *
-* optional, long description, spanning
-* several lines.
-*
-* @author Adam Fawectt <fawcett-a@ulster.ac.uk>
-* @license (url of your license)
-* @copyright Adam Fawcett 2018
+* @author Mícheál Glass <glass-m@ulster.ac.uk>
+* @license https://www.gnu.org/licenses/gpl-3.0.en.html
+* @copyright Mícheál Glass 2018
 *
 */
 
