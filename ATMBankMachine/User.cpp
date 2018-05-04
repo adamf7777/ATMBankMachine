@@ -1,5 +1,5 @@
 /**
-* Gives users and manipulates user data required for user operation.
+* Allows the user options required for operation
 *
 * @author	Adam Fawcett <fawcett-a@ulster.ac.uk>
 * @license https://www.gnu.org/licenses/gpl-3.0.en.html
@@ -249,7 +249,6 @@ double User::getWithdrawalAmount(double withdrawalAmount)
 * @see setPinCode
 * @see rewriteUserDatabase
 */
-
 void User::resetPinCode(UserDatabase userDatabase, int userInputIDNumber)
 {
 
