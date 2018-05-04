@@ -23,9 +23,10 @@ using namespace std;
 * set pin code that the user will not know and will have to contact their 
 * bank to rectify any issue.
 *
-*
-*
-*
+*@param requestUserPin variable that stores the user pin when entered
+*@param retrievedPin variable that retrieves thecorrect pin
+*@param pinCheckCount this variable counts the amount of times the pin has been entered
+*@return if pin is correctly entered returns 1 and goes to next interface
 */
  
 int Security::pinCodeCheck(User currentUser, UserDatabase userDatabase)
@@ -47,16 +48,16 @@ int Security::pinCodeCheck(User currentUser, UserDatabase userDatabase)
 		cout << "************************************************************************" << endl << endl;
 		cout << "Please enter your Pin Number " << endl << endl;
 		cout << "Pin Number: ";
-		cin >> requestUserPin;
+		cin >> requestUserPin; // waits for user pin input
 
-		if ((retrievedPin == requestUserPin) && pinCheckCount < 3)
+		if ((retrievedPin == requestUserPin) && pinCheckCount < 3)// when the pin from the .txt file matches the user entered one and the count is less than 3 proceed to the next interface
 		{
 			pinSuccessful = 1;
 		}
 
 		else if (pinCheckCount < 2)
 		{
-			system("cls");
+			system("cls"); // Clears Command Window
 
 			pinStatusCheck = pinCheckCount;
 			pinStatusCheck = pinStatusCheck + 2;
@@ -64,13 +65,17 @@ int Security::pinCodeCheck(User currentUser, UserDatabase userDatabase)
 			cout << "Pin is incorrect - please try again" << endl << endl;
 			cout << "Attempt [" << pinStatusCheck << " of 3]" << endl;
 			
-			pinCheckCount++;
+			pinCheckCount++; // Adds 1 to the pin counter if incorrectly entered
 			
 			pinSuccessful = 0;
 		}
 
 		else if (pinSuccessful == 0 && pinCheckCount >= 2)
 		{
+			
+			
+			//account gets locked if 
+			//pin was incorrectly entered 3 times.
 			
 			int getAccountNo;
 			int getLineNo;
@@ -84,7 +89,7 @@ int Security::pinCodeCheck(User currentUser, UserDatabase userDatabase)
 			userDatabase.rewriteUserDatabase();
 			
 			pinCheckCount = 5;
-			system("cls");
+			system("cls"); // Clears Command Window
 
 			cout << "**************************************************" << endl;
 			cout << "**               Security Alert!                **" << endl;

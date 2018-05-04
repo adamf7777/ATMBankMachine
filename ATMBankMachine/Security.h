@@ -27,7 +27,7 @@ class Security
 {
 
 public:
-	
+	//Defining public functions involving class parameters
 	//Cross references the entered pin of the current user with the .txt file pin.
 	int pinCodeCheck(User currentUser, UserDatabase userDatabase);
 	
