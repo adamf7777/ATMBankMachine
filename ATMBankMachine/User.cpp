@@ -22,10 +22,7 @@ using namespace std;
 * Reads in data from the database txt file and stores 
 * data in the variables below
 *
-* @param hello number of hellos to print
-* @param world number of worlds to print
-* @return zero on failure, non-zero otherwise
-* @see func_2 (optional links to other code)
+* @param userInformation passed in as a string
 */
 User::User(string userInformation)
 {
