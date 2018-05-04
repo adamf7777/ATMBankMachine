@@ -41,32 +41,32 @@ void Admin::adminMenu(UserDatabase userDatabase)
 	cout << "[4] ATM Maintenance " << endl << endl;
 	cout << "Option: ";
 
-	cin >> adminMenuInputOption;
+	cin >> adminMenuInputOption; // waits for user input
 
-	system("cls");
+	system("cls"); // clears command window
 
-	switch (adminMenuInputOption) {
+	switch (adminMenuInputOption) { // uses user input to determine which case to enter
 	case 1:
 
-		addUser(userDatabase);
+		addUser(userDatabase); // enters addUser function
 
 		break;
 
 	case 2:
 
-		removeUser(userDatabase);
+		removeUser(userDatabase); // enters removeUser function
 
 		break;
 
 	case 3:
 
-		editUser(userDatabase);
+		editUser(userDatabase); // enters editUser function
 
 		break;
 
 	case 4:
 
-		atmMaintenanceMenu(userDatabase);
+		atmMaintenanceMenu(userDatabase); // enters atmMaintenanceMenu function
 
 		break;
 
@@ -107,11 +107,11 @@ void Admin::addUser(UserDatabase userDatabase)
 	int addUserAccountNumber;
 	int addUserDatabaseSize;
 
-	addUserDatabaseSize = (userDatabase.getAllUsers().size());
+	addUserDatabaseSize = (userDatabase.getAllUsers().size()); // gets the current size of the database
 
-	addUserAccountNumber = addUserDatabaseSize + 1000;
+	addUserAccountNumber = addUserDatabaseSize + 1000; // creates the new user account number based on the current database size
 	
-	cout << "Admin Menu: Add User" << endl << endl;
+	cout << "Admin Menu: Add User" << endl << endl; // allows input of new user information
 	cout << "Please enter the details of the user you would like to add: " << endl << endl;
 	cout << "New User Account Number:	" << addUserAccountNumber << endl;
 	cout << "First Name:			";
@@ -125,7 +125,7 @@ void Admin::addUser(UserDatabase userDatabase)
 	cout << "Setup Pincode:			";
 	cin >> addUserPincode;
 
-	User* tempUser = new User();
+	User* tempUser = new User(); // creates a temporary user to hold information to be added to the user arrary
 	tempUser->setFirstName(addUserFirstName);
 	tempUser->setLastName(addUserLastName);
 	tempUser->setAccountNumber(addUserAccountNumber);
@@ -133,11 +133,11 @@ void Admin::addUser(UserDatabase userDatabase)
 	tempUser->setOverdraftLimit(addUserOverdraftLimit);
 	tempUser->setPinCode(addUserPincode);
 
-	userDatabase.addUser(tempUser);
+	userDatabase.addUser(tempUser); // adds the tempUser to the array
 
 	cout << "\nDatabase Updated!" << endl << endl;
 
-	returnToAdminMenu(userDatabase);
+	returnToAdminMenu(userDatabase); // enters the returnToAdminMenu function
 }
 
 /**
@@ -168,15 +168,15 @@ void Admin::removeUser(UserDatabase userDatabase)
 	cout << "Admin Menu: Remove User" << endl << endl;
 	cout << "Please enter the Account Number of the user you would like to remove: " << endl << endl;
 	cout << "Account Number: ";
-	cin >> removeUserAccountNumber;
+	cin >> removeUserAccountNumber; // waits for user input
 
-	removeUserLineNumber = removeUserAccountNumber - 1000;
+	removeUserLineNumber = removeUserAccountNumber - 1000; // calculates the line number the user's account is on
 	
 	cout << "\nAre you sure you wish to delete " << userDatabase.allUsers->at(removeUserLineNumber).getName() << "'s "
 		<< "account? (Y/N): ";
-	cin >> userDeleteConfirm;
+	cin >> userDeleteConfirm; // waits for user input
 
-	if (userDeleteConfirm == "Y")
+	if (userDeleteConfirm == "Y") // if the criteria is met the user's information is overwritten, if not the returnToAdminMenu function is entered
 		{
 		userDatabase.allUsers->at(removeUserLineNumber).setFirstName("Deleted");
 		userDatabase.allUsers->at(removeUserLineNumber).setLastName("User");
@@ -185,12 +185,12 @@ void Admin::removeUser(UserDatabase userDatabase)
 		userDatabase.allUsers->at(removeUserLineNumber).setOverdraftLimit(0);
 		userDatabase.allUsers->at(removeUserLineNumber).setPinCode(0000);
 		
-		userDatabase.rewriteUserDatabase();
+		userDatabase.rewriteUserDatabase(); // re-writes the database with new array values
 		
 		cout << "\nDatabase Updated!" << endl << endl;
 		}
 
-	returnToAdminMenu(userDatabase);
+	returnToAdminMenu(userDatabase); // enters the returnToAdminMenu function
 }
 
 /**
@@ -239,15 +239,15 @@ void Admin::editUser(UserDatabase userDatabase)
 	cout << "Admin Menu: Edit User" << endl << endl;
 	cout << "Please enter the Account Number of the user you would like to edit: " << endl << endl;
 	cout << "Account Number: ";
-	cin >> editUserAccountNumber;
+	cin >> editUserAccountNumber; // waits for user input
 
-	editUserLineNumber = editUserAccountNumber - 1000;
+	editUserLineNumber = editUserAccountNumber - 1000; // calculates the line number the user's account is on
 
 	cout << "\nDo you wish to edit " << userDatabase.allUsers->at(editUserLineNumber).getName() << "'s "
 		<< "account? (Y/N): ";
-	cin >> userEditConfirm;
+	cin >> userEditConfirm; // waits for user input
 
-	if (userEditConfirm == "Y")
+	if (userEditConfirm == "Y") // if the criteria is met, the if statement runs, if not the returnToAdminMenu function is entered
 	{
 		cout << "\nWhich of the following details do you wish to edit?" << endl << endl;
 		cout << "[1] First Name" << endl;
@@ -257,13 +257,13 @@ void Admin::editUser(UserDatabase userDatabase)
 		cout << "[5] Pin Code" << endl << endl;
 		cout << "Option: ";
 
-		cin >> editOption;
+		cin >> editOption; // waits for input
 
-		switch (editOption)
+		switch (editOption) // uses input to determine case to enter
 		{
 		case 1:
 
-			cout << "\nThe current First Name stored for this account is "
+			cout << "\nThe current First Name stored for this account is " // allows user to edit first name
 				<< userDatabase.allUsers->at(editUserLineNumber).getFirstName();
 			cout << "\n\nPlease enter the new First Name for the user: ";
 			cin >> editUserFirstName;
@@ -273,7 +273,7 @@ void Admin::editUser(UserDatabase userDatabase)
 
 		case 2:
 
-			cout << "\nThe current Last Name stored for this account is "
+			cout << "\nThe current Last Name stored for this account is " // allows user to edit last name
 				<< userDatabase.allUsers->at(editUserLineNumber).getLastName();
 			cout << "\nPlease enter the new Last Name for the user: ";
 			cin >> editUserLastName;
@@ -283,7 +283,7 @@ void Admin::editUser(UserDatabase userDatabase)
 
 		case 3:
 
-			cout << "\nThe current Account Balance stored for this account is "
+			cout << "\nThe current Account Balance stored for this account is " // allows user to edit account balance
 				<< userDatabase.allUsers->at(editUserLineNumber).getBalance();
 			cout << "\nPlease enter the new Account Balance for the user: ";
 			cin >> editUserAccountBalance;
@@ -293,7 +293,7 @@ void Admin::editUser(UserDatabase userDatabase)
 
 		case 4:
 
-			cout << "\nThe current Overdraft Limit stored for this account is "
+			cout << "\nThe current Overdraft Limit stored for this account is " // allows user to edit overdraft limit
 				<< userDatabase.allUsers->at(editUserLineNumber).getOverdraftLimit();
 			cout << "\nPlease enter the new Overdraft Limit for the user: ";
 			cin >> editUserOverdraftLimit;
@@ -303,7 +303,7 @@ void Admin::editUser(UserDatabase userDatabase)
 		
 		case 5:
 
-			cout << "\nThe current Pin Code stored for this account is "
+			cout << "\nThe current Pin Code stored for this account is " // allows user to edit pin code
 				<< userDatabase.allUsers->at(editUserLineNumber).getPinCode();
 			cout << "\nPlease enter the new Pin Code for the user: ";
 			cin >> editUserPincode;
@@ -318,7 +318,7 @@ void Admin::editUser(UserDatabase userDatabase)
 			break;
 		}
 
-		userDatabase.rewriteUserDatabase();
+		userDatabase.rewriteUserDatabase(); // enters the returnToAdminMenu function
 
 		cout << "\nDatabase Updated!" << endl << endl;
 	}
@@ -351,26 +351,26 @@ void Admin::atmMaintenanceMenu(UserDatabase userDatabase)
 	cout << "[3] Return to Admin Menu" << endl << endl;
 	cout << "Option: ";
 
-	cin >> adminMaintenanceOption;
+	cin >> adminMaintenanceOption; // waits for user input
 
-	system("cls");
+	system("cls"); // clears command window
 
-	switch (adminMaintenanceOption) {
+	switch (adminMaintenanceOption) { // uses user input to determine which case to enter
 	case 1:
 
-		updateATMBalance(userDatabase);
+		updateATMBalance(userDatabase); // enters updateATMBalance function
 
 		break;
 
 	case 2:
 
-		updateReceiptAmount(userDatabase);
+		updateReceiptAmount(userDatabase); // enters updateReceiptAmount function
 
 		break;
 
 	case 3:
 
-		adminMenu(userDatabase);
+		adminMenu(userDatabase); // enters adminMenu function
 
 		break;
 	}
@@ -419,12 +419,12 @@ void Admin::updateATMBalance(UserDatabase userDatabase)
 	std::string tryAgain;
 
 	cout << "Admin Menu: ATM Maintenance: Update ATM Balance" << endl << endl;
-	cout << "Current ATM Balance: " << userDatabase.allUsers->at(0).getBalance() << endl << endl;
+	cout << "Current ATM Balance: " << userDatabase.allUsers->at(0).getBalance() << endl << endl; // displays current ATM balance
 	cout << "Please enter the total amount of money being added to the ATM, " << endl << endl;
 	cout << "Total amount of money being added: ";
-	cin >> totalAdded;
+	cin >> totalAdded; // waits for user input
 
-	cout << endl << "Please enter the amount of each note being added to the ATM: " << endl << endl;
+	cout << endl << "Please enter the amount of each note being added to the ATM: " << endl << endl; // allows user to enter amount of each note
 	cout << "Amount of FIVE(5) pound notes being added:	";
 	cin >> newATMNotesFive;
 	cout << "Amount of TEN(10) pound notes being added:	";
@@ -432,25 +432,25 @@ void Admin::updateATMBalance(UserDatabase userDatabase)
 	cout << "Amount of TWENTY(20) pound notes being added:	";
 	cin >> newATMNotesTwenty;
 
-	totalNotes = ((newATMNotesFive * 5) + (newATMNotesTen * 10) + (newATMNotesTwenty * 20));
+	totalNotes = ((newATMNotesFive * 5) + (newATMNotesTen * 10) + (newATMNotesTwenty * 20)); // calculates how much the notes add up to
 
-	if (totalNotes == totalAdded)
+	if (totalNotes == totalAdded) // checks if the amount of notes add up to the same amount as the total being entered
 	{
-		cout << endl << "------------UPDATING DATABASE------------" << endl;
-		newBalance = (userDatabase.allUsers->at(0).getBalance()) + totalAdded;
-		userDatabase.allUsers->at(0).setBalance(newBalance);
-		userDatabase.rewriteUserDatabase();
+		cout << endl << "------------UPDATING DATABASE------------" << endl; // updates database with new amounts
+		newBalance = (userDatabase.allUsers->at(0).getBalance()) + totalAdded; // adds previous total with new total
+		userDatabase.allUsers->at(0).setBalance(newBalance); // writes new value to the array
+		userDatabase.rewriteUserDatabase(); // writes updated array to the .txt file
 		cout << endl << "ATM Balance Updated!" << endl << endl;
 	}
-	else
+	else // gives user one more chance
 	{
 		cout << endl << "ERROR! Incorrect amount of each note entered, amount does not match the total being added!" << endl;
 		cout << "Would you like to re-enter? (Y/N): ";
-		cin >> tryAgain;
+		cin >> tryAgain; // waits for user input
 
-		if (tryAgain == "Y")
+		if (tryAgain == "Y") // if condition is met
 		{
-			cout << "\nTotal amount of money being added: ";
+			cout << "\nTotal amount of money being added: "; // allows user to enter amount of each note
 			cin >> totalAdded;
 			cout << endl << "Please enter the amount of each note being added to the ATM: " << endl << endl;
 			cout << "Amount of FIVE(5) pound notes being added:	";
@@ -460,17 +460,17 @@ void Admin::updateATMBalance(UserDatabase userDatabase)
 			cout << "Amount of TWENTY(20) pound notes being added:	";
 			cin >> newATMNotesTwenty;
 
-			totalNotes = ((newATMNotesFive * 5) + (newATMNotesTen * 10) + (newATMNotesTwenty * 20));
+			totalNotes = ((newATMNotesFive * 5) + (newATMNotesTen * 10) + (newATMNotesTwenty * 20)); // calculates how much the notes add up to
 
-			if (totalNotes == totalAdded)
+			if (totalNotes == totalAdded) // checks if the amount of notes add up to the same amount as the total being entered
 			{
-				cout << endl << "------------UPDATING DATABASE------------" << endl;
-				newBalance = (userDatabase.allUsers->at(0).getBalance()) + totalAdded;
-				userDatabase.allUsers->at(0).setBalance(newBalance);
-				userDatabase.rewriteUserDatabase();
+				cout << endl << "------------UPDATING DATABASE------------" << endl; // updates database with new amounts
+				newBalance = (userDatabase.allUsers->at(0).getBalance()) + totalAdded; // adds previous total with new total
+				userDatabase.allUsers->at(0).setBalance(newBalance); // writes new value to the array
+				userDatabase.rewriteUserDatabase(); // writes updated array to the .txt file
 				cout << endl << "ATM Balance Updated!" << endl << endl;
 			}
-			else
+			else // if user inputs wrong info for a second time, error message is displayed
 			{
 				cout << endl << "There has been an error, please report the problem to service!" << endl << endl;
 			}
@@ -478,7 +478,7 @@ void Admin::updateATMBalance(UserDatabase userDatabase)
 		}
 	}
 
-	returnToATMMaintenanceMenu(userDatabase);
+	returnToATMMaintenanceMenu(userDatabase); // enters the returnToATMMaintenanceMenu function
 
 }
 
@@ -503,23 +503,23 @@ void Admin::updateATMBalance(UserDatabase userDatabase)
 void Admin::updateReceiptAmount(UserDatabase userDatabase)
 {
 	std::string receiptOption;
-	int newReceiptAmount;
+	double newReceiptAmount;
 
 	cout << "Admin Menu: ATM Maintenance: Update Receipt Amount" << endl << endl;
-	cout << "Current Receipt Amount: " << userDatabase.allUsers->at(0).getOverdraftLimit() << endl << endl;
+	cout << "Current Receipt Amount: " << userDatabase.allUsers->at(0).getOverdraftLimit() << endl << endl; // displays current receipt amount
 	cout << "Do you wish to add a new receipt roll into the ATM? (Y/N): " ;
-	cin >> receiptOption;
+	cin >> receiptOption; // waits for user input
 
-	if (receiptOption == "Y")
+	if (receiptOption == "Y") // if condition is met, if will run otherwise returnToATMMaintenanceMenu function is entered
 	{
-		cout << endl << "------------UPDATING RECEIPT AMOUNT------------" << endl;
-		newReceiptAmount = (userDatabase.allUsers->at(0).getOverdraftLimit()) + 1000;
-		userDatabase.allUsers->at(0).setOverdraftLimit(newReceiptAmount);
-		userDatabase.rewriteUserDatabase();
+		cout << endl << "------------UPDATING RECEIPT AMOUNT------------" << endl; // updates receipt amount
+		newReceiptAmount = (userDatabase.allUsers->at(0).getOverdraftLimit()) + 1000; // adds previous amount with new amount
+		userDatabase.allUsers->at(0).setOverdraftLimit(newReceiptAmount); // writes new value to the arrary
+		userDatabase.rewriteUserDatabase(); // writes updated array to the .txt file
 		cout << endl << "Receipt Amount Updated! New Receipt Amount is " << newReceiptAmount << endl << endl;
 	}
 
-	returnToATMMaintenanceMenu(userDatabase);
+	returnToATMMaintenanceMenu(userDatabase); // enters the returnToATMMaintenanceMenu function
 }
 
 /**
@@ -539,18 +539,18 @@ void Admin::returnToAdminMenu(UserDatabase userDatabase)
 	std::string returnOption;
 
 	cout << "Would you like to return to the Admin menu? (Y/N): ";
-	cin >> returnOption;
+	cin >> returnOption; // waits for user input
 
-	system("cls");
+	system("cls"); // clears command window
 
-	if (returnOption == "Y")
+	if (returnOption == "Y") // if condition is met, enters if, if condition is not met, enters else
 	{
-		adminMenu(userDatabase);
+		adminMenu(userDatabase); // enters adminMenu function
 	}
-	else
+	else // displays a message thanking user for using the service
 	{
 		cout << "\n\n\n		Thanks for using this service, please press 'X' to exit!" << endl;
-		cin >> returnOption;
+		cin >> returnOption; // waits for user input
 	}
 }
 
@@ -573,15 +573,15 @@ void Admin::returnToATMMaintenanceMenu(UserDatabase userDatabase)
 	cout << "Would you like to return to the ATM Maintenance menu? (Y/N): ";
 	cin >> returnOption;
 
-	system("cls");
+	system("cls"); // clears command window
 
-	if (returnOption == "Y")
+	if (returnOption == "Y") // if condition is met, enters if, if condition is not met, enters else
 	{
-		atmMaintenanceMenu(userDatabase);
+		atmMaintenanceMenu(userDatabase); // enters atmMaintenanceMenu function
 	}
-	else
+	else // displays a message thanking user for using the service
 	{
 		cout << "\n\n\n		Thanks for using this service, please press 'X' to exit!" << endl;
-		cin >> returnOption;
+		cin >> returnOption; // waits for user input
 	}
 }

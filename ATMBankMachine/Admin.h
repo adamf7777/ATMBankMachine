@@ -26,7 +26,7 @@ class Admin
 
 public:
 
-	// Defining functions involving class parameters
+	// Defining public functions involving class parameters
 	void adminMenu(UserDatabase userDatabase);
 	void atmMaintenanceMenu(UserDatabase userDatabase);
 	void returnToAdminMenu(UserDatabase userDatabase);
@@ -34,6 +34,7 @@ public:
 
 private:
 
+	// Defining private functions involving class parameters
 	void addUser(UserDatabase userDatabase);
 	void removeUser(UserDatabase userDatabase);
 	void editUser(UserDatabase userDatabase);	
