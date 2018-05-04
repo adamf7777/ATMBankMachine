@@ -22,7 +22,10 @@
 
 	using namespace std;
 
-
+	/*
+	* funtion created to remove the correct amount of notes away from the specific text file
+	* using the withdrawl amount that was created in the user class
+	*/
 
 
 	void CashStatus::withdrawCash(User currentUser, UserDatabase userDatabase, double withdrawalAmount)
@@ -44,33 +47,36 @@
 
 		twentynotes = (dispenseAmount / 20);
 		cout << "Number of Twenty pound notes:  " << twentynotes << "\n";
-		ifstream inFile;
-		inFile.open("twentynotes.txt");
+		fstream inFile;
+		inFile.open("twentynotes.txt", ios::out));
 		
 		/*
 		check for error
 		if (inFile.fail()){
-		cout << "Error Opening File" << endl;
+		cout << "Error Opening File" << endl;0
 		*/
 
-		cout << "100" << endl;
-		ofstream twentyfile;
-		
+		int numberoftwenty = 500;
+		int newtwenty = numberoftwenty - twentynotes;
+		tenfile << newtwenty << endl;
+		inFile.close();
 		//inFile.close("twentynotes.txt");
-		
-	
-		twentyfile.close();
+			
 
 		//remove the required amount of £20 notes from the withdrawl amount to find out how many £10 notes are required
-		tenamount = (currentUser.getWithdrawalAmount(withdrawalAmount) - (twentynotes * 20));		tennotes = (tenamount / 10);		cout << "Number of Ten pound notes:  " << tennotes << "\n";		ofstream tenfile;
-		tenfile.open("tennotes.txt");
-		tenfile << "balance";
-		Balance = (Balance - tennotes);
+		tenamount = (currentUser.getWithdrawalAmount(withdrawalAmount) - (twentynotes * 20));		tennotes = (tenamount / 10);		cout << "Number of Ten pound notes:  " << tennotes << "\n";		fstream tenfile;
+		tenfile.open("tennotes.txt", ios::out));
+		//i set the number of notes in the text file to 500 as i had difficulty trying to remove the number of tennotes from an orginal number on the text file
+		int numberoftens = 500;
+		int newten = numberoftens - tennotes;
+		tenfile << newten << endl;
 		tenfile.close();
-		fiveamount = (tenamount - (tennotes * 10));		fivenotes = (fiveamount / 5);		cout << "Number of Five pound notes:  " << fivenotes << "\n";		ofstream fivefile;
-		fivefile.open("fivenotes.txt");
-		fivefile << "500";
-		Balance = (500 - fivenotes);
+		fiveamount = (tenamount - (tennotes * 10));		fivenotes = (fiveamount / 5);		cout << "Number of Five pound notes:  " << fivenotes << "\n";		fstream fivefile;
+		fivefile.open("fivenotes.txt", ios::out));
+		//i set the number of notes in the text file to 500 as i had difficulty trying to remove the number of tennotes from an orginal number on the text file
+		int numberoffives = 500;
+		int newfive = numberoffives - fivenotes;
+		tenfile << newfive << endl;
 		fivefile.close();
 		notesdispensed = (fiveamount - (fivenotes * 5));	}
 
