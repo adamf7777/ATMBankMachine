@@ -52,6 +52,8 @@ int main(int argc, const char * argv[])
 	cin >> userInputIDNumber;
 	cout << endl;
 
+	// asks for user id number
+	// only allows a 4 digit number to be entered
 	if (userInputIDNumber < 1000 || userInputIDNumber > 9999)
 	{
 		while (userInputIDNumber < 1000 || userInputIDNumber > 9999)
@@ -72,8 +74,6 @@ int main(int argc, const char * argv[])
 	UserDatabase userDatabase("User_database.txt");
 	User currentUser = userDatabase.users.at(userInputIDNumberLine);
 	
-	//int mainPinCheck;
-
 	Security security;
 	CashStatus cashStatus;
 	
